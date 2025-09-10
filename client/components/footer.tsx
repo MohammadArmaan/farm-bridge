@@ -148,7 +148,7 @@ export default function Footer() {
               <Input
                 type="email"
                 placeholder="Your email"
-                className="bg-green-900 border-green-800 text-white placeholder:text-green-400"
+                className="bg-green-700 border-green-800 text-white placeholder:text-green-400"
               />
               <Button className="bg-pink-600 hover:bg-pink-700">Subscribe</Button>
             </div>

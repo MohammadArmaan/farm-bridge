@@ -112,7 +112,7 @@ export default function CreateDisbursementPage() {
 
                 <Card>
                     <CardHeader>
-                        <CardTitle className="text-2xl text-green-900">
+                        <CardTitle className="text-2xl text-green-700">
                             Create Disbursement
                         </CardTitle>
                         <CardDescription>

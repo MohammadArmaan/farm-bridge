@@ -38,7 +38,7 @@ export default function RequestAidPage({ contract }: { contract: any }) {
     };
 
     return (
-        <div className="min-h-screen bg-white">
+        <div className="min-h-screen bg-white dark:bg-black/20">
             <Head>
                 <title>FarmFund - Create Aid Request</title>
                 <meta
@@ -49,7 +49,7 @@ export default function RequestAidPage({ contract }: { contract: any }) {
 
             <main className="container mx-auto px-4 py-8">
                 <div className="max-w-lg mx-auto">
-                    <h1 className="text-3xl font-bold text-green-700 mb-6 text-center">
+                    <h1 className="text-3xl font-bold text-green-700 dark:text-green-500 mb-6 text-center">
                         Create Aid Request
                     </h1>
 
@@ -62,17 +62,17 @@ export default function RequestAidPage({ contract }: { contract: any }) {
 
                     {success && (
                         <div className="bg-green-50 border-l-4 border-green-500 p-4 mb-6">
-                            <p className="text-green-700">{success}</p>
+                            <p className="text-green-700 dark:text-green-500">{success}</p>
                         </div>
                     )}
 
                     {/* Aid Request Form */}
-                    <div className="bg-white rounded-lg shadow-md p-6">
+                    <div className="bg-white dark:bg-black/70 rounded-lg shadow-md p-6">
                         <form onSubmit={handleRequestSubmit}>
                             <div className="mb-4">
                                 <label
                                     htmlFor="requestName"
-                                    className="block text-sm font-medium text-gray-700 mb-1"
+                                    className="block text-sm font-medium text-muted-foreground mb-1"
                                 >
                                     Request Name
                                 </label>
@@ -84,7 +84,7 @@ export default function RequestAidPage({ contract }: { contract: any }) {
                                         setRequestName(e.target.value)
                                     }
                                     placeholder="E.g., Drought Relief, Seed Purchase"
-                                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+                                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-500 dark:bg-background rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
                                     required
                                 />
                             </div>
@@ -92,7 +92,7 @@ export default function RequestAidPage({ contract }: { contract: any }) {
                             <div className="mb-4">
                                 <label
                                     htmlFor="purpose"
-                                    className="block text-sm font-medium text-gray-700 mb-1"
+                                    className="block text-sm font-medium text-muted-foreground mb-1"
                                 >
                                     Purpose of Aid
                                 </label>
@@ -102,7 +102,7 @@ export default function RequestAidPage({ contract }: { contract: any }) {
                                     onChange={(e) => setPurpose(e.target.value)}
                                     placeholder="Describe why you need this aid and how it will be used"
                                     rows={4}
-                                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+                                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-500 dark:bg-background rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
                                     required
                                 />
                             </div>
@@ -110,7 +110,7 @@ export default function RequestAidPage({ contract }: { contract: any }) {
                             <div className="mb-6">
                                 <label
                                     htmlFor="amountRequested"
-                                    className="block text-sm font-medium text-gray-700 mb-1"
+                                    className="block text-sm font-medium text-muted-foreground mb-1"
                                 >
                                     Amount Requested (ETH)
                                 </label>
@@ -124,7 +124,7 @@ export default function RequestAidPage({ contract }: { contract: any }) {
                                     step="0.01"
                                     min="0.01"
                                     placeholder="0.00"
-                                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+                                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-500 dark:bg-background rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
                                     required
                                 />
                             </div>

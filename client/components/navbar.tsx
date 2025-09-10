@@ -15,6 +15,8 @@ import {
 } from "@/lib/blockchain";
 import WalletConnect from "@/components/wallet-connect";
 import Image from "next/image";
+import { ThemeToggle } from "./theme-toggle";
+import { MobileThemeToggler } from "./MobileThemeToggler";
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
@@ -52,7 +54,7 @@ export default function Navbar() {
         ...(isFarmer
             ? [{ name: "Request Aid", path: "/aid" }]
             : isDonor
-            ? [{ name: "Donate", path: "/donate" }]
+            ? []
             : [{ name: "Request Aid", path: "/aid" }]), // default if not registered
         { name: "All Requests", path: "/AllAids" },
         { name: "How It Works", path: "/how-it-works" },
@@ -63,7 +65,7 @@ export default function Navbar() {
     const isActive = (path: string) => pathname === path;
 
     return (
-        <header className="sticky top-0 z-50 w-full border-b border-white/20 bg-white/70 backdrop-blur-md supports-[backdrop-filter]:bg-white/70 shadow-sm">
+        <header className="sticky top-0 z-50 w-full border-b border-white/20 dark:border-black/20 bg-white/70 dark:bg-black/70 backdrop-blur-md supports-[backdrop-filter]:bg-white/70 dark:supports-[backdrop-filter]:bg-black/70 shadow-sm">
             <div className="container flex h-16 items-center justify-between">
                 {/* Left Side - Logo & Mobile Menu */}
                 <div className="flex items-center gap-2">
@@ -83,22 +85,23 @@ export default function Navbar() {
                         >
                             <div className="flex flex-col items-center justify-center gap-4 mt-8">
                                 <Image src="/logo.png" alt="Logo" height={100} width={100}/>
+
                                 {routes.map((route) => (
                                     <Link
-                                        key={route.path}
-                                        href={route.path}
-                                        className={cn(
-                                            "text-lg font-medium transition-colors hover:text-green-600",
-                                            isActive(route.path)
-                                                ? "text-green-600"
-                                                : "text-muted-foreground"
-                                        )}
-                                        onClick={() => setIsOpen(false)}
+                                    key={route.path}
+                                    href={route.path}
+                                    className={cn(
+                                        "text-lg dark:text-white/95 font-medium transition-colors hover:text-green-600",
+                                        isActive(route.path)
+                                        ? "text-green-500"
+                                        : "text-foreground/90"
+                                    )}
+                                    onClick={() => setIsOpen(false)}
                                     >
                                         {route.name}
                                     </Link>
                                 ))}
-
+                                <MobileThemeToggler />
                                 <WalletConnect
                                     variant="outline"
                                     onConnect={async (addr) => {
@@ -136,13 +139,7 @@ export default function Navbar() {
                                     </div>
                                 )}
 
-                                <Button
-                                    asChild
-                                    variant="outline"
-                                    className="w-full"
-                                >
-                                    <Link href="/dashboard">Dashboard</Link>
-                                </Button>
+
                             </div>
                         </SheetContent>
                     </Sheet>
@@ -167,8 +164,8 @@ export default function Navbar() {
                             className={cn(
                                 "text-sm font-medium transition-colors hover:text-green-600",
                                 isActive(route.path)
-                                    ? "text-green-600"
-                                    : "text-muted-foreground"
+                                    ? "text-green-500"
+                                    : "text-foreground/90"
                             )}
                         >
                             {route.name}
@@ -179,6 +176,7 @@ export default function Navbar() {
                 {/* Right Side - Wallet + Register */}
                 <div className="flex items-center gap-2">
                     <div className="hidden lg:flex items-center gap-2">
+                        <ThemeToggle />
                         <WalletConnect
                             variant="outline"
                             onConnect={async (addr) => {

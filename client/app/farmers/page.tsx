@@ -102,22 +102,22 @@ export default function FarmersPage() {
 
     if (isLoading) {
         return (
-            <div className="container mx-auto px-4 py-12 flex justify-center">
+            <div className="container min-h-screen mx-auto px-4 py-12 flex justify-center">
                 <div className="text-center">
-                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-700 mx-auto mb-4"></div>
-                    <p className="text-green-900">Loading farmers...</p>
+                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-600 mx-auto mb-4"></div>
+                    <p className="text-green-500">Loading Farmers...</p>
                 </div>
             </div>
         );
     }
 
     return (
-        <div className="container mx-auto px-4 py-12">
+        <div className="container mx-auto min-h-screen px-4 py-12">
             <div className="text-center mb-8">
-                <h1 className="text-4xl font-bold text-green-900 mb-4">
+                <h1 className="text-4xl font-bold dark:text-green-500 text-green-700 mb-4">
                     Our Farmers
                 </h1>
-                <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                     Meet the hardworking farmers who are part of the FarmFund
                     ecosystem. Each farmer has been carefully selected based on
                     their commitment to sustainable farming practices.
@@ -127,7 +127,7 @@ export default function FarmersPage() {
             {/* Search and Filter */}
             <div className="flex flex-col md:flex-row gap-4 mb-8">
                 <div className="relative flex-grow">
-                    <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
+                    <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
                     <Input
                         placeholder="Search by name, address, location or farm type..."
                         value={searchTerm}
@@ -202,13 +202,13 @@ export default function FarmersPage() {
                   />
                 </div>
               </div> */}
-                            <CardContent className="pt-6">
+                            <CardContent className="pt-6 dark:shadow-2xl dark:bg-black/70">
                                 <div className="flex items-center justify-between mb-2">
-                                    <h3 className="text-xl font-bold text-green-900">
+                                    <h3 className="text-xl font-bold text-green-700 dark:text-green-500">
                                         {farmer.name}
                                     </h3>
                                     {farmer.isVerified ? (
-                                        <Badge className="bg-green-100 text-green-800 hover:bg-green-100 dark:bg-green-900 dark:text-green-100">
+                                        <Badge className="bg-green-100 text-green-800 hover:bg-green-100 dark:bg-green-700 dark:text-green-100">
                                             <CheckCircle className="h-3 w-3 mr-1" />
                                             Verified
                                         </Badge>
@@ -220,36 +220,36 @@ export default function FarmersPage() {
                                     )}
                                 </div>
 
-                                <div className="flex items-center text-gray-500 mb-1">
+                                <div className="flex items-center text-muted-foreground mb-1">
                                     <MapPin className="h-4 w-4 mr-1" />
                                     <span className="text-sm">
                                         {farmer.location}
                                     </span>
                                 </div>
 
-                                <div className="flex items-center text-gray-500 mb-1">
+                                <div className="flex items-center text-muted-foreground mb-1">
                                     <Leaf className="h-4 w-4 mr-1" />
                                     <span className="text-sm">
                                         {farmer.farmType}
                                     </span>
                                 </div>
 
-                                <div className="flex items-center text-gray-500 mb-4">
+                                <div className="flex items-center text-muted-foreground mb-4">
                                     <span className="text-xs">
                                         Address: {farmer.address}
                                     </span>
                                 </div>
 
-                                <p className="text-gray-600 mb-6 line-clamp-3">
+                                <p className="text-muted-foreground mb-6 line-clamp-3">
                                     {farmer.story}
                                 </p>
 
                                 <div className="flex justify-between items-center">
                                     <div>
-                                        <p className="text-xs text-gray-500">
+                                        <p className="text-xs text-muted-foreground">
                                             Total Received
                                         </p>
-                                        <p className="font-medium text-green-900">
+                                        <p className="font-medium text-green-700 dark:text-green-500">
                                             {farmer.totalReceived} ETH
                                         </p>
                                     </div>

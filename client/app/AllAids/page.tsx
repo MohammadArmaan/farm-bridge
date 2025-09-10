@@ -130,7 +130,7 @@ export default function AllAidRequestsPage({ contract }: { contract: any }) {
     };
 
     return (
-        <div className="min-h-screen bg-white">
+        <div className="min-h-screen bg-white dark:bg-black/20">
             <Head>
                 <title>FarmFund - All Aid Requests</title>
                 <meta
@@ -141,7 +141,7 @@ export default function AllAidRequestsPage({ contract }: { contract: any }) {
 
             <main className="container mx-auto px-4 py-8">
                 <div className="max-w-6xl mx-auto">
-                    <h1 className="text-3xl font-bold text-green-700 mb-6 text-center">
+                    <h1 className="text-3xl font-bold text-green-700 dark:text-green-500 mb-6 text-center">
                         Agricultural Aid Requests
                     </h1>
 
@@ -152,7 +152,7 @@ export default function AllAidRequestsPage({ contract }: { contract: any }) {
                             className={`px-4 py-2 rounded-md ${
                                 filter === "all"
                                     ? "bg-green-600 text-white"
-                                    : "bg-gray-100 text-gray-700"
+                                    : "bg-gray-100 dark:bg-gray-800 text-muted-foreground"
                             }`}
                         >
                             All Requests
@@ -162,7 +162,7 @@ export default function AllAidRequestsPage({ contract }: { contract: any }) {
                             className={`px-4 py-2 rounded-md ${
                                 filter === "active"
                                     ? "bg-green-600 text-white"
-                                    : "bg-gray-100 text-gray-700"
+                                    : "bg-gray-100 dark:bg-gray-800 text-muted-foreground"
                             }`}
                         >
                             Active Requests
@@ -172,7 +172,7 @@ export default function AllAidRequestsPage({ contract }: { contract: any }) {
                             className={`px-4 py-2 rounded-md ${
                                 filter === "fulfilled"
                                     ? "bg-green-600 text-white"
-                                    : "bg-gray-100 text-gray-700"
+                                    : "bg-gray-100 dark:bg-gray-800 text-muted-foreground"
                             }`}
                         >
                             Fulfilled Requests
@@ -183,7 +183,7 @@ export default function AllAidRequestsPage({ contract }: { contract: any }) {
                     {loading && (
                         <div className="text-center py-10">
                             <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-green-600 border-r-transparent"></div>
-                            <p className="mt-2 text-gray-600">
+                            <p className="mt-2 text-muted-foreground">
                                 Loading aid requests...
                             </p>
                         </div>
@@ -198,64 +198,64 @@ export default function AllAidRequestsPage({ contract }: { contract: any }) {
                     {/* Aid requests table */}
                     {!loading && filteredRequests.length === 0 && (
                         <div className="text-center py-10">
-                            <p className="text-gray-500">
+                            <p className="text-muted-foreground">
                                 No aid requests found
                             </p>
                         </div>
                     )}
 
                     {!loading && filteredRequests.length > 0 && (
-                        <div className="bg-white shadow rounded-lg overflow-hidden">
+                        <div className="bg-white dark:bg-black/70 shadow dark:shadow-2xl rounded-lg overflow-hidden">
                             <div className="overflow-x-auto">
-                                <table className="min-w-full divide-y divide-gray-200">
-                                    <thead className="bg-gray-50">
+                                <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-800">
+                                    <thead className="bg-gray-50 dark:bg-black/70">
                                         <tr>
                                             <th
                                                 scope="col"
-                                                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                                                className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider"
                                             >
                                                 Request
                                             </th>
                                             <th
                                                 scope="col"
-                                                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                                                className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider"
                                             >
                                                 Farmer
                                             </th>
                                             <th
                                                 scope="col"
-                                                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                                                className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider"
                                             >
                                                 Amount
                                             </th>
                                             <th
                                                 scope="col"
-                                                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                                                className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider"
                                             >
                                                 Date
                                             </th>
                                             <th
                                                 scope="col"
-                                                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                                                className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider"
                                             >
                                                 Status
                                             </th>
                                             <th
                                                 scope="col"
-                                                className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider"
+                                                className="px-6 py-3 text-right text-xs font-medium text-muted-foreground uppercase tracking-wider"
                                             >
                                                 Action
                                             </th>
                                         </tr>
                                     </thead>
-                                    <tbody className="bg-white divide-y divide-gray-200">
+                                    <tbody className="bg-white dark:bg-black/70 divide-y divide-gray-200 dark:divide-gray-800">
                                         {filteredRequests.map((request) => (
                                             <tr
                                                 key={request.id}
-                                                className="hover:bg-gray-50"
+                                                className="hover:bg-gray-50 dark:hover:bg-gray-950"
                                             >
                                                 <td className="px-6 py-4 whitespace-nowrap">
-                                                    <div className="text-sm font-medium text-gray-900">
+                                                    <div className="text-sm font-medium text-foreground">
                                                         {request.name}
                                                     </div>
                                                     <div className="text-sm text-gray-500 truncate max-w-xs">
@@ -263,7 +263,7 @@ export default function AllAidRequestsPage({ contract }: { contract: any }) {
                                                     </div>
                                                 </td>
                                                 <td className="px-6 py-4 whitespace-nowrap">
-                                                    <div className="text-sm text-gray-900">
+                                                    <div className="text-sm text-foreground">
                                                         {farmerInfo[
                                                             request.farmer
                                                         ]?.name ||
@@ -271,33 +271,33 @@ export default function AllAidRequestsPage({ contract }: { contract: any }) {
                                                                 request.farmer
                                                             )}
                                                     </div>
-                                                    <div className="text-xs text-gray-500">
+                                                    <div className="text-xs text-muted-foreground">
                                                         {farmerInfo[
                                                             request.farmer
                                                         ]?.location || ""}
                                                     </div>
                                                 </td>
                                                 <td className="px-6 py-4 whitespace-nowrap">
-                                                    <div className="text-sm text-gray-900">
+                                                    <div className="text-sm text-foreground">
                                                         {
                                                             request.amountRequested
                                                         }{" "}
                                                         ETH
                                                     </div>
-                                                    <div className="text-xs text-gray-500">
+                                                    <div className="text-xs text-muted-foreground">
                                                         Funded:{" "}
                                                         {request.amountFunded}{" "}
                                                         ETH
                                                     </div>
                                                 </td>
-                                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                <td className="px-6 py-4 whitespace-nowrap text-sm text-muted-foreground">
                                                     {formatDate(
                                                         request.timestamp
                                                     )}
                                                 </td>
                                                 <td className="px-6 py-4 whitespace-nowrap">
                                                     {request.fulfilled ? (
-                                                        <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                                        <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800 dark:text-green-500">
                                                             Fulfilled
                                                         </span>
                                                     ) : (
@@ -314,7 +314,7 @@ export default function AllAidRequestsPage({ contract }: { contract: any }) {
                                                                     request
                                                                 )
                                                             }
-                                                            className="text-green-600 hover:text-green-900"
+                                                            className="text-green-600 hover:text-green-700"
                                                         >
                                                             Fund
                                                         </button>

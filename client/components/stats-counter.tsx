@@ -57,10 +57,10 @@ export default function StatsCounter({
                     className={cn(
                         "text-3xl font-bold",
                         icon?.props?.className?.includes("text-green")
-                            ? "text-green-900"
+                            ? "text-green-500"
                             : icon?.props?.className?.includes("text-pink")
-                            ? "text-pink-900"
-                            : "text-yellow-900"
+                            ? "text-pink-500"
+                            : "text-yellow-500"
                     )}
                 >
                     {prefix}

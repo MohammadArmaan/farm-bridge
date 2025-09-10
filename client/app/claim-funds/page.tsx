@@ -119,7 +119,7 @@ export default function ClaimFundsPage() {
 
                 <Card>
                     <CardHeader>
-                        <CardTitle className="text-2xl text-green-900">
+                        <CardTitle className="text-2xl text-green-700">
                             Claim Funds
                         </CardTitle>
                         <CardDescription>
@@ -130,7 +130,7 @@ export default function ClaimFundsPage() {
                         {isLoading ? (
                             <div className="text-center py-8">
                                 <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-green-700 mx-auto mb-4"></div>
-                                <p className="text-green-900">
+                                <p className="text-green-700">
                                     Loading disbursements...
                                 </p>
                             </div>
@@ -183,7 +183,7 @@ export default function ClaimFundsPage() {
                                             <div className="flex flex-col md:flex-row justify-between gap-4">
                                                 <div className="space-y-4">
                                                     <div>
-                                                        <h3 className="font-medium text-lg text-green-900">
+                                                        <h3 className="font-medium text-lg text-green-700">
                                                             {
                                                                 disbursement.purpose
                                                             }
@@ -201,7 +201,7 @@ export default function ClaimFundsPage() {
                                                             <p className="text-sm text-gray-500">
                                                                 Amount
                                                             </p>
-                                                            <p className="font-medium text-green-900">
+                                                            <p className="font-medium text-green-700">
                                                                 {formatCurrency(
                                                                     disbursement.amount
                                                                 )}

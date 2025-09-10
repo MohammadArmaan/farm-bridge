@@ -238,7 +238,7 @@ export default function RegisterPage() {
                     <h3 className="text-xl font-bold text-green-700 mb-2">
                         Registration Complete
                     </h3>
-                    <p className="text-gray-600">
+                    <p className="text-muted-foreground0">
                         You are registered as a donor in FarmFund.
                     </p>
                 </div>
@@ -291,7 +291,7 @@ export default function RegisterPage() {
 
                 <Button
                     type="submit"
-                    className="w-full bg-green-600 hover:bg-green-700"
+                    className="w-full bg-pink-600 hover:bg-pink-700"
                     disabled={isLoading}
                 >
                     {isLoading ? "Registering..." : "Register as Donor"}
@@ -379,7 +379,7 @@ export default function RegisterPage() {
 
                 <Button
                     type="submit"
-                    className="w-full bg-pink-600 hover:bg-pink-700"
+                    className="w-full bg-green-700 hover:bg-green-800"
                     disabled={isLoading}
                 >
                     {isLoading ? "Registering..." : "Register as Farmer"}
@@ -391,7 +391,7 @@ export default function RegisterPage() {
     return (
         <div className="container mx-auto px-4 py-12">
             <div className="max-w-md mx-auto">
-                <h1 className="text-3xl font-bold text-center mb-8 text-green-900">
+                <h1 className="text-3xl font-bold text-center mb-8 text-green-700 dark:text-green-500">
                     Register with FarmFund
                 </h1>
 
@@ -423,16 +423,16 @@ export default function RegisterPage() {
                         <TabsList className="grid w-full grid-cols-2 mb-8">
                             <TabsTrigger
                                 value="donor"
-                                className="data-[state=active]:bg-green-100 data-[state=active]:text-green-900"
+                                className="data-[state=active]:bg-pink-100 data-[state=active]:text-pink-900"
                             >
-                                <Wallet className="mr-2 h-4 w-4" />
+                                <Leaf className="mr-2 h-4 w-4" />
                                 Donor
                             </TabsTrigger>
                             <TabsTrigger
                                 value="farmer"
-                                className="data-[state=active]:bg-pink-100 data-[state=active]:text-pink-900"
+                                className="data-[state=active]:bg-green-100 data-[state=active]:text-green-700"
                             >
-                                <Leaf className="mr-2 h-4 w-4" />
+                                <Wallet className="mr-2 h-4 w-4" />
                                 Farmer
                             </TabsTrigger>
                         </TabsList>

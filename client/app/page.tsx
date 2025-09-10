@@ -28,7 +28,7 @@ export default function Home() {
                                 <Button
                                     asChild
                                     size="lg"
-                                    className="bg-yellow-400 hover:bg-yellow-500 text-green-900"
+                                    className="bg-yellow-400 hover:bg-yellow-500 text-green-700"
                                 >
                                     <Link href="/register">Get Started</Link>
                                 </Button>
@@ -72,13 +72,13 @@ export default function Home() {
             <ContractStatsSection />
 
             {/* How It Works */}
-            <section className="py-20 bg-gray-50">
+            <section className="py-20 bg-gray-50 dark:bg-black/20">
                 <div className="container mx-auto px-4">
                     <div className="text-center mb-16">
-                        <h2 className="text-3xl md:text-4xl font-bold text-green-900 mb-4">
+                        <h2 className="text-3xl md:text-4xl font-bold text-green-700 dark:text-green-500 mb-4">
                             How FarmFund Works
                         </h2>
-                        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                        <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                             Our blockchain-powered platform ensures every
                             donation reaches the right farmer with complete
                             transparency.
@@ -91,10 +91,10 @@ export default function Home() {
                                 <div className="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mb-6">
                                     <Shield className="h-8 w-8 text-green-600" />
                                 </div>
-                                <h3 className="text-xl font-bold mb-3 text-green-900">
+                                <h3 className="text-xl font-bold mb-3 text-green-500">
                                     1. Register & Verify
                                 </h3>
-                                <p className="text-gray-600">
+                                <p className="text-muted-foreground">
                                     Donors and farmers register on the platform
                                     and get verified to ensure legitimacy and
                                     trust.
@@ -107,10 +107,10 @@ export default function Home() {
                                 <div className="bg-pink-100 w-16 h-16 rounded-full flex items-center justify-center mb-6">
                                     <Wallet className="h-8 w-8 text-pink-600" />
                                 </div>
-                                <h3 className="text-xl font-bold mb-3 text-green-900">
+                                <h3 className="text-xl font-bold mb-3 text-green-500">
                                     2. Create Disbursements
                                 </h3>
-                                <p className="text-gray-600">
+                                <p className="text-muted-foreground">
                                     Donors create disbursements specifying the
                                     farmer, purpose, and deadline for claiming
                                     funds.
@@ -123,10 +123,10 @@ export default function Home() {
                                 <div className="bg-yellow-100 w-16 h-16 rounded-full flex items-center justify-center mb-6">
                                     <Leaf className="h-8 w-8 text-yellow-600" />
                                 </div>
-                                <h3 className="text-xl font-bold mb-3 text-green-900">
+                                <h3 className="text-xl font-bold mb-3 text-green-500">
                                     3. Claim & Grow
                                 </h3>
-                                <p className="text-gray-600">
+                                <p className="text-muted-foreground">
                                     Farmers claim their funds before the
                                     deadline and use them to develop their
                                     farms.
@@ -153,7 +153,7 @@ export default function Home() {
             {/* <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-green-900 mb-4">Featured Farmers</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-green-700 mb-4">Featured Farmers</h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Meet some of the farmers who have benefited from the FarmFund platform.
             </p>
@@ -171,7 +171,7 @@ export default function Home() {
                   />
                 </div>
                 <CardContent className="pt-6">
-                  <h3 className="text-xl font-bold mb-2 text-green-900">Farmer Name {i}</h3>
+                  <h3 className="text-xl font-bold mb-2 text-green-700">Farmer Name {i}</h3>
                   <p className="text-sm text-gray-500 mb-3">Location {i} • Organic Farming</p>
                   <p className="text-gray-600 mb-4">
                     "FarmFund has helped me expand my farm and implement sustainable farming practices. The transparent
@@ -212,7 +212,7 @@ export default function Home() {
                             <Button
                                 asChild
                                 size="lg"
-                                className="bg-yellow-400 hover:bg-yellow-500 text-green-900"
+                                className="bg-yellow-400 hover:bg-yellow-500 text-green-700"
                             >
                                 <Link href="/register?type=donor">
                                     Register as Donor

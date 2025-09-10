@@ -1031,20 +1031,27 @@ export const getContractStats = async (): Promise<any> => {
 
 // Get donor statistics
 export const getDonorStats = async (address: string): Promise<any> => {
-  if (!contract) await initializeEthers().catch(() => null)
+  if (!contract) await initializeEthers().catch(() => null);
+
   try {
-    const stats = await contract?.getDonorStats(address)
+    if (!ethers.isAddress(address)) {
+      throw new Error(`Invalid address: ${address}`);
+    }
+
+    const stats = await contract?.getDonorStats(address);
+
     return {
       name: stats?.name || "",
       description: stats?.description || "",
-      totalDonated: Number.parseFloat(ethers.formatEther(stats?.totalDonated || 0)),
+      totalDonated: Number.parseFloat(
+        ethers.formatEther(stats?.totalDonated || 0)
+      ),
       successfulDisbursements: stats?.successfulDisbursements.toNumber() || 0,
       isVerified: stats?.isVerified || false,
       reputationScore: stats?.reputationScore.toNumber() || 0,
-    }
+    };
   } catch (error) {
-    console.error("Error getting donor stats:", error)
-    // For demo purposes, return mock data
+    console.error("Error getting donor stats:", error);
     return {
       name: "Acme Foundation",
       description: "Supporting sustainable agriculture worldwide",
@@ -1052,9 +1059,51 @@ export const getDonorStats = async (address: string): Promise<any> => {
       successfulDisbursements: 12,
       isVerified: true,
       reputationScore: 85,
-    }
+    };
   }
-}
+};
+
+// Get Global Donor Stats
+export const getGlobalDonorStats = async (): Promise<{
+  totalDisbursements: number;
+  totalMoneyDonated: number;
+  totalDonors: number;
+}> => {
+  try {
+    const donors = await getDonors(); // returns array with { address, totalDonated, successfulDisbursements, ... }
+
+    if (!Array.isArray(donors) || donors.length === 0) {
+      return { totalDisbursements: 0, totalMoneyDonated: 0, totalDonors: 0 };
+    }
+
+    let totalDisbursements = 0;
+    let totalMoneyDonated = 0;
+
+    for (const d of donors) {
+      // totalDonated might be a string (ethers.formatEther) or number
+      const donated =
+        typeof d.totalDonated === "string"
+          ? parseFloat(d.totalDonated) || 0
+          : Number(d.totalDonated) || 0;
+
+      const disb = Number(d.successfulDisbursements) || 0;
+
+      totalMoneyDonated += donated;
+      totalDisbursements += disb;
+    }
+
+    return {
+      totalDisbursements,
+      totalMoneyDonated,
+      totalDonors: donors.length,
+    };
+  } catch (error) {
+    console.error("Error computing global donor stats:", error);
+    return { totalDisbursements: 0, totalMoneyDonated: 0, totalDonors: 0 };
+  }
+};
+
+  
 
 // Get farmer statistics
 export const getFarmerStats = async (address: string): Promise<any> => {

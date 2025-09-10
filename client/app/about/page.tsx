@@ -37,10 +37,10 @@ export default function AboutPage() {
         <div className="container mx-auto px-4 py-12">
             {/* Hero Section */}
             <div className="text-center mb-16">
-                <h1 className="text-4xl font-bold text-green-900 mb-4">
+                <h1 className="text-4xl font-bold text-green-700 dark:text-green-500 mb-4">
                     About FarmFund
                 </h1>
-                <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                     We're on a mission to create a transparent and efficient
                     system for supporting small farmers around the world.
                 </p>
@@ -49,10 +49,10 @@ export default function AboutPage() {
             {/* Our Story */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-20">
                 <div>
-                    <h2 className="text-3xl font-bold text-green-900 mb-6">
+                    <h2 className="text-3xl font-bold text-green-700 dark:text-green-500 mb-6">
                         Our Vision
                     </h2>
-                    <div className="space-y-4 text-gray-600">
+                    <div className="space-y-4 text-muted-foreground">
                         <p className="text-lg">
                             At FarmFund, we envision a world where small farmers
                             thrive through direct, transparent access to the
@@ -76,12 +76,12 @@ export default function AboutPage() {
             </div>
 
             {/* Our Mission */}
-            <div className="bg-green-50 rounded-xl p-8 mb-20">
+            <div className="bg-green-50 dark:bg-green-200 rounded-xl p-8 mb-20">
                 <div className="text-center mb-12">
-                    <h2 className="text-3xl font-bold text-green-900 mb-4">
+                    <h2 className="text-3xl font-bold text-green-700 dark:text-green-500 mb-4">
                         Our Mission
                     </h2>
-                    <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                    <p className="text-lg text-muted-foreground dark:text-gray-700 max-w-2xl mx-auto">
                         We're committed to creating a more equitable and
                         sustainable agricultural ecosystem through transparency
                         and direct support.
@@ -91,13 +91,13 @@ export default function AboutPage() {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <Card className="border-none shadow-lg">
                         <CardContent className="pt-6">
-                            <div className="bg-green-100 w-12 h-12 rounded-full flex items-center justify-center mb-4">
+                            <div className="bg-green-100 dark:bg-green-300 w-12 h-12 rounded-full flex items-center justify-center mb-4">
                                 <Shield className="h-6 w-6 text-green-600" />
                             </div>
-                            <h3 className="font-bold text-lg mb-2 text-green-900">
+                            <h3 className="font-bold text-lg mb-2 text-green-700 dark:text-green-500">
                                 Transparency
                             </h3>
-                            <p className="text-gray-600">
+                            <p className="text-muted-foreground">
                                 We believe in complete transparency in aid
                                 distribution. Our blockchain-based platform
                                 ensures that every transaction is recorded and
@@ -111,10 +111,10 @@ export default function AboutPage() {
                             <div className="bg-pink-100 w-12 h-12 rounded-full flex items-center justify-center mb-4">
                                 <Heart className="h-6 w-6 text-pink-600" />
                             </div>
-                            <h3 className="font-bold text-lg mb-2 text-green-900">
+                            <h3 className="font-bold text-lg mb-2 text-green-700 dark:text-green-500">
                                 Empowerment
                             </h3>
-                            <p className="text-gray-600">
+                            <p className="text-muted-foreground">
                                 We aim to empower small farmers by providing
                                 them with direct access to resources and
                                 support, enabling them to develop sustainable
@@ -128,10 +128,10 @@ export default function AboutPage() {
                             <div className="bg-yellow-100 w-12 h-12 rounded-full flex items-center justify-center mb-4">
                                 <Globe className="h-6 w-6 text-yellow-600" />
                             </div>
-                            <h3 className="font-bold text-lg mb-2 text-green-900">
+                            <h3 className="font-bold text-lg mb-2 text-green-700 dark:text-green-500">
                                 Sustainability
                             </h3>
-                            <p className="text-gray-600">
+                            <p className="text-muted-foreground">
                                 We're committed to promoting sustainable farming
                                 practices that protect the environment and
                                 ensure long-term food security for communities
@@ -145,12 +145,12 @@ export default function AboutPage() {
             {/* Our Team */}
             <div className="mb-20">
                 <div className="text-center mb-12">
-                    <h2 className="text-3xl font-bold text-green-900 mb-4">
+                    <h2 className="text-3xl font-bold text-green-700 dark:text-green-500 mb-4">
                         Our Team
                     </h2>
-                    <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                        This project, <strong>FarmFund</strong>, is our Final
-                        Year Project developed by students from{" "}
+                    <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                        <strong>FarmFund</strong> is our Final Year Project
+                        developed by students from{" "}
                         <strong>Don Bosco Institute of Technology</strong>.
                     </p>
                 </div>
@@ -159,9 +159,9 @@ export default function AboutPage() {
                     {team.map((member, index) => (
                         <Card
                             key={index}
-                            className="border-none shadow-lg overflow-hidden"
+                            className="border-none shadow-lg overflow-hidden dark:bg-black/70 dark:shadow-2xl"
                         >
-                            <div className="h-48 bg-gradient-to-br from-green-100 to-pink-100 relative">
+                            <div className="h-48 bg-gradient-to-br from-green-100 dark:from-green-300 to-pink-100 dark:to-pink-300 relative">
                                 <div className="absolute inset-0 flex items-center justify-center">
                                     <Image
                                         src={member.image || "/placeholder.svg"}
@@ -173,13 +173,15 @@ export default function AboutPage() {
                                 </div>
                             </div>
                             <CardContent className="pt-6 text-center">
-                                <h3 className="font-bold text-lg text-green-900">
+                                <h3 className="font-bold text-lg text-green-700 dark:text-green-500">
                                     {member.name}
                                 </h3>
                                 <p className="text-pink-600 mb-3">
                                     {member.role}
                                 </p>
-                                <p className="text-gray-600">{member.bio}</p>
+                                <p className="text-muted-foreground">
+                                    {member.bio}
+                                </p>
                             </CardContent>
                         </Card>
                     ))}
@@ -189,7 +191,7 @@ export default function AboutPage() {
             {/* Impact */}
             {/* <div className="mb-20">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-green-900 mb-4">Our Impact</h2>
+          <h2 className="text-3xl font-bold text-green-700 mb-4">Our Impact</h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             Since our launch, we've made a significant impact on farming communities around the world.
           </p>
@@ -197,7 +199,7 @@ export default function AboutPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="bg-green-50 rounded-xl p-8 text-center">
-            <div className="text-4xl font-bold text-green-900 mb-2">350+</div>
+            <div className="text-4xl font-bold text-green-700 mb-2">350+</div>
             <div className="text-lg text-green-700">Farmers Supported</div>
           </div>
           <div className="bg-pink-50 rounded-xl p-8 text-center">
@@ -225,7 +227,7 @@ export default function AboutPage() {
                     <Button
                         asChild
                         size="lg"
-                        className="bg-yellow-400 hover:bg-yellow-500 text-green-900"
+                        className="bg-yellow-400 hover:bg-yellow-500 text-green-700 dark:text-green-500"
                     >
                         <Link href="/register?type=donor">
                             Register as Donor

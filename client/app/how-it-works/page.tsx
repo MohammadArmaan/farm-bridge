@@ -8,10 +8,10 @@ export default function HowItWorksPage() {
     return (
         <div className="container mx-auto px-4 py-12">
             <div className="text-center mb-16">
-                <h1 className="text-4xl font-bold text-green-900 mb-4">
+                <h1 className="text-4xl font-bold text-green-700 dark:text-green-500 mb-4">
                     How FarmFund Works
                 </h1>
-                <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                     Our blockchain-powered platform ensures every donation
                     reaches the right farmer with complete transparency and
                     accountability.
@@ -20,9 +20,9 @@ export default function HowItWorksPage() {
 
             {/* Process Overview */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
-                <Card className="border-none shadow-lg">
+                <Card className="border-none dark:bg-black/70 dark:shadow-2xl shadow-lg">
                     <CardHeader className="pb-2">
-                        <CardTitle className="flex items-center text-xl text-green-900">
+                        <CardTitle className="flex items-center text-xl text-green-700 dark:text-green-500">
                             <div className="bg-green-100 w-8 h-8 rounded-full flex items-center justify-center mr-3 text-green-600">
                                 1
                             </div>
@@ -30,7 +30,7 @@ export default function HowItWorksPage() {
                         </CardTitle>
                     </CardHeader>
                     <CardContent>
-                        <p className="text-gray-600 mb-4">
+                        <p className="text-muted-foreground mb-4">
                             Farmers and donors sign up on the platform by
                             sharing basic information. The platform team
                             verifies their identities to make sure everyone
@@ -44,9 +44,9 @@ export default function HowItWorksPage() {
                     </CardContent>
                 </Card>
 
-                <Card className="border-none shadow-lg">
+                <Card className="border-none dark:bg-black/70 dark:shadow-2xl shadow-lg">
                     <CardHeader className="pb-2">
-                        <CardTitle className="flex items-center text-xl text-green-900">
+                        <CardTitle className="flex items-center text-xl text-green-700 dark:text-green-500">
                             <div className="bg-pink-100 w-8 h-8 rounded-full flex items-center justify-center mr-3 text-pink-600">
                                 2
                             </div>
@@ -54,7 +54,7 @@ export default function HowItWorksPage() {
                         </CardTitle>
                     </CardHeader>
                     <CardContent>
-                        <p className="text-gray-600 mb-4">
+                        <p className="text-muted-foreground mb-4">
                             Verified farmers can ask for help by posting what
                             they need - like money for seeds, tools, or water
                             systems - and how much it will cost. Donors then
@@ -69,9 +69,9 @@ export default function HowItWorksPage() {
                     </CardContent>
                 </Card>
 
-                <Card className="border-none shadow-lg">
+                <Card className="border-none dark:bg-black/70 dark:shadow-2xl shadow-lg">
                     <CardHeader className="pb-2">
-                        <CardTitle className="flex items-center text-xl text-green-900">
+                        <CardTitle className="flex items-center text-xl text-green-700 dark:text-green-500">
                             <div className="bg-yellow-100 w-8 h-8 rounded-full flex items-center justify-center mr-3 text-yellow-600">
                                 3
                             </div>
@@ -79,7 +79,7 @@ export default function HowItWorksPage() {
                         </CardTitle>
                     </CardHeader>
                     <CardContent>
-                        <p className="text-gray-600 mb-4">
+                        <p className="text-muted-foreground mb-4">
                             When a farmer receives help and uses it properly,
                             the donor’s trust score goes up. This encourages
                             more honest giving and builds a strong cycle of
@@ -99,10 +99,10 @@ export default function HowItWorksPage() {
             {/* Detailed Explanation */}
             <div className="mb-20">
                 <div className="text-center mb-12">
-                    <h2 className="text-3xl font-bold text-green-900 mb-4">
+                    <h2 className="text-3xl font-bold text-green-700 dark:text-green-500  mb-4">
                         The FarmFund Process
                     </h2>
-                    <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                    <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                         A detailed look at how our platform connects donors with
                         farmers through blockchain technology.
                     </p>
@@ -112,14 +112,14 @@ export default function HowItWorksPage() {
                     {/* Step 1 */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                         <div className="order-2 md:order-1">
-                            <h3 className="text-2xl font-bold text-green-900 mb-4">
+                            <h3 className="text-2xl font-bold text-green-700 dark:text-green-500 mb-4">
                                 Registration & Verification
                             </h3>
                             <div className="space-y-4">
                                 <div className="flex items-start">
                                     <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" />
-                                    <p className="text-gray-600">
-                                        <span className="font-medium text-gray-900">
+                                    <p className="text-muted-foreground">
+                                        <span className="font-medium text-foreground">
                                             Donor Registration:
                                         </span>{" "}
                                         Organizations or individuals register by
@@ -131,8 +131,8 @@ export default function HowItWorksPage() {
                                 </div>
                                 <div className="flex items-start">
                                     <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" />
-                                    <p className="text-gray-600">
-                                        <span className="font-medium text-gray-900">
+                                    <p className="text-muted-foreground">
+                                        <span className="font-medium text-foreground">
                                             Farmer Registration:
                                         </span>{" "}
                                         Farmers register by providing their
@@ -144,8 +144,8 @@ export default function HowItWorksPage() {
                                 </div>
                                 <div className="flex items-start">
                                     <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" />
-                                    <p className="text-gray-600">
-                                        <span className="font-medium text-gray-900">
+                                    <p className="text-muted-foreground">
+                                        <span className="font-medium text-foreground">
                                             Verification Process:
                                         </span>{" "}
                                         The platform owner verifies both donors
@@ -169,15 +169,16 @@ export default function HowItWorksPage() {
 
                     {/* Step 2 */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                        <div className="md:order-2">
-                            <h3 className="text-2xl font-bold text-green-900 mb-4">
+                        {/* Left column: text */}
+                        <div className="order-2">
+                            <h3 className="text-2xl font-bold text-green-700 dark:text-green-500 mb-4">
                                 Disbursement Creation
                             </h3>
                             <div className="space-y-4">
                                 <div className="flex items-start">
                                     <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" />
-                                    <p className="text-gray-600">
-                                        <span className="font-medium text-gray-900">
+                                    <p className="text-muted-foreground">
+                                        <span className="font-medium text-foreground">
                                             Farmers Request Help:{" "}
                                         </span>{" "}
                                         Verified farmers explain what they need,
@@ -188,8 +189,8 @@ export default function HowItWorksPage() {
                                 </div>
                                 <div className="flex items-start">
                                     <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" />
-                                    <p className="text-gray-600">
-                                        <span className="font-medium text-gray-900">
+                                    <p className="text-muted-foreground">
+                                        <span className="font-medium text-foreground">
                                             Donors Choose Who to Support:
                                         </span>{" "}
                                         Verified donors go through these
@@ -200,8 +201,8 @@ export default function HowItWorksPage() {
                                 </div>
                                 <div className="flex items-start">
                                     <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" />
-                                    <p className="text-gray-600">
-                                        <span className="font-medium text-gray-900">
+                                    <p className="text-muted-foreground">
+                                        <span className="font-medium text-foreground">
                                             Secure & Transparent Funding:
                                         </span>{" "}
                                         Once a donor sends support, the platform
@@ -213,7 +214,9 @@ export default function HowItWorksPage() {
                                 </div>
                             </div>
                         </div>
-                        <div className="md:order-1">
+
+                        {/* Right column: image */}
+                        <div className="order-1">
                             <Image
                                 src="/disbursementcreation.jpg"
                                 alt="Disbursement Process"
@@ -227,14 +230,14 @@ export default function HowItWorksPage() {
                     {/* Step 3 */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                         <div className="order-2 md:order-1">
-                            <h3 className="text-2xl font-bold text-green-900 mb-4">
+                            <h3 className="text-2xl font-bold text-green-700 dark:text-green-500 mb-4">
                                 Secure & Transparent Funding:
                             </h3>
                             <div className="space-y-4">
                                 <div className="flex items-start">
                                     <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" />
-                                    <p className="text-gray-600">
-                                        <span className="font-medium text-gray-900">
+                                    <p className="text-muted-foreground">
+                                        <span className="font-medium text-foreground">
                                             Farmers Receive the Help:{" "}
                                         </span>{" "}
                                         When a donor supports a farmer’s
@@ -245,8 +248,8 @@ export default function HowItWorksPage() {
                                 </div>
                                 <div className="flex items-start">
                                     <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" />
-                                    <p className="text-gray-600">
-                                        <span className="font-medium text-gray-900">
+                                    <p className="text-muted-foreground">
+                                        <span className="font-medium text-foreground">
                                             Building Trust Through Reputation:
                                         </span>{" "}
                                         Every time a donation is successfully
@@ -257,8 +260,8 @@ export default function HowItWorksPage() {
                                 </div>
                                 <div className="flex items-start">
                                     <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" />
-                                    <p className="text-gray-600">
-                                        <span className="font-medium text-gray-900">
+                                    <p className="text-muted-foreground">
+                                        <span className="font-medium text-foreground">
                                             No Wasted Funds:{" "}
                                         </span>{" "}
                                         If a farmer doesn’t claim the help in
@@ -285,25 +288,25 @@ export default function HowItWorksPage() {
             {/* Benefits Section */}
             <div className="mb-20">
                 <div className="text-center mb-12">
-                    <h2 className="text-3xl font-bold text-green-900 mb-4">
+                    <h2 className="text-3xl font-bold text-green-700 dark:text-green-500 mb-4">
                         Benefits of FarmFund
                     </h2>
-                    <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                    <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                         Our platform offers unique advantages for both donors
                         and farmers through blockchain technology.
                     </p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <Card className="border-none shadow-lg">
+                    <Card className="border-none dark:bg-black/70 dark:shadow-2xl shadow-lg">
                         <CardContent className="pt-6">
                             <div className="bg-green-100 w-12 h-12 rounded-full flex items-center justify-center mb-4">
                                 <Shield className="h-6 w-6 text-green-600" />
                             </div>
-                            <h3 className="font-bold text-lg mb-2 text-green-900">
+                            <h3 className="font-bold text-lg mb-2 text-green-700 dark:text-green-500">
                                 Transparency
                             </h3>
-                            <p className="text-gray-600">
+                            <p className="text-muted-foreground">
                                 All transactions are recorded on the blockchain,
                                 creating a transparent and immutable record of
                                 fund movement.
@@ -311,15 +314,15 @@ export default function HowItWorksPage() {
                         </CardContent>
                     </Card>
 
-                    <Card className="border-none shadow-lg">
+                    <Card className="border-none dark:bg-black/70 dark:shadow-2xl shadow-lg">
                         <CardContent className="pt-6">
                             <div className="bg-pink-100 w-12 h-12 rounded-full flex items-center justify-center mb-4">
                                 <Users className="h-6 w-6 text-pink-600" />
                             </div>
-                            <h3 className="font-bold text-lg mb-2 text-green-900">
+                            <h3 className="font-bold text-lg mb-2 text-green-700 dark:text-green-500">
                                 Direct Connection
                             </h3>
-                            <p className="text-gray-600">
+                            <p className="text-muted-foreground">
                                 Donors and farmers connect directly without
                                 intermediaries, reducing overhead and increasing
                                 impact.
@@ -327,15 +330,15 @@ export default function HowItWorksPage() {
                         </CardContent>
                     </Card>
 
-                    <Card className="border-none shadow-lg">
+                    <Card className="border-none dark:bg-black/70 dark:shadow-2xl shadow-lg">
                         <CardContent className="pt-6">
                             <div className="bg-yellow-100 w-12 h-12 rounded-full flex items-center justify-center mb-4">
                                 <Clock className="h-6 w-6 text-yellow-600" />
                             </div>
-                            <h3 className="font-bold text-lg mb-2 text-green-900">
+                            <h3 className="font-bold text-lg mb-2 text-green-700 dark:text-green-500">
                                 Efficiency
                             </h3>
-                            <p className="text-gray-600">
+                            <p className="ttext-muted-foreground">
                                 Smart contracts automate the disbursement and
                                 claiming process, reducing administrative
                                 overhead.
@@ -343,15 +346,15 @@ export default function HowItWorksPage() {
                         </CardContent>
                     </Card>
 
-                    <Card className="border-none shadow-lg">
+                    <Card className="border-none dark:bg-black/70 dark:shadow-2xl shadow-lg">
                         <CardContent className="pt-6">
                             <div className="bg-green-100 w-12 h-12 rounded-full flex items-center justify-center mb-4">
                                 <Leaf className="h-6 w-6 text-green-600" />
                             </div>
-                            <h3 className="font-bold text-lg mb-2 text-green-900">
+                            <h3 className="font-bold text-lg mb-2 text-green-700 dark:text-green-500">
                                 Sustainability
                             </h3>
-                            <p className="text-gray-600">
+                            <p className="text-muted-foreground">
                                 The platform encourages long-term relationships
                                 between donors and farmers, promoting
                                 sustainable development.
@@ -363,10 +366,10 @@ export default function HowItWorksPage() {
 
             {/* CTA Section */}
             <div className="text-center">
-                <h2 className="text-3xl font-bold text-green-900 mb-6">
+                <h2 className="text-3xl font-bold text-green-700 dark:text-green-500 mb-6">
                     Ready to Get Started?
                 </h2>
-                <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-8">
+                <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
                     Join FarmFund today and be part of a transparent ecosystem
                     that empowers small farmers around the world.
                 </p>
