@@ -81,34 +81,39 @@ export default function Navbar() {
                         </SheetTrigger>
                         <SheetContent
                             side="left"
-                            className="w-[300px] sm:w-[400px]"
+                            className="w-[300px] sm:w-[400px] p-0" // remove padding so scroll feels natural
                         >
-                            <div className="flex flex-col items-center justify-center gap-4 mt-8">
-                                <Image src="/logo.png" alt="Logo" height={100} width={100}/>
+                            <div className="h-full overflow-y-auto px-6 py-8 flex flex-col items-center gap-4">
+                                <Image
+                                    src="/logo.png"
+                                    alt="Logo"
+                                    height={100}
+                                    width={100}
+                                />
 
                                 {routes.map((route) => (
                                     <Link
-                                    key={route.path}
-                                    href={route.path}
-                                    className={cn(
-                                        "text-lg dark:text-white/95 font-medium transition-colors hover:text-green-600",
-                                        isActive(route.path)
-                                        ? "text-green-500"
-                                        : "text-foreground/90"
-                                    )}
-                                    onClick={() => setIsOpen(false)}
+                                        key={route.path}
+                                        href={route.path}
+                                        className={cn(
+                                            "text-lg dark:text-white/95 font-medium transition-colors hover:text-green-600",
+                                            isActive(route.path)
+                                                ? "text-green-500"
+                                                : "text-foreground/90"
+                                        )}
+                                        onClick={() => setIsOpen(false)}
                                     >
                                         {route.name}
                                     </Link>
                                 ))}
+
                                 <MobileThemeToggler />
+
                                 <WalletConnect
                                     variant="outline"
                                     onConnect={async (addr) => {
                                         setAddress(addr);
                                         setIsOwner(isAccountOwner());
-
-                                        // re-check roles after login
                                         const donor = await isDonorRegistered(
                                             addr
                                         );
@@ -125,9 +130,9 @@ export default function Navbar() {
                                         setIsFarmer(false);
                                     }}
                                 />
-                                {/* Only show Register if NOT registered */}
+
                                 {!isDonor && !isFarmer && (
-                                    <div className="mt-4 space-y-2">
+                                    <div className="mt-4 space-y-2 w-full">
                                         <Button
                                             asChild
                                             className="w-full bg-green-600 hover:bg-green-700"
@@ -138,8 +143,6 @@ export default function Navbar() {
                                         </Button>
                                     </div>
                                 )}
-
-
                             </div>
                         </SheetContent>
                     </Sheet>
