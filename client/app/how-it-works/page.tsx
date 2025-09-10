@@ -46,7 +46,7 @@ export default function HowItWorksPage() {
 
                 <Card className="border-none dark:bg-black/70 dark:shadow-2xl shadow-lg">
                     <CardHeader className="pb-2">
-                        <CardTitle className="flex items-center text-xl text-green-700 dark:text-green-500">
+                        <CardTitle className="flex items-center text-xl text-pink-700 dark:text-pink-500">
                             <div className="bg-pink-100 w-8 h-8 rounded-full flex items-center justify-center mr-3 text-pink-600">
                                 2
                             </div>
@@ -71,7 +71,7 @@ export default function HowItWorksPage() {
 
                 <Card className="border-none dark:bg-black/70 dark:shadow-2xl shadow-lg">
                     <CardHeader className="pb-2">
-                        <CardTitle className="flex items-center text-xl text-green-700 dark:text-green-500">
+                        <CardTitle className="flex items-center text-xl text-yellow-600 dark:text-yellow-500">
                             <div className="bg-yellow-100 w-8 h-8 rounded-full flex items-center justify-center mr-3 text-yellow-600">
                                 3
                             </div>
@@ -300,10 +300,10 @@ export default function HowItWorksPage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     <Card className="border-none dark:bg-black/70 dark:shadow-2xl shadow-lg">
                         <CardContent className="pt-6">
-                            <div className="bg-green-100 w-12 h-12 rounded-full flex items-center justify-center mb-4">
-                                <Shield className="h-6 w-6 text-green-600" />
+                            <div className="bg-blue-100 w-12 h-12 rounded-full flex items-center justify-center mb-4">
+                                <Shield className="h-6 w-6 text-blue-600" />
                             </div>
-                            <h3 className="font-bold text-lg mb-2 text-green-700 dark:text-green-500">
+                            <h3 className="font-bold text-lg mb-2 text-blue-600 dark:text-blue-500">
                                 Transparency
                             </h3>
                             <p className="text-muted-foreground">
@@ -319,7 +319,7 @@ export default function HowItWorksPage() {
                             <div className="bg-pink-100 w-12 h-12 rounded-full flex items-center justify-center mb-4">
                                 <Users className="h-6 w-6 text-pink-600" />
                             </div>
-                            <h3 className="font-bold text-lg mb-2 text-green-700 dark:text-green-500">
+                            <h3 className="font-bold text-lg mb-2 text-pink-600 dark:text-pink-500">
                                 Direct Connection
                             </h3>
                             <p className="text-muted-foreground">
@@ -335,7 +335,7 @@ export default function HowItWorksPage() {
                             <div className="bg-yellow-100 w-12 h-12 rounded-full flex items-center justify-center mb-4">
                                 <Clock className="h-6 w-6 text-yellow-600" />
                             </div>
-                            <h3 className="font-bold text-lg mb-2 text-green-700 dark:text-green-500">
+                            <h3 className="font-bold text-lg mb-2 text-yellow-600 dark:text-yellow-600">
                                 Efficiency
                             </h3>
                             <p className="ttext-muted-foreground">

@@ -111,7 +111,7 @@ export default function AboutPage() {
                             <div className="bg-pink-100 w-12 h-12 rounded-full flex items-center justify-center mb-4">
                                 <Heart className="h-6 w-6 text-pink-600" />
                             </div>
-                            <h3 className="font-bold text-lg mb-2 text-green-700 dark:text-green-500">
+                            <h3 className="font-bold text-lg mb-2 text-pink-600 dark:text-pink-500">
                                 Empowerment
                             </h3>
                             <p className="text-muted-foreground">
@@ -128,7 +128,7 @@ export default function AboutPage() {
                             <div className="bg-yellow-100 w-12 h-12 rounded-full flex items-center justify-center mb-4">
                                 <Globe className="h-6 w-6 text-yellow-600" />
                             </div>
-                            <h3 className="font-bold text-lg mb-2 text-green-700 dark:text-green-500">
+                            <h3 className="font-bold text-lg mb-2 text-yellow-600 dark:text-yellow-500">
                                 Sustainability
                             </h3>
                             <p className="text-muted-foreground">
