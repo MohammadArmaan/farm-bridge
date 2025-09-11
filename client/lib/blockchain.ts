@@ -819,7 +819,7 @@ const contractABI =  [
 ]
 // Contract address - this would be the actual deployed contract address
 // const contractAddress = "0x45b9c0F889Fe2Bf137d9432Fd5c5D409b1B693b6";
-const contractAddress = "0x6b3a87C68f677E5880E0899646367511f04B7608";
+export const contractAddress = "0x6b3a87C68f677E5880E0899646367511f04B7608";
 
 // Global variables to store provider, signer, contract, and account
 let provider: ethers.BrowserProvider | null = null;

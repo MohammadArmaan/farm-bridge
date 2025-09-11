@@ -106,7 +106,7 @@ export default function DonorsPage() {
             placeholder="Search by name, address, or description..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="pl-10"
+            className="pl-10 focus:outline-none focus:ring-2 focus:ring-green-700 dark:focus:ring-green-500"
           />
         </div>
         <DropdownMenu>

@@ -1,40 +1,56 @@
-# FarmFund
+# 🌾 FarmFund
 
-FarmFund is a transparent blockchain-based aid distribution system designed specifically for small farmers. It implements a farmer-initiated model that allows farmers to request aid directly, enabling donors to contribute to specific farming projects in a transparent and accountable way.
+FarmFund is a transparent **blockchain-based aid distribution system** designed specifically for **small farmers**.  
+It implements a **farmer-initiated model** that allows farmers to request aid directly, enabling donors to contribute to specific farming projects in a **transparent and accountable** way.
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)  
+🚀 **Live Project:** [farm-fund-project.vercel.app](https://farm-fund-project.vercel.app)
 
-## Overview
+---
 
-FarmFund bridges the gap between donors and small-scale farmers, creating a decentralized platform that:
+## 📖 Overview
 
--   Enables farmers to directly request financial assistance for specific agricultural needs
--   Allows donors to contribute directly to verified farmers' projects
--   Provides transparency in the flow of funds from donors to beneficiaries
--   Builds reputation and trust through a verification system
--   Tracks donation history and successful disbursements
+FarmFund bridges the gap between **donors** and **small-scale farmers**, creating a decentralized platform that:
 
-## Features
+- Enables farmers to directly request financial assistance for specific agricultural needs  
+- Allows donors to contribute directly to verified farmers' projects  
+- Provides transparency in the flow of funds from donors to beneficiaries  
+- Builds reputation and trust through a verification system  
+- Tracks donation history and successful disbursements  
 
-### For Farmers
+---
 
--   **Self-registration**: Farmers can register with their details including location and farm type
--   **Aid requests**: Create specific funding requests with detailed purposes and amounts
--   **Verification**: Get verified by the platform to build trust with donors
--   **Direct fund receipt**: Receive funds directly to their wallet once approved
+## ✨ Features
 
-### For Donors
+### 👩‍🌾 For Farmers
+- **Self-registration**: Farmers can register with details including location and farm type  
+- **Aid requests**: Create specific funding requests with detailed purposes and amounts  
+- **Verification**: Verified by the platform to build trust with donors  
+- **Direct fund receipt**: Receive funds directly to their wallet once approved  
 
--   **Registration**: Create a profile with name and description
--   **Transparent giving**: View all aid requests and choose which projects to fund
--   **Reputation system**: Build reputation through consistent, successful disbursements
--   **Verification**: Get verified to enhance trust with farmers and other stakeholders
+### 💰 For Donors
+- **Registration**: Create a profile with name and description  
+- **Transparent giving**: View all aid requests and choose which projects to fund  
+- **Reputation system**: Build reputation through consistent, successful disbursements  
+- **Verification**: Get verified to enhance trust with farmers and other stakeholders  
 
-### For Platform Administrators
+### 🛡️ For Platform Administrators
+- **Verification management**: Verify both farmers and donors to ensure authenticity  
+- **Statistics tracking**: Access comprehensive statistics on platform usage  
+- **Transparency**: All transactions and activities are recorded on the blockchain  
 
--   **Verification management**: Verify both farmers and donors to ensure authenticity
--   **Statistics tracking**: Access comprehensive statistics on platform usage
--   **Transparency**: All transactions and activities are recorded on the blockchain
+---
+
+## 🤖 Chatbot Integration
+
+FarmFund now comes with an **AI-powered multi-language chatbot** that helps both farmers and donors:
+
+- Answer questions about **FarmFund**, **Blockchain**, **Ethereum**, and **Smart Contracts**  
+- Provide quick navigation with internal links (without page reloads)  
+- Support **multi-language responses** (English, Hindi, Kannada, etc.)  
+- Accessible through a floating chatbot icon on all pages  
+
+---
 
 ## Technical Details
 
@@ -83,10 +99,10 @@ FarmFund is built on Ethereum using Solidity version 0.8.17. It implements the f
 
     ```bash
     # Using Truffle
-    truffle migrate --network goerli
+    truffle migrate --network sepolia
 
     # Using Hardhat
-    npx hardhat run scripts/deploy.js --network goerli
+    npx hardhat run scripts/deploy.js --network sepolia
     ```
 
 ## Usage
@@ -220,3 +236,10 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 3. Commit your changes (`git commit -m 'Add some amazing feature'`)
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
+
+## Developers
+FarmFund was built in 2025 by final year students of Don Bosco Institute of Technology
+-   [Mohammad Armaan](https://mohammadarmaan.co.in)
+-   Mohammed Moinuddin
+-   Muhammed Shaheer
+-   Koustav Das
