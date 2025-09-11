@@ -133,7 +133,7 @@ export default function Chatbot() {
             value={prompt}
             onChange={(e) => setPrompt(e.target.value)}
             placeholder="Ask about FarmFund..."
-            className="flex-1 rounded-full focus:outline-none focus:ring-2 focus:ring-green-700 dark:focus:ring-green-500"
+            className="flex-1 rounded-full focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-primary"
           />
           <Button type="submit" disabled={isLoading}>
             <Send size={20} />
