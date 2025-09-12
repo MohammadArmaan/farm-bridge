@@ -66,7 +66,7 @@ export default function AboutPage() {
                 </div>
                 <div className="flex justify-center">
                     <Image
-                        src="/vision.jpg"
+                        src="/vision.png"
                         alt="FarmFund Story"
                         width={400}
                         height={400}

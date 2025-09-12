@@ -951,6 +951,12 @@ export const isAccountOwner = (): boolean => {
   return isOwner
 }
 
+// Check if current account is owner (async)
+export const isAccountOwnerAsync = async (): Promise<boolean> => {
+	return isOwner;
+  };
+  
+
 // Check if user is registered as donor
 export const isDonorRegistered = async (address: string): Promise<boolean> => {
   if (!contract) await initializeEthers().catch(() => null)

@@ -11,7 +11,7 @@ export default function Home() {
     return (
         <div className="flex flex-col">
             {/* Hero Section */}
-            <section className="relative bg-gradient-to-br from-green-600 via-green-200 to-yellow-200 py-20 md:py-32">
+            <section className="relative bg-gradient-to-br from-green-600 via-green-900 to-yellow-200 py-20 md:py-32">
                 <div className="absolute inset-0 bg-[url('/heroCoverImage.jpeg?height=500&width=1000')] bg-cover bg-center opacity-10"></div>
                 <div className="container mx-auto px-4 relative z-10">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">

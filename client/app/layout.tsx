@@ -1,6 +1,6 @@
 import type React from "react";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import Navbar from "@/components/navbar";
@@ -8,6 +8,10 @@ import Footer from "@/components/footer";
 import Chatbot from "@/components/Chatbot";
 
 const inter = Inter({ subsets: ["latin"] });
+const poppins = Poppins({
+    subsets: ["latin"],
+    weight: ["400", "500", "600"], // choose the weights you need
+  });
 
 export const metadata: Metadata = {
     title: "FarmFund - Transparent Aid Distribution",
@@ -22,7 +26,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en" suppressHydrationWarning>
-            <body className={inter.className}>
+            <body className={poppins.className}>
                 <ThemeProvider
                     attribute="class"
                     defaultTheme="light"

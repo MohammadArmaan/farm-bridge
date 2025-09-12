@@ -59,7 +59,12 @@ export default function Navbar() {
         { name: "All Requests", path: "/AllAids" },
         { name: "How It Works", path: "/how-it-works" },
         { name: "About", path: "/about" },
-        ...(isOwner ? [{ name: "Admin", path: "/verification" }] : []),
+        ...(isOwner
+            ? [
+                  { name: "Admin", path: "/verification" },
+                  { name: "Dashboard", path: "/dashboard" },
+              ]
+            : []),
     ];
 
     const isActive = (path: string) => pathname === path;

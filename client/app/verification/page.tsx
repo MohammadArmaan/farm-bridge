@@ -16,11 +16,18 @@ import {
     X,
 } from "lucide-react";
 import {
+    getCurrentAccount,
     getDonors,
     getFarmers,
+    isAccountOwnerAsync,
+    isWalletConnected,
     verifyDonor,
     verifyFarmer,
 } from "@/lib/blockchain";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { toast } from "@/hooks/use-toast";
 
 // Define types based on smart contract structure
 type UserStatus = "pending" | "approved" | "rejected";
@@ -49,6 +56,11 @@ interface Farmer {
 }
 
 export default function AdminApprovalDashboard() {
+    const [isOwner, setIsOwner] = useState<boolean | null>(null); // null = unknown
+    const [account, setAccount] = useState<string | null>(null);
+    const [isInitialized, setIsInitialized] = useState(false); // Add initialization flag
+    const [showDisbursementModal, setShowDisbursementModal] = useState(false);
+
     const [activeTab, setActiveTab] = useState<UserType>("farmer");
     const [loading, setLoading] = useState(true);
     const [verifying, setVerifying] = useState<string | null>(null);
@@ -325,6 +337,109 @@ export default function AdminApprovalDashboard() {
             </span>
         );
     };
+
+const loadAdminPage = async () => {
+        setLoading(true);
+        try {
+            // Check wallet and owner status
+            const connected = await isWalletConnected();
+            console.log("Wallet connected:", connected);
+
+            if (!connected) {
+                setIsOwner(false);
+                setAccount(null);
+                setIsInitialized(true);
+                setLoading(false);
+                return;
+            }
+
+            const acct = getCurrentAccount();
+            console.log("Current account:", acct);
+
+            setAccount(acct ?? null);
+
+            // Add a small delay to ensure blockchain state is ready
+            await new Promise((resolve) => setTimeout(resolve, 100));
+
+            const owner = isAccountOwnerAsync(); // Make this async if it isn't already
+            console.log("Is owner:", owner);
+
+            setIsOwner(!!owner);
+            setIsInitialized(true);
+
+            if (!owner) {
+                setLoading(false);
+                return;
+            }
+
+
+        } catch (err) {
+            console.error("Dashboard load error:", err);
+            toast({
+                title: "Failed to load data",
+                description:
+                    "There was an error fetching on-chain data for dashboard.",
+                variant: "destructive",
+            });
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    useEffect(() => {
+        let mounted = true;
+
+        const init = async () => {
+            await loadAdminPage();
+        };
+
+        init();
+        return () => {
+            mounted = false;
+        };
+    }, [toast]);
+
+        // Loading state
+        if (loading || !isInitialized) {
+            return (
+                <div className="container mx-auto px-4 py-24 flex justify-center">
+                    <div className="text-center">
+                        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-700 mx-auto mb-4" />
+                        <p className="text-green-700">Loading dashboard...</p>
+                    </div>
+                </div>
+            );
+        }
+
+    if (!isOwner) {
+        return (
+            <div className="container mx-auto px-4 py-12">
+                <Card className="max-w-2xl mx-auto text-center">
+                    <CardHeader>
+                        <CardTitle>Owner Dashboard (Private)</CardTitle>
+                        <CardDescription>
+                            This dashboard is restricted to the FarmFund owner /
+                            government account.
+                        </CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                        <p className="text-muted-foreground mb-4">
+                            Connect the owner wallet to view platform analytics
+                            and create disbursements.
+                        </p>
+                        <div className="flex justify-center">
+                            <Button
+                                asChild
+                                className="bg-green-600 hover:bg-green-700"
+                            >
+                                <Link href="/">Go to Home</Link>
+                            </Button>
+                        </div>
+                    </CardContent>
+                </Card>
+            </div>
+        );
+    }
 
     return (
         <div className="flex flex-col h-screen bg-gray-50 dark:bg-gray-900">
