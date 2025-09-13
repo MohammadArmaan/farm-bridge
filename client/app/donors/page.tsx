@@ -15,8 +15,10 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { getDonors } from "@/lib/blockchain";
+import { useLocale } from "@/components/locale-provider";
 
 export default function DonorsPage() {
+  const { t } = useLocale();
   const [donors, setDonors] = useState<any[]>([]);
   const [filteredDonors, setFilteredDonors] = useState<any[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -80,7 +82,7 @@ export default function DonorsPage() {
       <div className="container min-h-screen mx-auto px-4 py-12 flex justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-600 mx-auto mb-4"></div>
-          <p className="text-green-500">Loading Donors...</p>
+          <p className="text-green-500">{t("donors.loading")}</p>
         </div>
       </div>
     );
@@ -90,11 +92,10 @@ export default function DonorsPage() {
     <div className="container min-h-screen mx-auto px-4 py-12">
       <div className="text-center mb-16">
         <h1 className="text-4xl font-bold text-green-700 dark:text-green-500 mb-4">
-          Our Donors
+          {t("donors.heading")}
         </h1>
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-          Meet the organizations and individuals who are making a difference by supporting
-          small farmers through the FarmFund platform.
+          {t("donors.description")}
         </p>
       </div>
 
@@ -103,7 +104,7 @@ export default function DonorsPage() {
         <div className="relative flex-grow">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
           <Input
-            placeholder="Search by name, address, or description..."
+            placeholder={t("donors.searchPlaceholder")}
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className="pl-10 focus:outline-none focus:ring-2 focus:ring-green-700 dark:focus:ring-green-500"
@@ -113,24 +114,23 @@ export default function DonorsPage() {
           <DropdownMenuTrigger asChild>
             <Button variant="outline" className="flex items-center gap-2">
               <SlidersHorizontal className="h-4 w-4" />
-              Sort By
+              {t("donors.sortBy")}
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
-            <DropdownMenuLabel>Sort Criteria</DropdownMenuLabel>
+            <DropdownMenuLabel>{t("donors.sortBy")}</DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuItem onClick={() => handleSort("name")}>
-              Name {sortBy === "name" && (sortOrder === "asc" ? "↑" : "↓")}
+              {t("donors.sortCriteria.name")} {sortBy === "name" && (sortOrder === "asc" ? "↑" : "↓")}
             </DropdownMenuItem>
             <DropdownMenuItem onClick={() => handleSort("totalDonated")}>
-              Total Donated {sortBy === "totalDonated" && (sortOrder === "asc" ? "↑" : "↓")}
+              {t("donors.sortCriteria.totalDonated")} {sortBy === "totalDonated" && (sortOrder === "asc" ? "↑" : "↓")}
             </DropdownMenuItem>
             <DropdownMenuItem onClick={() => handleSort("reputationScore")}>
-              Reputation {sortBy === "reputationScore" && (sortOrder === "asc" ? "↑" : "↓")}
+              {t("donors.sortCriteria.reputationScore")} {sortBy === "reputationScore" && (sortOrder === "asc" ? "↑" : "↓")}
             </DropdownMenuItem>
             <DropdownMenuItem onClick={() => handleSort("successfulDisbursements")}>
-              Disbursements{" "}
-              {sortBy === "successfulDisbursements" && (sortOrder === "asc" ? "↑" : "↓")}
+              {t("donors.sortCriteria.successfulDisbursements")} {sortBy === "successfulDisbursements" && (sortOrder === "asc" ? "↑" : "↓")}
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
@@ -138,7 +138,7 @@ export default function DonorsPage() {
 
       {filteredDonors.length === 0 ? (
         <div className="text-center py-12">
-          <p className="text-lg text-gray-600">No donors found matching your search criteria.</p>
+          <p className="text-lg text-gray-600">{t("donors.noDonorsFound")}</p>
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -155,12 +155,12 @@ export default function DonorsPage() {
                   {donor.isVerified ? (
                     <Badge className="bg-green-100 dark:bg-green-200 text-green-700 dark:text-green-600 hover:bg-green-100 dark:hover:bg-green-200">
                       <CheckCircle className="h-3 w-3 mr-1" />
-                      Verified
+                      {t("donors.verified")}
                     </Badge>
                   ) : (
                     <Badge className="bg-red-100 text-red-800 hover:bg-red-100">
                       <XCircle className="h-3 w-3 mr-1" />
-                      Not Verified
+                      {t("donors.notVerified")}
                     </Badge>
                   )}
                 </div>
@@ -174,7 +174,7 @@ export default function DonorsPage() {
                   <div className="flex items-center">
                     <Wallet className="h-4 w-4 mr-1 text-green-500" />
                     <span className="text-sm">
-                      {donor.successfulDisbursements || 0} Disbursements
+                      {donor.successfulDisbursements || 0} {t("donors.sortCriteria.successfulDisbursements")}
                     </span>
                   </div>
                 </div>
@@ -183,7 +183,7 @@ export default function DonorsPage() {
 
                 <div className="flex justify-between items-center">
                   <div>
-                    <p className="text-xs text-muted-foreground">Total Donated</p>
+                    <p className="text-xs text-muted-foreground">{t("donors.totalDonatedLabel")}</p>
                     <p className="font-medium text-green-700 dark:text-green-500">
                       {donor.totalDonated} ETH
                     </p>

@@ -9,18 +9,22 @@ import {
     DropdownMenuItem,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { useLocale } from "./locale-provider";
 
 export function MobileThemeToggler() {
     const { setTheme, theme } = useTheme();
+    const {t} = useLocale();
 
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
                 <Button variant="outline">
-                    <span>Change Theme:</span>
+                    <span>{t("theme.label")}</span>
 
                     <span className="capitalize flex items-center gap-2">
-                        {theme}{" "}
+                    {theme === "light" ? t("theme.light") :
+                         theme === "dark" ? t("theme.dark") :
+                         t("theme.system")}
                         {theme === "light" ? (
                             <Sun className="h-[1.2rem] w-[1.2rem]" />
                         ) : (
@@ -31,13 +35,13 @@ export function MobileThemeToggler() {
             </DropdownMenuTrigger>
             <DropdownMenuContent align="center">
                 <DropdownMenuItem onClick={() => setTheme("light")}>
-                    Light
+                {t("theme.light")}
                 </DropdownMenuItem>
                 <DropdownMenuItem onClick={() => setTheme("dark")}>
-                    Dark
+                {t("theme.dark")}
                 </DropdownMenuItem>
                 <DropdownMenuItem onClick={() => setTheme("system")}>
-                    System
+                {t("theme.system")}
                 </DropdownMenuItem>
             </DropdownMenuContent>
         </DropdownMenu>

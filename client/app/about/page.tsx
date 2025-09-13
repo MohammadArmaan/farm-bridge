@@ -1,73 +1,52 @@
+"use client"
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Globe, Heart, Shield } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import { useLocale } from "@/components/locale-provider";
 
 export default function AboutPage() {
-    // Team members data
-    const team = [
-        {
-            name: "Mohammad Armaan",
-            role: "DBIT CSE",
-            bio: "4th Year Student",
-            image: "/Armaan.png?height=200&width=200&text=CR",
-        },
-        {
-            name: "Mohammed Moinuddin",
-            role: "DBIT CSE",
-            bio: "4th Year Student",
-            image: "/Moinuddin.png?height=200&width=200&text=SJ",
-        },
-        {
-            name: "Muhammed Shaheer",
-            role: "DBIT CSE",
-            bio: "4th Year Student",
-            image: "/Shaheer.jpg?height=200&width=200&text=AP",
-        },
-        {
-            name: "Koustav Das",
-            role: "DBIT CSE",
-            bio: "4th Year Student",
-            image: "/Koustav.png?height=200&width=200&text=MC",
-        },
-    ];
+    const { t } = useLocale();
+
+    type TeamMember = {
+        name: string;
+        role: string;
+        bio: string;
+        image: string;
+      };
+      
+      // Get members from JSON and cast to TeamMember[]
+      const teamMembers: TeamMember[] = (t("about.team.members") || []) as TeamMember[];
 
     return (
         <div className="container mx-auto px-4 py-12">
             {/* Hero Section */}
             <div className="text-center mb-16">
                 <h1 className="text-4xl font-bold text-green-700 dark:text-green-500 mb-4">
-                    About FarmFund
+                    {t("about.hero.heading")}
                 </h1>
                 <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                    We're on a mission to create a transparent and efficient
-                    system for supporting small farmers around the world.
+                    {t("about.hero.subheading")}
                 </p>
             </div>
 
-            {/* Our Story */}
+            {/* Our Vision */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-20">
                 <div>
                     <h2 className="text-3xl font-bold text-green-700 dark:text-green-500 mb-6">
-                        Our Vision
+                        {t("about.vision.heading")}
                     </h2>
                     <div className="space-y-4 text-muted-foreground">
                         <p className="text-lg">
-                            At FarmFund, we envision a world where small farmers
-                            thrive through direct, transparent access to the
-                            resources they need. By leveraging blockchain
-                            technology, we aim to eliminate inefficiencies and
-                            intermediaries in aid distribution—empowering
-                            farmers, restoring trust, and fostering sustainable
-                            agricultural growth across developing communities.
+                            {t("about.vision.description")}
                         </p>
                     </div>
                 </div>
                 <div className="flex justify-center">
                     <Image
                         src="/vision.png"
-                        alt="FarmFund Story"
+                        alt={t("about.images.visionAlt")}
                         width={400}
                         height={400}
                         className="rounded-lg shadow-xl"
@@ -79,12 +58,10 @@ export default function AboutPage() {
             <div className="bg-green-50 dark:bg-green-200 rounded-xl p-8 mb-20">
                 <div className="text-center mb-12">
                     <h2 className="text-3xl font-bold text-green-700 dark:text-green-500 mb-4">
-                        Our Mission
+                        {t("about.mission.heading")}
                     </h2>
                     <p className="text-lg text-muted-foreground dark:text-gray-700 max-w-2xl mx-auto">
-                        We're committed to creating a more equitable and
-                        sustainable agricultural ecosystem through transparency
-                        and direct support.
+                        {t("about.mission.subheading")}
                     </p>
                 </div>
 
@@ -95,13 +72,10 @@ export default function AboutPage() {
                                 <Shield className="h-6 w-6 text-green-600" />
                             </div>
                             <h3 className="font-bold text-lg mb-2 text-green-700 dark:text-green-500">
-                                Transparency
+                                {t("about.mission.transparency.title")}
                             </h3>
                             <p className="text-muted-foreground">
-                                We believe in complete transparency in aid
-                                distribution. Our blockchain-based platform
-                                ensures that every transaction is recorded and
-                                visible to all stakeholders.
+                                {t("about.mission.transparency.description")}
                             </p>
                         </CardContent>
                     </Card>
@@ -112,13 +86,10 @@ export default function AboutPage() {
                                 <Heart className="h-6 w-6 text-pink-600" />
                             </div>
                             <h3 className="font-bold text-lg mb-2 text-pink-600 dark:text-pink-500">
-                                Empowerment
+                                {t("about.mission.empowerment.title")}
                             </h3>
                             <p className="text-muted-foreground">
-                                We aim to empower small farmers by providing
-                                them with direct access to resources and
-                                support, enabling them to develop sustainable
-                                farming practices.
+                                {t("about.mission.empowerment.description")}
                             </p>
                         </CardContent>
                     </Card>
@@ -129,13 +100,10 @@ export default function AboutPage() {
                                 <Globe className="h-6 w-6 text-yellow-600" />
                             </div>
                             <h3 className="font-bold text-lg mb-2 text-yellow-600 dark:text-yellow-500">
-                                Sustainability
+                                {t("about.mission.sustainability.title")}
                             </h3>
                             <p className="text-muted-foreground">
-                                We're committed to promoting sustainable farming
-                                practices that protect the environment and
-                                ensure long-term food security for communities
-                                around the world.
+                                {t("about.mission.sustainability.description")}
                             </p>
                         </CardContent>
                     </Card>
@@ -146,17 +114,16 @@ export default function AboutPage() {
             <div className="mb-20">
                 <div className="text-center mb-12">
                     <h2 className="text-3xl font-bold text-green-700 dark:text-green-500 mb-4">
-                        Our Team
+                        {t("about.team.heading")}
                     </h2>
                     <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                        <strong>FarmFund</strong> is our Final Year Project
-                        developed by students from{" "}
-                        <strong>Don Bosco Institute of Technology</strong>.
+                        <strong>{t("about.team.projectName")}</strong> {t("about.team.projectDescription")}{" "}
+                        <strong>{t("about.team.instituteName")}</strong>.
                     </p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    {team.map((member, index) => (
+                    {teamMembers.map((member, index) => (
                         <Card
                             key={index}
                             className="border-none shadow-lg overflow-hidden dark:bg-black/70 dark:shadow-2xl"
@@ -188,40 +155,13 @@ export default function AboutPage() {
                 </div>
             </div>
 
-            {/* Impact */}
-            {/* <div className="mb-20">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-green-700 mb-4">Our Impact</h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Since our launch, we've made a significant impact on farming communities around the world.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="bg-green-50 rounded-xl p-8 text-center">
-            <div className="text-4xl font-bold text-green-700 mb-2">350+</div>
-            <div className="text-lg text-green-700">Farmers Supported</div>
-          </div>
-          <div className="bg-pink-50 rounded-xl p-8 text-center">
-            <div className="text-4xl font-bold text-pink-900 mb-2">120+</div>
-            <div className="text-lg text-pink-700">Active Donors</div>
-          </div>
-          <div className="bg-yellow-50 rounded-xl p-8 text-center">
-            <div className="text-4xl font-bold text-yellow-900 mb-2">$1.2M+</div>
-            <div className="text-lg text-yellow-700">Funds Distributed</div>
-          </div>
-        </div>
-      </div> */}
-
             {/* CTA Section */}
             <div className="bg-gradient-to-r from-green-600 to-pink-500 text-white rounded-xl p-12 text-center">
                 <h2 className="text-3xl font-bold mb-6">
-                    Join Us in Making a Difference
+                    {t("about.cta.heading")}
                 </h2>
                 <p className="text-xl mb-8 text-white/90 max-w-2xl mx-auto">
-                    Whether you're a donor looking to make an impact or a farmer
-                    seeking support, FarmFund provides a transparent platform to
-                    connect and create positive change.
+                    {t("about.cta.subheading")}
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                     <Button
@@ -230,7 +170,7 @@ export default function AboutPage() {
                         className="bg-yellow-400 hover:bg-yellow-500 text-green-700 dark:text-green-500"
                     >
                         <Link href="/register?type=donor">
-                            Register as Donor
+                            {t("about.cta.registerDonor")}
                         </Link>
                     </Button>
                     <Button
@@ -239,7 +179,7 @@ export default function AboutPage() {
                         className="border-white text-white hover:bg-green-700 bg-green-600"
                     >
                         <Link href="/register?type=farmer">
-                            Register as Farmer
+                            {t("about.cta.registerFarmer")}
                         </Link>
                     </Button>
                 </div>

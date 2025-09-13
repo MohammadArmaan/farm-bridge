@@ -17,8 +17,10 @@ import WalletConnect from "@/components/wallet-connect";
 import Image from "next/image";
 import { ThemeToggle } from "./theme-toggle";
 import { MobileThemeToggler } from "./MobileThemeToggler";
+import { useLocale } from "./locale-provider";
 
 export default function Navbar() {
+    const { t } = useLocale();
     const [isOpen, setIsOpen] = useState(false);
     const [address, setAddress] = useState<string | null>(null);
     const [isOwner, setIsOwner] = useState(false);
@@ -48,24 +50,24 @@ export default function Navbar() {
 
     // Build routes dynamically
     const routes = [
-        { name: "Home", path: "/" },
-        { name: "Farmers", path: "/farmers" },
-        { name: "Donors", path: "/donors" },
+        { name: t("navbar.home"), path: "/" },
+        { name: t("navbar.farmers"), path: "/farmers" },
+        { name: t("navbar.donors"), path: "/donors" },
         ...(isFarmer
-            ? [{ name: "Request Aid", path: "/aid" }]
-            : isDonor
-            ? []
-            : [{ name: "Request Aid", path: "/aid" }]), // default if not registered
-        { name: "All Requests", path: "/AllAids" },
-        { name: "How It Works", path: "/how-it-works" },
-        { name: "About", path: "/about" },
+          ? [{ name: t("navbar.requestAid"), path: "/aid" }]
+          : isDonor
+          ? []
+          : [{ name: t("navbar.requestAid"), path: "/aid" }]), // default if not registered
+        { name: t("navbar.allRequests"), path: "/AllAids" },
+        { name: t("navbar.howItWorks"), path: "/how-it-works" },
+        { name: t("navbar.about"), path: "/about" },
         ...(isOwner
-            ? [
-                  { name: "Admin", path: "/verification" },
-                  { name: "Dashboard", path: "/dashboard" },
-              ]
-            : []),
-    ];
+          ? [
+              { name: t("navbar.admin"), path: "/verification" },
+              { name: t("navbar.dashboard"), path: "/dashboard" },
+            ]
+          : []),
+      ];
 
     const isActive = (path: string) => pathname === path;
 
@@ -204,7 +206,6 @@ export default function Navbar() {
                                 setIsFarmer(false);
                             }}
                         />
-
                         {/* Only show Register if not registered */}
                         {!isDonor && !isFarmer && (
                             <Button

@@ -27,8 +27,10 @@ import { Leaf, Wallet, CheckCircle2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import WalletConnect from "@/components/wallet-connect";
 import { Alert, AlertDescription } from "@/components/ui/alert";
+import { useLocale } from "@/components/locale-provider";
 
 export default function RegisterPage() {
+    const { t } = useLocale();
     const searchParams = useSearchParams();
     const defaultTab =
         searchParams.get("type") === "farmer" ? "farmer" : "donor";
@@ -66,7 +68,7 @@ export default function RegisterPage() {
                 const isDonor = await isDonorRegistered(walletAddress);
                 setDonorRegistered(isDonor);
                 if (isDonor) {
-                    setErrorMessage("You are already registered as a donor.");
+                    setErrorMessage(t("register.messages.alreadyRegisteredDonor"));
                 }
             }
             // Check farmer registration status
@@ -74,7 +76,7 @@ export default function RegisterPage() {
                 const isFarmer = await isFarmerRegistered(walletAddress);
                 setFarmerRegistered(isFarmer);
                 if (isFarmer) {
-                    setErrorMessage("You are already registered as a farmer.");
+                    setErrorMessage(t("register.messages.alreadyRegisteredFarmer"));
                 }
             }
         } catch (error) {
@@ -115,8 +117,8 @@ export default function RegisterPage() {
         setWalletAddress(address);
 
         toast({
-            title: "Wallet Connected",
-            description: "Your wallet has been connected successfully.",
+            title: t("register.toast.walletConnectedTitle"),
+            description: t("register.toast.walletConnectedDescription"),
         });
 
         await checkRegistrationStatus();
@@ -133,18 +135,18 @@ export default function RegisterPage() {
 
             if (alreadyRegistered) {
                 setDonorRegistered(true);
-                setErrorMessage("You are already registered as a donor.");
+                setErrorMessage(t("register.messages.alreadyRegisteredDonor"));
                 toast({
-                    title: "Already Registered",
-                    description: "You are already registered as a donor.",
+                    title: t("register.toast.alreadyRegisteredTitle"),
+                    description: t("register.toast.alreadyRegisteredDonorDescription"),
                 });
             } else {
                 // Proceed with registration
                 await registerDonor(donorForm.name, donorForm.description);
                 setDonorRegistered(true);
                 toast({
-                    title: "Registration Successful",
-                    description: "You have been registered as a donor.",
+                    title: t("register.toast.registrationSuccessfulTitle"),
+                    description: t("register.toast.registrationSuccessfulDonorDescription"),
                 });
             }
         } catch (error: any) {
@@ -153,19 +155,16 @@ export default function RegisterPage() {
             // Check for "already registered" in the error
             if (error.toString().includes("Donor already registered")) {
                 setDonorRegistered(true);
-                setErrorMessage("You are already registered as a donor.");
+                setErrorMessage(t("register.messages.alreadyRegisteredDonor"));
                 toast({
-                    title: "Already Registered",
-                    description: "You are already registered as a donor.",
+                    title: t("register.toast.alreadyRegisteredTitle"),
+                    description: t("register.toast.alreadyRegisteredDonorDescription"),
                 });
             } else {
-                setErrorMessage(
-                    "Failed to register as donor. Please try again."
-                );
+                setErrorMessage(t("register.messages.registrationFailedDonor"));
                 toast({
-                    title: "Registration Failed",
-                    description:
-                        "Failed to register as donor. Please try again.",
+                    title: t("register.toast.registrationFailedTitle"),
+                    description: t("register.toast.registrationFailedDonorDescription"),
                     variant: "destructive",
                 });
             }
@@ -185,10 +184,10 @@ export default function RegisterPage() {
 
             if (alreadyRegistered) {
                 setFarmerRegistered(true);
-                setErrorMessage("You are already registered as a farmer.");
+                setErrorMessage(t("register.messages.alreadyRegisteredFarmer"));
                 toast({
-                    title: "Already Registered",
-                    description: "You are already registered as a farmer.",
+                    title: t("register.toast.alreadyRegisteredTitle"),
+                    description: t("register.toast.alreadyRegisteredFarmerDescription"),
                 });
             } else {
                 // Proceed with registration
@@ -199,8 +198,8 @@ export default function RegisterPage() {
                 );
                 setFarmerRegistered(true);
                 toast({
-                    title: "Registration Successful",
-                    description: "You have been registered as a farmer.",
+                    title: t("register.toast.registrationSuccessfulTitle"),
+                    description: t("register.toast.registrationSuccessfulFarmerDescription"),
                 });
             }
         } catch (error: any) {
@@ -209,19 +208,16 @@ export default function RegisterPage() {
             // Check for "already registered" in the error
             if (error.toString().includes("Farmer already registered")) {
                 setFarmerRegistered(true);
-                setErrorMessage("You are already registered as a farmer.");
+                setErrorMessage(t("register.messages.alreadyRegisteredFarmer"));
                 toast({
-                    title: "Already Registered",
-                    description: "You are already registered as a farmer.",
+                    title: t("register.toast.alreadyRegisteredTitle"),
+                    description: t("register.toast.alreadyRegisteredFarmerDescription"),
                 });
             } else {
-                setErrorMessage(
-                    "Failed to register as farmer. Please try again."
-                );
+                setErrorMessage(t("register.messages.registrationFailedFarmer"));
                 toast({
-                    title: "Registration Failed",
-                    description:
-                        "Failed to register as farmer. Please try again.",
+                    title: t("register.toast.registrationFailedTitle"),
+                    description: t("register.toast.registrationFailedFarmerDescription"),
                     variant: "destructive",
                 });
             }
@@ -236,10 +232,10 @@ export default function RegisterPage() {
                 <div className="text-center py-6">
                     <CheckCircle2 className="h-16 w-16 text-green-500 mx-auto mb-4" />
                     <h3 className="text-xl font-bold text-green-700 mb-2">
-                        Registration Complete
+                        {t("register.success.registrationCompleteTitle")}
                     </h3>
                     <p className="text-muted-foreground0">
-                        You are registered as a donor in FarmFund.
+                        {t("register.success.donorRegisteredDescription")}
                     </p>
                 </div>
             );
@@ -248,10 +244,10 @@ export default function RegisterPage() {
         return (
             <form onSubmit={handleDonorSubmit} className="space-y-4">
                 <div className="space-y-2">
-                    <Label htmlFor="donor-name">Organization Name</Label>
+                    <Label htmlFor="donor-name">{t("register.donor.form.organizationNameLabel")}</Label>
                     <Input
                         id="donor-name"
-                        placeholder="Enter your organization name"
+                        placeholder={t("register.donor.form.organizationNamePlaceholder")}
                         value={donorForm.name}
                         onChange={(e) =>
                             setDonorForm({ ...donorForm, name: e.target.value })
@@ -261,10 +257,10 @@ export default function RegisterPage() {
                 </div>
 
                 <div className="space-y-2">
-                    <Label htmlFor="donor-description">Description</Label>
+                    <Label htmlFor="donor-description">{t("register.donor.form.descriptionLabel")}</Label>
                     <Textarea
                         id="donor-description"
-                        placeholder="Describe your organization and mission"
+                        placeholder={t("register.donor.form.descriptionPlaceholder")}
                         value={donorForm.description}
                         onChange={(e) =>
                             setDonorForm({
@@ -280,7 +276,7 @@ export default function RegisterPage() {
                 {errorMessage && (
                     <Alert
                         className={
-                            errorMessage.includes("already")
+                            errorMessage.includes("already") || errorMessage.includes(t("register.messages.alreadyRegisteredDonor"))
                                 ? "bg-blue-50 border-blue-200 text-blue-800"
                                 : "bg-red-50 border-red-200 text-red-800"
                         }
@@ -294,7 +290,7 @@ export default function RegisterPage() {
                     className="w-full bg-pink-600 hover:bg-pink-700"
                     disabled={isLoading}
                 >
-                    {isLoading ? "Registering..." : "Register as Donor"}
+                    {isLoading ? t("register.donor.form.registeringButton") : t("register.donor.form.registerButton")}
                 </Button>
             </form>
         );
@@ -306,10 +302,10 @@ export default function RegisterPage() {
                 <div className="text-center py-6">
                     <CheckCircle2 className="h-16 w-16 text-green-500 mx-auto mb-4" />
                     <h3 className="text-xl font-bold text-green-700 mb-2">
-                        Registration Complete
+                        {t("register.success.registrationCompleteTitle")}
                     </h3>
                     <p className="text-gray-600">
-                        You are registered as a farmer in FarmFund.
+                        {t("register.success.farmerRegisteredDescription")}
                     </p>
                 </div>
             );
@@ -318,10 +314,10 @@ export default function RegisterPage() {
         return (
             <form onSubmit={handleFarmerSubmit} className="space-y-4">
                 <div className="space-y-2">
-                    <Label htmlFor="farmer-name">Full Name</Label>
+                    <Label htmlFor="farmer-name">{t("register.farmer.form.fullNameLabel")}</Label>
                     <Input
                         id="farmer-name"
-                        placeholder="Enter your full name"
+                        placeholder={t("register.farmer.form.fullNamePlaceholder")}
                         value={farmerForm.name}
                         onChange={(e) =>
                             setFarmerForm({
@@ -334,10 +330,10 @@ export default function RegisterPage() {
                 </div>
 
                 <div className="space-y-2">
-                    <Label htmlFor="farmer-location">Location</Label>
+                    <Label htmlFor="farmer-location">{t("register.farmer.form.locationLabel")}</Label>
                     <Input
                         id="farmer-location"
-                        placeholder="Enter your farm location"
+                        placeholder={t("register.farmer.form.locationPlaceholder")}
                         value={farmerForm.location}
                         onChange={(e) =>
                             setFarmerForm({
@@ -350,10 +346,10 @@ export default function RegisterPage() {
                 </div>
 
                 <div className="space-y-2">
-                    <Label htmlFor="farmer-type">Farm Type</Label>
+                    <Label htmlFor="farmer-type">{t("register.farmer.form.farmTypeLabel")}</Label>
                     <Input
                         id="farmer-type"
-                        placeholder="E.g., Organic, Traditional, etc."
+                        placeholder={t("register.farmer.form.farmTypePlaceholder")}
                         value={farmerForm.farmType}
                         onChange={(e) =>
                             setFarmerForm({
@@ -368,7 +364,7 @@ export default function RegisterPage() {
                 {errorMessage && (
                     <Alert
                         className={
-                            errorMessage.includes("already")
+                            errorMessage.includes("already") || errorMessage.includes(t("register.messages.alreadyRegisteredFarmer"))
                                 ? "bg-blue-50 border-blue-200 text-blue-800"
                                 : "bg-red-50 border-red-200 text-red-800"
                         }
@@ -382,7 +378,7 @@ export default function RegisterPage() {
                     className="w-full bg-green-700 hover:bg-green-800"
                     disabled={isLoading}
                 >
-                    {isLoading ? "Registering..." : "Register as Farmer"}
+                    {isLoading ? t("register.farmer.form.registeringButton") : t("register.farmer.form.registerButton")}
                 </Button>
             </form>
         );
@@ -392,16 +388,15 @@ export default function RegisterPage() {
         <div className="container mx-auto px-4 py-12">
             <div className="max-w-md mx-auto">
                 <h1 className="text-3xl font-bold text-center mb-8 text-green-700 dark:text-green-500">
-                    Register with FarmFund
+                    {t("register.pageTitle")}
                 </h1>
 
                 {!isConnected ? (
                     <Card>
                         <CardHeader>
-                            <CardTitle>Connect Your Wallet</CardTitle>
+                            <CardTitle>{t("register.walletConnect.title")}</CardTitle>
                             <CardDescription>
-                                Connect your Ethereum wallet to register as a
-                                donor or farmer.
+                                {t("register.walletConnect.description")}
                             </CardDescription>
                         </CardHeader>
                         <CardContent>
@@ -426,24 +421,23 @@ export default function RegisterPage() {
                                 className="data-[state=active]:bg-pink-100 data-[state=active]:text-pink-900"
                             >
                                 <Leaf className="mr-2 h-4 w-4" />
-                                Donor
+                                {t("register.tabs.donor")}
                             </TabsTrigger>
                             <TabsTrigger
                                 value="farmer"
                                 className="data-[state=active]:bg-green-100 data-[state=active]:text-green-700"
                             >
                                 <Wallet className="mr-2 h-4 w-4" />
-                                Farmer
+                                {t("register.tabs.farmer")}
                             </TabsTrigger>
                         </TabsList>
 
                         <TabsContent value="donor">
                             <Card>
                                 <CardHeader>
-                                    <CardTitle>Register as Donor</CardTitle>
+                                    <CardTitle>{t("register.donor.cardTitle")}</CardTitle>
                                     <CardDescription>
-                                        Fill in your details to register as a
-                                        donor on FarmFund.
+                                        {t("register.donor.cardDescription")}
                                     </CardDescription>
                                 </CardHeader>
                                 <CardContent>
@@ -455,10 +449,9 @@ export default function RegisterPage() {
                         <TabsContent value="farmer">
                             <Card>
                                 <CardHeader>
-                                    <CardTitle>Register as Farmer</CardTitle>
+                                    <CardTitle>{t("register.farmer.cardTitle")}</CardTitle>
                                     <CardDescription>
-                                        Fill in your details to register as a
-                                        farmer on FarmFund.
+                                        {t("register.farmer.cardDescription")}
                                     </CardDescription>
                                 </CardHeader>
                                 <CardContent>

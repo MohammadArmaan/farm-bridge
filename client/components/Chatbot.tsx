@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { BotMessageSquare, Send } from "lucide-react";
+import { useLocale } from "./locale-provider";
 
 // Define chat message type
 interface ChatMessage {
@@ -27,6 +28,7 @@ export default function Chatbot() {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const router = useRouter();
+  const {t} = useLocale();
 
   async function handleChat(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -90,10 +92,10 @@ export default function Chatbot() {
       <DialogContent className="p-0 max-w-lg w-[95vw] h-[90vh] flex flex-col overflow-hidden">
         <DialogHeader className="p-4 border-b">
           <DialogTitle className="text-lg text-center">
-            FarmFund ChatBot 🤖
+            {t("chatbot.title")}
           </DialogTitle>
           <DialogDescription className="text-center text-muted-foreground">
-            Ask about Blockchain, Ethereum, or FarmFund routes
+          {t("chatbot.subtitle")}
           </DialogDescription>
         </DialogHeader>
 
@@ -132,7 +134,7 @@ export default function Chatbot() {
           <Input
             value={prompt}
             onChange={(e) => setPrompt(e.target.value)}
-            placeholder="Ask about FarmFund..."
+            placeholder={t("chatbot.placeholder")}
             className="flex-1 rounded-full focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-primary"
           />
           <Button type="submit" disabled={isLoading}>

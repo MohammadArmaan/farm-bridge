@@ -1,0 +1,360 @@
+{
+    "hero": {
+        "title": "Transparent Aid Distribution for Farmers",
+        "subtitle": "FarmFund connects donors directly with small farmers, ensuring transparency and accountability through blockchain technology.",
+        "getStarted": "Get Started",
+        "learnMore": "Learn More"
+    },
+    "howItWorks": {
+        "heading": "How FarmFund Works",
+        "description": "Our blockchain-powered platform ensures every donation reaches the right farmer with complete transparency.",
+        "register": "1. Register & Verify",
+        "registerDesc": "Donors and farmers register on the platform and get verified to ensure legitimacy and trust.",
+        "create": "2. Create Disbursements",
+        "createDesc": "Donors create disbursements specifying the farmer, purpose, and deadline for claiming funds.",
+        "claim": "3. Claim & Grow",
+        "claimDesc": "Farmers claim their funds before the deadline and use them to develop their farms.",
+        "cta": "Learn More About The Process"
+    },
+    "ctaSection": {
+        "title": "Ready to Make a Difference?",
+        "subtitle": "Join FarmFund today and be part of a transparent ecosystem that empowers small farmers around the world.",
+        "donor": "Register as Donor",
+        "farmer": "Register as Farmer"
+    },
+    "stats": {
+        "farmersSupported": "Farmers Supported",
+        "totalDonors": "Total Donors",
+        "totalDisbursements": "Total Disbursements",
+        "loading": "Loading stats..."
+    },
+    "footer": {
+        "tagline": "A transparent aid distribution system for small farmers powered by blockchain technology.",
+        "quickLinks": "Quick Links",
+        "home": "Home",
+        "about": "About Us",
+        "farmers": "Farmers",
+        "donors": "Donors",
+        "howItWorks": "How It Works",
+        "resources": "Resources",
+        "faq": "FAQ",
+        "documentation": "Documentation",
+        "terms": "Terms of Service",
+        "privacy": "Privacy Policy",
+        "rights": "All rights reserved."
+    },
+    "navbar": {
+        "home": "Home",
+        "farmers": "Farmers",
+        "donors": "Donors",
+        "requestAid": "Request Aid",
+        "allRequests": "All Requests",
+        "howItWorks": "How It Works",
+        "about": "About",
+        "admin": "Admin",
+        "dashboard": "Dashboard"
+    },
+    "chatbot": {
+        "title": "FarmFund ChatBot 🤖",
+        "subtitle": "Ask about Blockchain, Ethereum, or FarmFund routes",
+        "placeholder": "Ask about FarmFund..."
+    },
+    "theme": {
+        "label": "Change Theme:",
+        "light": "Light",
+        "dark": "Dark",
+        "system": "System"
+    },
+    "wallet": {
+        "walletDetails": "Wallet Details",
+        "address": "Address",
+        "balance": "Balance",
+        "contract": "Contract",
+        "disconnect": "Disconnect"
+    },
+    "farmers": {
+        "heading": "Our Farmers",
+        "description": "Meet the hardworking farmers who are part of the FarmFund ecosystem. Each farmer has been carefully selected based on their commitment to sustainable farming practices.",
+        "searchPlaceholder": "Search by name, address, location or farm type...",
+        "sortBy": "Sort By",
+        "sortCriteria": {
+            "name": "Name",
+            "location": "Location",
+            "farmType": "Farm Type",
+            "totalReceived": "Total Received"
+        },
+        "verified": "Verified",
+        "notVerified": "Not Verified",
+        "addressLabel": "Address",
+        "totalReceivedLabel": "Total Received",
+        "noFarmersFound": "No farmers found matching your search criteria.",
+        "loading": "Loading Farmers..."
+    },
+    "donors": {
+        "heading": "Our Donors",
+        "description": "Meet the organizations and individuals who are making a difference by supporting small farmers through the FarmFund platform.",
+        "searchPlaceholder": "Search by name, address, or description...",
+        "sortBy": "Sort By",
+        "sortCriteria": {
+            "name": "Name",
+            "totalDonated": "Total Donated",
+            "reputationScore": "Reputation",
+            "successfulDisbursements": "Disbursements"
+        },
+        "loading": "Loading Donors...",
+        "noDonorsFound": "No donors found matching your search criteria.",
+        "verified": "Verified",
+        "notVerified": "Not Verified",
+        "totalDonatedLabel": "Total Donated"
+    },
+    "aid": {
+        "heading": "Create Aid Request",
+        "requestNameLabel": "Request Name",
+        "requestNamePlaceholder": "E.g., Drought Relief, Seed Purchase",
+        "purposeLabel": "Purpose of Aid",
+        "purposePlaceholder": "Describe why you need this aid and how it will be used",
+        "amountLabel": "Amount Requested (ETH)",
+        "amountPlaceholder": "0.00",
+        "submitButton": "Submit Aid Request",
+        "processing": "Processing...",
+        "successMessage": "Aid request submitted successfully!",
+        "errorMessage": "Failed to submit aid request"
+    },
+    "allAids": {
+        "allRequestsHeading": "Agricultural Aid Requests",
+        "fetchError": "Failed to fetch aid requests",
+        "loadingRequests": "Loading aid requests...",
+        "noRequests": "No aid requests found",
+        "filter": {
+            "all": "All Requests",
+            "active": "Active Requests",
+            "fulfilled": "Fulfilled Requests"
+        },
+        "table": {
+            "request": "Request",
+            "farmer": "Farmer",
+            "amount": "Amount",
+            "date": "Date",
+            "status": "Status",
+            "action": "Action"
+        },
+        "status": { "fulfilled": "Fulfilled", "active": "Active" },
+        "fundButton": "Fund",
+        "fundingModalTitle": "Fund Aid Request",
+        "request": "Request",
+        "farmer": "Farmer",
+        "amountRequestedLabel": "Requested Amount",
+        "alreadyFunded": "Already Funded",
+        "funded": "Funded",
+        "remainingAmount": "Remaining Amount",
+        "fundAmountLabel": "Amount to Fund (ETH)",
+        "fundAmountHint": "Enter an amount up to the remaining needed amount.",
+        "cancelButton": "Cancel",
+        "processing": "Processing...",
+        "fundingSuccess": "Successfully funded {{amount}} ETH to aid request",
+        "fundingError": "Failed to fund aid request. Please make sure you have enough ETH and the request is still active."
+    },
+    "how-it-works": {
+        "heading": "How FarmFund Works",
+        "subheading": "Our blockchain-powered platform ensures every donation reaches the right farmer with complete transparency and accountability.",
+        "processOverview": {
+            "step1": {
+                "title": "Registration & Verification",
+                "description": "Farmers and donors sign up on the platform by sharing basic information. The platform team verifies their identities to make sure everyone involved is real and trustworthy. This builds a safe and transparent community from the start.",
+                "highlight": "Ensures trust and accountability"
+            },
+            "step2": {
+                "title": "Farmers Request Help, Donors Support",
+                "description": "Verified farmers can ask for help by posting what they need - like money for seeds, tools, or water systems - and how much it will cost. Donors then browse these requests and choose which ones to support. Donations go directly to the farmer with full transparency.",
+                "highlight": "Transparent fund allocation"
+            },
+            "step3": {
+                "title": "Funds Delivered, Reputation Grows",
+                "description": "When a farmer receives help and uses it properly, the donor's trust score goes up. This encourages more honest giving and builds a strong cycle of support. If help isn't claimed in time, the money is safely returned to the donor. Every action is recorded and visible to everyone — so nothing is hidden.",
+                "highlight": "Empowers farmers to grow"
+            }
+        },
+        "detailedExplanation": {
+            "heading": "The FarmFund Process",
+            "subheading": "A detailed look at how our platform connects donors with farmers through blockchain technology.",
+            "step1": {
+                "title": "Registration & Verification",
+                "donorRegistrationLabel": "Donor Registration:",
+                "donorRegistrationDescription": "Organizations or individuals register by providing their name, description, and connecting their Ethereum wallet. This creates a transparent identity on the blockchain.",
+                "farmerRegistrationLabel": "Farmer Registration:",
+                "farmerRegistrationDescription": "Farmers register by providing their name, location, farm type, and connecting their Ethereum wallet. This creates a verifiable profile that donors can review.",
+                "verificationProcessLabel": "Verification Process:",
+                "verificationProcessDescription": "The platform owner verifies both donors and farmers to ensure legitimacy. This adds an extra layer of trust to the ecosystem."
+            },
+            "step2": {
+                "title": "Disbursement Creation",
+                "farmerRequestLabel": "Farmers Request Help:",
+                "farmerRequestDescription": "Verified farmers explain what they need, why they need it, and how much money is required - like support for seeds, irrigation, or tools.",
+                "donorsChooseLabel": "Donors Choose Who to Support:",
+                "donorsChooseDescription": "Verified donors go through these requests and decide who they want to help, based on the farmer's story, location, or type of farming.",
+                "secureFundingLabel": "Secure & Transparent Funding:",
+                "secureFundingDescription": "Once a donor sends support, the platform makes sure the money is safely sent to the right farmer and records everything openly on the blockchain — so nothing can be hidden or changed."
+            },
+            "step3": {
+                "title": "Secure & Transparent Funding",
+                "farmersReceiveLabel": "Farmers Receive the Help:",
+                "farmersReceiveDescription": "When a donor supports a farmer's request, the farmer gets notified and can claim the funds directly into their wallet before the deadline.",
+                "trustReputationLabel": "Building Trust Through Reputation:",
+                "trustReputationDescription": "Every time a donation is successfully claimed and used, the donor's trust score goes up — encouraging more honest giving and long-term support.",
+                "noWastedFundsLabel": "No Wasted Funds:",
+                "noWastedFundsDescription": "If a farmer doesn't claim the help in time, the money safely goes back to the donor, making sure nothing is lost or stuck."
+            }
+        },
+        "benefits": {
+            "heading": "Benefits of FarmFund",
+            "subheading": "Our platform offers unique advantages for both donors and farmers through blockchain technology.",
+            "transparencyTitle": "Transparency",
+            "transparencyDescription": "All transactions are recorded on the blockchain, creating a transparent and immutable record of fund movement.",
+            "directConnectionTitle": "Direct Connection",
+            "directConnectionDescription": "Donors and farmers connect directly without intermediaries, reducing overhead and increasing impact.",
+            "efficiencyTitle": "Efficiency",
+            "efficiencyDescription": "Smart contracts automate the disbursement and claiming process, reducing administrative overhead.",
+            "sustainabilityTitle": "Sustainability",
+            "sustainabilityDescription": "The platform encourages long-term relationships between donors and farmers, promoting sustainable development."
+        },
+        "cta": {
+            "heading": "Ready to Get Started?",
+            "subheading": "Join FarmFund today and be part of a transparent ecosystem that empowers small farmers around the world.",
+            "registerDonor": "Register as Donor",
+            "registerFarmer": "Register as Farmer"
+        },
+        "images": {
+            "registrationProcess": "Registration Process",
+            "disbursementProcess": "Disbursement Process",
+            "claimingProcess": "Claiming Process"
+        }
+    },
+    "about": {
+        "hero": {
+            "heading": "About FarmFund",
+            "subheading": "We're on a mission to create a transparent and efficient system for supporting small farmers around the world."
+        },
+        "vision": {
+            "heading": "Our Vision",
+            "description": "At FarmFund, we envision a world where small farmers thrive through direct, transparent access to the resources they need. By leveraging blockchain technology, we aim to eliminate inefficiencies and intermediaries in aid distribution—empowering farmers, restoring trust, and fostering sustainable agricultural growth across developing communities."
+        },
+        "mission": {
+            "heading": "Our Mission",
+            "subheading": "We're committed to creating a more equitable and sustainable agricultural ecosystem through transparency and direct support.",
+            "transparency": {
+                "title": "Transparency",
+                "description": "We believe in complete transparency in aid distribution. Our blockchain-based platform ensures that every transaction is recorded and visible to all stakeholders."
+            },
+            "empowerment": {
+                "title": "Empowerment",
+                "description": "We aim to empower small farmers by providing them with direct access to resources and support, enabling them to develop sustainable farming practices."
+            },
+            "sustainability": {
+                "title": "Sustainability",
+                "description": "We're committed to promoting sustainable farming practices that protect the environment and ensure long-term food security for communities around the world."
+            }
+        },
+        "team": {
+            "heading": "Our Team",
+            "projectName": "FarmFund",
+            "projectDescription": "is our Final Year Project developed by students from",
+            "instituteName": "Don Bosco Institute of Technology",
+            "members": [
+                {
+                    "name": "Mohammad Armaan",
+                    "role": "DBIT CSE",
+                    "bio": "4th Year Student",
+                    "image": "/Armaan.png?height=200&width=200&text=CR"
+                },
+                {
+                    "name": "Mohammed Moinuddin",
+                    "role": "DBIT CSE",
+                    "bio": "4th Year Student",
+                    "image": "/Moinuddin.png?height=200&width=200&text=SJ"
+                },
+                {
+                    "name": "Muhammed Shaheer",
+                    "role": "DBIT CSE",
+                    "bio": "4th Year Student",
+                    "image": "/Shaheer.jpg?height=200&width=200&text=AP"
+                },
+                {
+                    "name": "Koustav Das",
+                    "role": "DBIT CSE",
+                    "bio": "4th Year Student",
+                    "image": "/Koustav.png?height=200&width=200&text=MC"
+                }
+            ]
+        },
+        "cta": {
+            "heading": "Join Us in Making a Difference",
+            "subheading": "Whether you're a donor looking to make an impact or a farmer seeking support, FarmFund provides a transparent platform to connect and create positive change.",
+            "registerDonor": "Register as Donor",
+            "registerFarmer": "Register as Farmer"
+        },
+        "images": {
+            "visionAlt": "FarmFund Vision"
+        }
+    },
+    "register": {
+        "pageTitle": "Register with FarmFund",
+        "walletConnect": {
+            "title": "Connect Your Wallet",
+            "description": "Connect your Ethereum wallet to register as a donor or farmer."
+        },
+        "tabs": {
+            "donor": "Donor",
+            "farmer": "Farmer"
+        },
+        "donor": {
+            "cardTitle": "Register as Donor",
+            "cardDescription": "Fill in your details to register as a donor on FarmFund.",
+            "form": {
+                "organizationNameLabel": "Organization Name",
+                "organizationNamePlaceholder": "Enter your organization name",
+                "descriptionLabel": "Description",
+                "descriptionPlaceholder": "Describe your organization and mission",
+                "registerButton": "Register as Donor",
+                "registeringButton": "Registering..."
+            }
+        },
+        "farmer": {
+            "cardTitle": "Register as Farmer",
+            "cardDescription": "Fill in your details to register as a farmer on FarmFund.",
+            "form": {
+                "fullNameLabel": "Full Name",
+                "fullNamePlaceholder": "Enter your full name",
+                "locationLabel": "Location",
+                "locationPlaceholder": "Enter your farm location",
+                "farmTypeLabel": "Farm Type",
+                "farmTypePlaceholder": "E.g., Organic, Traditional, etc.",
+                "registerButton": "Register as Farmer",
+                "registeringButton": "Registering..."
+            }
+        },
+        "success": {
+            "registrationCompleteTitle": "Registration Complete",
+            "donorRegisteredDescription": "You are registered as a donor in FarmFund.",
+            "farmerRegisteredDescription": "You are registered as a farmer in FarmFund."
+        },
+        "messages": {
+            "alreadyRegisteredDonor": "You are already registered as a donor.",
+            "alreadyRegisteredFarmer": "You are already registered as a farmer.",
+            "registrationFailedDonor": "Failed to register as donor. Please try again.",
+            "registrationFailedFarmer": "Failed to register as farmer. Please try again."
+        },
+        "toast": {
+            "walletConnectedTitle": "Wallet Connected",
+            "walletConnectedDescription": "Your wallet has been connected successfully.",
+            "alreadyRegisteredTitle": "Already Registered",
+            "alreadyRegisteredDonorDescription": "You are already registered as a donor.",
+            "alreadyRegisteredFarmerDescription": "You are already registered as a farmer.",
+            "registrationSuccessfulTitle": "Registration Successful",
+            "registrationSuccessfulDonorDescription": "You have been registered as a donor.",
+            "registrationSuccessfulFarmerDescription": "You have been registered as a farmer.",
+            "registrationFailedTitle": "Registration Failed",
+            "registrationFailedDonorDescription": "Failed to register as donor. Please try again.",
+            "registrationFailedFarmerDescription": "Failed to register as farmer. Please try again."
+        }
+    }
+}

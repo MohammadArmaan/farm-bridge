@@ -405,7 +405,7 @@ const loadAdminPage = async () => {
                 <div className="container mx-auto px-4 py-24 flex justify-center">
                     <div className="text-center">
                         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-700 mx-auto mb-4" />
-                        <p className="text-green-700">Loading dashboard...</p>
+                        <p className="text-green-700">Loading Admin Page...</p>
                     </div>
                 </div>
             );

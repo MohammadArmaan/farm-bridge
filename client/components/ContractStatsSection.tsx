@@ -1,13 +1,16 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Users, Leaf, Wallet, CheckCircle } from "lucide-react";
+import { Users, Leaf, CheckCircle } from "lucide-react";
 import { getContractStats } from "@/lib/blockchain";
-import { getGlobalDonorStats } from "@/lib/blockchain"; // import the helper added above
-
+import { getGlobalDonorStats } from "@/lib/blockchain"; 
 import StatsCounter from "./stats-counter";
+import { useLocale } from "./locale-provider";
+
 
 export default function ContractStatsSection() {
+  const { t } = useLocale(); 
+
   const [loading, setLoading] = useState(true);
   const [stats, setStats] = useState({
     totalDonors: 0,
@@ -22,10 +25,7 @@ export default function ContractStatsSection() {
       try {
         setLoading(true);
 
-        // contract-level stats (on-chain)
         const contractData = await getContractStats();
-
-        // aggregate donor stats using the list returned by getDonors()
         const donorTotals = await getGlobalDonorStats();
 
         setStats({
@@ -48,28 +48,27 @@ export default function ContractStatsSection() {
   return (
     <section className="py-16 bg-white dark:bg-black/70">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-3  gap-8">
-            <StatsCounter
-              title="Farmers Supported"
-              value={stats.totalBeneficiaries}
-              icon={<Leaf className="h-8 w-8 text-green-500" />}
-            />
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <StatsCounter
-            title="Total Donors"
+            title={t("stats.farmersSupported")}
+            value={stats.totalBeneficiaries}
+            icon={<Leaf className="h-8 w-8 text-green-500" />}
+          />
+          <StatsCounter
+            title={t("stats.totalDonors")}
             value={stats.totalDonors}
             icon={<Users className="h-8 w-8 text-pink-500" />}
           />
           <StatsCounter
-            title="Total Disbursements"
+            title={t("stats.totalDisbursements")}
             value={stats.totalDisbursements}
             icon={<CheckCircle className="h-8 w-8 text-yellow-500" />}
           />
-
         </div>
 
         {loading && (
           <div className="mt-6 text-center text-sm text-muted-foreground">
-            Loading stats...
+            {t("loading")}
           </div>
         )}
       </div>
