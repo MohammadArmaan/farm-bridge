@@ -132,7 +132,7 @@ export default function OwnerDashboardPage() {
             // Add a small delay to ensure blockchain state is ready
             await new Promise((resolve) => setTimeout(resolve, 100));
 
-            const owner = isAccountOwnerAsync(); // Make this async if it isn't already
+            const owner = await isAccountOwnerAsync(); // Make this async if it isn't already
             console.log("Is owner:", owner);
 
             setIsOwner(!!owner);

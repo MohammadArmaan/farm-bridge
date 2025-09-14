@@ -17,6 +17,7 @@ FarmFund bridges the gap between **donors** and **small-scale farmers**, creatin
 - Provides transparency in the flow of funds from donors to beneficiaries  
 - Builds reputation and trust through a verification system  
 - Tracks donation history and successful disbursements  
+- Provides multi language support(English, Hindi and Kannada) making it easier to follow
 
 ---
 
