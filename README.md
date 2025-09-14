@@ -49,7 +49,8 @@ FarmFund now comes with an **AI-powered multi-language chatbot** that helps both
 - Answer questions about **FarmFund**, **Blockchain**, **Ethereum**, and **Smart Contracts**  
 - Provide quick navigation with internal links (without page reloads)  
 - Support **multi-language responses** (English, Hindi, Kannada, etc.)  
-- Accessible through a floating chatbot icon on all pages  
+- Support **Text to Speech and Speech to Text** for different languages
+- Accessible through a floating chatbot icon on all pages
 
 ---
 
