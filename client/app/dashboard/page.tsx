@@ -50,6 +50,8 @@ import {
     Cell,
 } from "recharts";
 import CreateDisbursementModal from "@/components/CreateDisbursements"; // Adjust path as needed
+import ExportCSVButton from "@/components/ExportCsvButton";
+import DownloadReportButton from "@/components/DownloadReportButton";
 
 type AidRequest = {
     id: number;
@@ -306,7 +308,7 @@ export default function OwnerDashboardPage() {
 
     // Owner view
     return (
-        <div className="container mx-auto px-4 py-8">
+        <div className="container mx-auto px-4 py-8" id="dashboard-report">
             {/* Header */}
             <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-8">
                 <div>
@@ -425,7 +427,7 @@ export default function OwnerDashboardPage() {
                     </CardHeader>
                     <CardContent>
                         {donationTrend.length > 0 ? (
-                            <div className="h-60">
+                            <div className="h-60" id="funding-trend-chart">
                                 <ResponsiveContainer width="100%" height="100%">
                                     <LineChart data={donationTrend}>
                                         <CartesianGrid
@@ -482,7 +484,10 @@ export default function OwnerDashboardPage() {
                     </CardHeader>
                     <CardContent>
                         {pieData.reduce((s, p) => s + p.value, 0) > 0 ? (
-                            <div className="h-60">
+                            <div
+                                className="h-60"
+                                id="funded-vs-remaining-chart"
+                            >
                                 <ResponsiveContainer width="100%" height="100%">
                                     <PieChart>
                                         <Pie
@@ -529,17 +534,17 @@ export default function OwnerDashboardPage() {
                             View and manage aid requests (fulfilled or pending)
                         </CardDescription>
                     </div>
-                    <div className="flex items-center gap-2">
-                        <Button
-                            variant="ghost"
-                            onClick={() => {
-                                setPage(1);
-                                loadDashboardData();
-                                window.scrollTo({ top: 0, behavior: "smooth" });
-                            }}
-                        >
-                            Refresh
-                        </Button>
+                    <div className="flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center gap-2 w-full">
+                        <ExportCSVButton
+                            aidRequests={aidRequests}
+                            donors={donors}
+                            farmers={farmers}
+                        />
+                        <DownloadReportButton
+                            donors={donors}
+                            farmers={farmers}
+                            aidRequests={aidRequests}
+                        />
                         <Button
                             onClick={() => setShowDisbursementModal(true)}
                             className="bg-green-600 hover:bg-green-700"
