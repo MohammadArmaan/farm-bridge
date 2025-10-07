@@ -4,7 +4,6 @@ import Head from "next/head";
 import { requestAid } from "@/lib/blockchain";
 import { useLocale } from "@/components/locale-provider";
 
-
 export default function RequestAidPage({ contract }: { contract: any }) {
     const { t } = useLocale();
 
@@ -39,11 +38,8 @@ export default function RequestAidPage({ contract }: { contract: any }) {
     return (
         <div className="min-h-screen bg-white dark:bg-black/20">
             <Head>
-                <title>FarmFund - {t("aid.heading")}</title>
-                <meta
-                    name="description"
-                    content={t("aid.heading")}
-                />
+                <title>FarmBridge - {t("aid.heading")}</title>
+                <meta name="description" content={t("aid.heading")} />
             </Head>
 
             <main className="container mx-auto px-4 py-8">
@@ -60,7 +56,9 @@ export default function RequestAidPage({ contract }: { contract: any }) {
 
                     {success && (
                         <div className="bg-green-50 border-l-4 border-green-500 p-4 mb-6">
-                            <p className="text-green-700 dark:text-green-500">{success}</p>
+                            <p className="text-green-700 dark:text-green-500">
+                                {success}
+                            </p>
                         </div>
                     )}
 
@@ -80,7 +78,9 @@ export default function RequestAidPage({ contract }: { contract: any }) {
                                     onChange={(e) =>
                                         setRequestName(e.target.value)
                                     }
-                                    placeholder={t("aid.requestNamePlaceholder")}
+                                    placeholder={t(
+                                        "aid.requestNamePlaceholder"
+                                    )}
                                     className="w-full px-3 py-2 border border-gray-300 dark:border-gray-500 dark:bg-background rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
                                     required
                                 />

@@ -283,8 +283,8 @@ export default function OwnerDashboardPage() {
                     <CardHeader>
                         <CardTitle>Owner Dashboard (Private)</CardTitle>
                         <CardDescription>
-                            This dashboard is restricted to the FarmFund owner /
-                            government account.
+                            This dashboard is restricted to the FarmBridge owner
+                            / government account.
                         </CardDescription>
                     </CardHeader>
                     <CardContent>
@@ -316,7 +316,7 @@ export default function OwnerDashboardPage() {
                         Owner Dashboard
                     </h1>
                     <p className="text-sm text-muted-foreground mt-1">
-                        Private dashboard for the FarmFund owner. Account:{" "}
+                        Private dashboard for the FarmBridge owner. Account:{" "}
                         <span className="font-mono text-xs">
                             {account ?? "—"}
                         </span>

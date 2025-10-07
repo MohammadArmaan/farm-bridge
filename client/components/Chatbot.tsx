@@ -25,7 +25,7 @@ import { useLocale } from "./locale-provider";
 
 // Chat message type
 interface ChatMessage {
-    from: "user" | "farmfund";
+    from: "user" | "FarmBridge";
     text: string;
 }
 
@@ -289,7 +289,7 @@ export default function Chatbot() {
             setChatLog((prev) => [
                 ...prev,
                 {
-                    from: "farmfund",
+                    from: "FarmBridge",
                     text: data.response || "Sorry, something went wrong.",
                 },
             ]);
@@ -298,8 +298,8 @@ export default function Chatbot() {
             setChatLog((prev) => [
                 ...prev,
                 {
-                    from: "farmfund",
-                    text: "⚠️ Error: Unable to connect to FarmFund bot.",
+                    from: "FarmBridge",
+                    text: "⚠️ Error: Unable to connect to FarmBridge bot.",
                 },
             ]);
         } finally {
@@ -366,7 +366,7 @@ export default function Chatbot() {
                 >
                     <div className="flex flex-col gap-4">
                         {chatLog.map((msg, index) =>
-                            msg.from === "farmfund" ? (
+                            msg.from === "FarmBridge" ? (
                                 <div
                                     key={index}
                                     className="relative self-start bg-muted text-foreground sm:max-w-[400px] max-w-[250px] px-4 py-2 rounded-md text-sm break-words"

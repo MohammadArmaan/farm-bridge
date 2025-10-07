@@ -24,7 +24,13 @@ import {
     verifyDonor,
     verifyFarmer,
 } from "@/lib/blockchain";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+    Card,
+    CardContent,
+    CardDescription,
+    CardHeader,
+    CardTitle,
+} from "@/components/ui/card";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { toast } from "@/hooks/use-toast";
@@ -338,7 +344,7 @@ export default function AdminApprovalDashboard() {
         );
     };
 
-const loadAdminPage = async () => {
+    const loadAdminPage = async () => {
         setLoading(true);
         try {
             // Check wallet and owner status
@@ -371,8 +377,6 @@ const loadAdminPage = async () => {
                 setLoading(false);
                 return;
             }
-
-
         } catch (err) {
             console.error("Dashboard load error:", err);
             toast({
@@ -399,17 +403,17 @@ const loadAdminPage = async () => {
         };
     }, [toast]);
 
-        // Loading state
-        if (loading || !isInitialized) {
-            return (
-                <div className="container mx-auto px-4 py-24 flex justify-center">
-                    <div className="text-center">
-                        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-700 mx-auto mb-4" />
-                        <p className="text-green-700">Loading Admin Page...</p>
-                    </div>
+    // Loading state
+    if (loading || !isInitialized) {
+        return (
+            <div className="container mx-auto px-4 py-24 flex justify-center">
+                <div className="text-center">
+                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-700 mx-auto mb-4" />
+                    <p className="text-green-700">Loading Admin Page...</p>
                 </div>
-            );
-        }
+            </div>
+        );
+    }
 
     if (!isOwner) {
         return (
@@ -418,8 +422,8 @@ const loadAdminPage = async () => {
                     <CardHeader>
                         <CardTitle>Owner Dashboard (Private)</CardTitle>
                         <CardDescription>
-                            This dashboard is restricted to the FarmFund owner /
-                            government account.
+                            This dashboard is restricted to the FarmBridge owner
+                            / government account.
                         </CardDescription>
                     </CardHeader>
                     <CardContent>
@@ -449,10 +453,11 @@ const loadAdminPage = async () => {
                     <div className="flex items-center justify-between">
                         <div>
                             <h1 className="text-xl sm:text-2xl font-bold text-foreground">
-                                FarmFund Admin Dashboard
+                                FarmBridge Admin Dashboard
                             </h1>
                             <p className="text-sm sm:text-base text-muted-foreground hidden sm:block">
-                                Verify donors and farmers to ensure platform integrity
+                                Verify donors and farmers to ensure platform
+                                integrity
                             </p>
                         </div>
                         {/* Mobile menu button */}
@@ -480,7 +485,11 @@ const loadAdminPage = async () => {
             {/* Main Content */}
             <div className="flex flex-1 overflow-hidden">
                 {/* Left Panel */}
-                <div className={`${sidebarOpen ? 'w-full' : 'w-full'} lg:w-3/4 flex flex-col border-r border-gray-200 dark:border-gray-800`}>
+                <div
+                    className={`${
+                        sidebarOpen ? "w-full" : "w-full"
+                    } lg:w-3/4 flex flex-col border-r border-gray-200 dark:border-gray-800`}
+                >
                     {/* Tab Navigation */}
                     <div className="bg-white dark:bg-black/70 px-4 sm:px-6 py-3 border-b border-gray-200 dark:border-gray-800">
                         <div className="flex space-x-2 sm:space-x-4">
@@ -567,7 +576,9 @@ const loadAdminPage = async () => {
                                         loading ? "animate-spin" : ""
                                     }`}
                                 />
-                                <span className="hidden sm:inline">Refresh</span>
+                                <span className="hidden sm:inline">
+                                    Refresh
+                                </span>
                             </button>
                         </div>
                     </div>
@@ -612,10 +623,13 @@ const loadAdminPage = async () => {
                                             <th
                                                 scope="col"
                                                 className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider cursor-pointer"
-                                                onClick={() => handleSort("name")}
+                                                onClick={() =>
+                                                    handleSort("name")
+                                                }
                                             >
                                                 <div className="flex items-center">
-                                                    Name {renderSortIcon("name")}
+                                                    Name{" "}
+                                                    {renderSortIcon("name")}
                                                 </div>
                                             </th>
                                             {activeTab === "farmer" && (
@@ -628,7 +642,9 @@ const loadAdminPage = async () => {
                                                 >
                                                     <div className="flex items-center">
                                                         Location{" "}
-                                                        {renderSortIcon("location")}
+                                                        {renderSortIcon(
+                                                            "location"
+                                                        )}
                                                     </div>
                                                 </th>
                                             )}
@@ -637,7 +653,9 @@ const loadAdminPage = async () => {
                                                     scope="col"
                                                     className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider cursor-pointer hidden sm:table-cell"
                                                     onClick={() =>
-                                                        handleSort("totalDonated")
+                                                        handleSort(
+                                                            "totalDonated"
+                                                        )
                                                     }
                                                 >
                                                     <div className="flex items-center">
@@ -652,7 +670,9 @@ const loadAdminPage = async () => {
                                                 scope="col"
                                                 className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider cursor-pointer hidden md:table-cell"
                                                 onClick={() =>
-                                                    handleSort("registrationDate")
+                                                    handleSort(
+                                                        "registrationDate"
+                                                    )
                                                 }
                                             >
                                                 <div className="flex items-center">
@@ -685,8 +705,12 @@ const loadAdminPage = async () => {
                                                           key={donor.address}
                                                           className="hover:bg-gray-50 dark:hover:bg-black/85 cursor-pointer"
                                                           onClick={() => {
-                                                              setSelectedUser(donor);
-                                                              setSidebarOpen(true);
+                                                              setSelectedUser(
+                                                                  donor
+                                                              );
+                                                              setSidebarOpen(
+                                                                  true
+                                                              );
                                                           }}
                                                       >
                                                           <td className="px-3 sm:px-6 py-4 whitespace-nowrap">
@@ -698,7 +722,14 @@ const loadAdminPage = async () => {
                                                                           }
                                                                       </div>
                                                                       <div className="text-xs text-muted-foreground truncate max-w-xs">
-                                                                          {donor.address.slice(0, 6)}...{donor.address.slice(-4)}
+                                                                          {donor.address.slice(
+                                                                              0,
+                                                                              6
+                                                                          )}
+                                                                          ...
+                                                                          {donor.address.slice(
+                                                                              -4
+                                                                          )}
                                                                       </div>
                                                                   </div>
                                                               </div>
@@ -740,11 +771,15 @@ const loadAdminPage = async () => {
                                                                           setSelectedUser(
                                                                               donor
                                                                           );
-                                                                          setSidebarOpen(true);
+                                                                          setSidebarOpen(
+                                                                              true
+                                                                          );
                                                                       }}
                                                                   >
                                                                       <Eye
-                                                                          size={16}
+                                                                          size={
+                                                                              16
+                                                                          }
                                                                       />
                                                                   </button>
                                                                   {!donor.isVerified && (
@@ -821,7 +856,9 @@ const loadAdminPage = async () => {
                                                               setSelectedUser(
                                                                   farmer
                                                               );
-                                                              setSidebarOpen(true);
+                                                              setSidebarOpen(
+                                                                  true
+                                                              );
                                                           }}
                                                       >
                                                           <td className="px-3 sm:px-6 py-4 whitespace-nowrap">
@@ -833,17 +870,28 @@ const loadAdminPage = async () => {
                                                                           }
                                                                       </div>
                                                                       <div className="text-xs text-muted-foreground truncate max-w-xs">
-                                                                          {farmer.address.slice(0, 6)}...{farmer.address.slice(-4)}
+                                                                          {farmer.address.slice(
+                                                                              0,
+                                                                              6
+                                                                          )}
+                                                                          ...
+                                                                          {farmer.address.slice(
+                                                                              -4
+                                                                          )}
                                                                       </div>
                                                                   </div>
                                                               </div>
                                                           </td>
                                                           <td className="px-3 sm:px-6 py-4 whitespace-nowrap hidden sm:table-cell">
                                                               <div className="text-sm text-foreground">
-                                                                  {farmer.location}
+                                                                  {
+                                                                      farmer.location
+                                                                  }
                                                               </div>
                                                               <div className="text-xs text-muted-foreground">
-                                                                  {farmer.farmType}
+                                                                  {
+                                                                      farmer.farmType
+                                                                  }
                                                               </div>
                                                           </td>
                                                           <td className="px-3 sm:px-6 py-4 whitespace-nowrap hidden md:table-cell">
@@ -869,11 +917,15 @@ const loadAdminPage = async () => {
                                                                           setSelectedUser(
                                                                               farmer
                                                                           );
-                                                                          setSidebarOpen(true);
+                                                                          setSidebarOpen(
+                                                                              true
+                                                                          );
                                                                       }}
                                                                   >
                                                                       <Eye
-                                                                          size={16}
+                                                                          size={
+                                                                              16
+                                                                          }
                                                                       />
                                                                   </button>
                                                                   {!farmer.isVerified && (
@@ -948,24 +1000,36 @@ const loadAdminPage = async () => {
                 </div>
 
                 {/* Right Panel - Details (Mobile: Overlay, Desktop: Sidebar) */}
-                <div className={`
-                    ${sidebarOpen ? 'fixed inset-0 z-50 lg:relative lg:inset-auto' : 'hidden lg:block'}
+                <div
+                    className={`
+                    ${
+                        sidebarOpen
+                            ? "fixed inset-0 z-50 lg:relative lg:inset-auto"
+                            : "hidden lg:block"
+                    }
                     lg:w-1/4 bg-white dark:bg-black/80 overflow-y-auto
-                    ${sidebarOpen ? 'lg:block' : ''}
-                `}>
+                    ${sidebarOpen ? "lg:block" : ""}
+                `}
+                >
                     {/* Mobile overlay background */}
                     {sidebarOpen && (
-                        <div 
+                        <div
                             className="absolute inset-0 bg-black bg-opacity-50 lg:hidden"
                             onClick={() => setSidebarOpen(false)}
                         />
                     )}
-                    
+
                     {/* Sidebar content */}
-                    <div className={`
-                        ${sidebarOpen ? 'absolute right-0 top-0 h-full w-80 max-w-full lg:relative lg:w-full' : 'w-full'}
+                    <div
+                        className={`
+                        ${
+                            sidebarOpen
+                                ? "absolute right-0 top-0 h-full w-80 max-w-full lg:relative lg:w-full"
+                                : "w-full"
+                        }
                         bg-white dark:bg-black/80 p-4 sm:p-6 overflow-y-auto shadow-lg lg:shadow-none
-                    `}>
+                    `}
+                    >
                         {/* Mobile close button */}
                         {sidebarOpen && (
                             <button
@@ -1016,7 +1080,9 @@ const loadAdminPage = async () => {
                                                         Total Donated
                                                     </p>
                                                     <p className="text-lg font-semibold">
-                                                        {selectedUser.totalDonated}{" "}
+                                                        {
+                                                            selectedUser.totalDonated
+                                                        }{" "}
                                                         ETH
                                                     </p>
                                                 </div>
@@ -1044,7 +1110,9 @@ const loadAdminPage = async () => {
                                                     ></div>
                                                 </div>
                                                 <p className="text-right text-sm mt-1">
-                                                    {selectedUser.reputationScore}
+                                                    {
+                                                        selectedUser.reputationScore
+                                                    }
                                                     /100
                                                 </p>
                                             </div>
@@ -1081,8 +1149,9 @@ const loadAdminPage = async () => {
                                                     </p>
                                                     <p className="text-lg font-semibold">
                                                         {
-                                                            (selectedUser as Farmer)
-                                                                .totalReceived
+                                                            (
+                                                                selectedUser as Farmer
+                                                            ).totalReceived
                                                         }{" "}
                                                         ETH
                                                     </p>
@@ -1092,8 +1161,9 @@ const loadAdminPage = async () => {
                                                         Last Disbursement
                                                     </p>
                                                     <p className="text-sm">
-                                                        {(selectedUser as Farmer)
-                                                            .lastDisbursementDate
+                                                        {(
+                                                            selectedUser as Farmer
+                                                        ).lastDisbursementDate
                                                             ? new Date(
                                                                   (
                                                                       selectedUser as Farmer
@@ -1172,7 +1242,9 @@ const loadAdminPage = async () => {
                         ) : (
                             <div className="flex flex-col items-center justify-center h-full text-muted-foreground min-h-64">
                                 <Eye size={48} className="mb-4" />
-                                <p className="text-center">Select a {activeTab} to view details</p>
+                                <p className="text-center">
+                                    Select a {activeTab} to view details
+                                </p>
                             </div>
                         )}
                     </div>

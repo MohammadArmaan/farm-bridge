@@ -15,7 +15,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-    title: "FarmFund - Transparent Aid Distribution",
+    title: "FarmBridge - Transparent Aid Distribution",
     description: "A transparent aid distribution system for small farmers",
     generator: "v0.dev",
 };

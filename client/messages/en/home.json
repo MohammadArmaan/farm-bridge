@@ -1,12 +1,12 @@
 {
     "hero": {
         "title": "Transparent Aid Distribution for Farmers",
-        "subtitle": "FarmFund connects donors directly with small farmers, ensuring transparency and accountability through blockchain technology.",
+        "subtitle": "FarmBridge connects donors directly with small farmers, ensuring transparency and accountability through blockchain technology.",
         "getStarted": "Get Started",
         "learnMore": "Learn More"
     },
     "howItWorks": {
-        "heading": "How FarmFund Works",
+        "heading": "How FarmBridge Works",
         "description": "Our blockchain-powered platform ensures every donation reaches the right farmer with complete transparency.",
         "register": "1. Register & Verify",
         "registerDesc": "Donors and farmers register on the platform and get verified to ensure legitimacy and trust.",
@@ -18,7 +18,7 @@
     },
     "ctaSection": {
         "title": "Ready to Make a Difference?",
-        "subtitle": "Join FarmFund today and be part of a transparent ecosystem that empowers small farmers around the world.",
+        "subtitle": "Join FarmBridge today and be part of a transparent ecosystem that empowers small farmers around the world.",
         "donor": "Register as Donor",
         "farmer": "Register as Farmer"
     },
@@ -55,9 +55,9 @@
         "dashboard": "Dashboard"
     },
     "chatbot": {
-        "title": "FarmFund ChatBot 🤖",
-        "subtitle": "Ask about Blockchain, Ethereum, or FarmFund routes",
-        "placeholder": "Ask about FarmFund..."
+        "title": "FarmBridge ChatBot 🤖",
+        "subtitle": "Ask about Blockchain, Ethereum, or FarmBridge routes",
+        "placeholder": "Ask about FarmBridge..."
     },
     "theme": {
         "label": "Change Theme:",
@@ -74,7 +74,7 @@
     },
     "farmers": {
         "heading": "Our Farmers",
-        "description": "Meet the hardworking farmers who are part of the FarmFund ecosystem. Each farmer has been carefully selected based on their commitment to sustainable farming practices.",
+        "description": "Meet the hardworking farmers who are part of the FarmBridge ecosystem. Each farmer has been carefully selected based on their commitment to sustainable farming practices.",
         "searchPlaceholder": "Search by name, address, location or farm type...",
         "sortBy": "Sort By",
         "sortCriteria": {
@@ -92,7 +92,7 @@
     },
     "donors": {
         "heading": "Our Donors",
-        "description": "Meet the organizations and individuals who are making a difference by supporting small farmers through the FarmFund platform.",
+        "description": "Meet the organizations and individuals who are making a difference by supporting small farmers through the FarmBridge platform.",
         "searchPlaceholder": "Search by name, address, or description...",
         "sortBy": "Sort By",
         "sortCriteria": {
@@ -155,7 +155,7 @@
         "fundingError": "Failed to fund aid request. Please make sure you have enough ETH and the request is still active."
     },
     "how-it-works": {
-        "heading": "How FarmFund Works",
+        "heading": "How FarmBridge Works",
         "subheading": "Our blockchain-powered platform ensures every donation reaches the right farmer with complete transparency and accountability.",
         "processOverview": {
             "step1": {
@@ -175,7 +175,7 @@
             }
         },
         "detailedExplanation": {
-            "heading": "The FarmFund Process",
+            "heading": "The FarmBridge Process",
             "subheading": "A detailed look at how our platform connects donors with farmers through blockchain technology.",
             "step1": {
                 "title": "Registration & Verification",
@@ -206,7 +206,7 @@
             }
         },
         "benefits": {
-            "heading": "Benefits of FarmFund",
+            "heading": "Benefits of FarmBridge",
             "subheading": "Our platform offers unique advantages for both donors and farmers through blockchain technology.",
             "transparencyTitle": "Transparency",
             "transparencyDescription": "All transactions are recorded on the blockchain, creating a transparent and immutable record of fund movement.",
@@ -219,7 +219,7 @@
         },
         "cta": {
             "heading": "Ready to Get Started?",
-            "subheading": "Join FarmFund today and be part of a transparent ecosystem that empowers small farmers around the world.",
+            "subheading": "Join FarmBridge today and be part of a transparent ecosystem that empowers small farmers around the world.",
             "registerDonor": "Register as Donor",
             "registerFarmer": "Register as Farmer"
         },
@@ -231,12 +231,12 @@
     },
     "about": {
         "hero": {
-            "heading": "About FarmFund",
+            "heading": "About FarmBridge",
             "subheading": "We're on a mission to create a transparent and efficient system for supporting small farmers around the world."
         },
         "vision": {
             "heading": "Our Vision",
-            "description": "At FarmFund, we envision a world where small farmers thrive through direct, transparent access to the resources they need. By leveraging blockchain technology, we aim to eliminate inefficiencies and intermediaries in aid distribution—empowering farmers, restoring trust, and fostering sustainable agricultural growth across developing communities."
+            "description": "At FarmBridge, we envision a world where small farmers thrive through direct, transparent access to the resources they need. By leveraging blockchain technology, we aim to eliminate inefficiencies and intermediaries in aid distribution—empowering farmers, restoring trust, and fostering sustainable agricultural growth across developing communities."
         },
         "mission": {
             "heading": "Our Mission",
@@ -256,7 +256,7 @@
         },
         "team": {
             "heading": "Our Team",
-            "projectName": "FarmFund",
+            "projectName": "FarmBridge",
             "projectDescription": "is our Final Year Project developed by students from",
             "instituteName": "Don Bosco Institute of Technology",
             "members": [
@@ -288,16 +288,16 @@
         },
         "cta": {
             "heading": "Join Us in Making a Difference",
-            "subheading": "Whether you're a donor looking to make an impact or a farmer seeking support, FarmFund provides a transparent platform to connect and create positive change.",
+            "subheading": "Whether you're a donor looking to make an impact or a farmer seeking support, FarmBridge provides a transparent platform to connect and create positive change.",
             "registerDonor": "Register as Donor",
             "registerFarmer": "Register as Farmer"
         },
         "images": {
-            "visionAlt": "FarmFund Vision"
+            "visionAlt": "FarmBridge Vision"
         }
     },
     "register": {
-        "pageTitle": "Register with FarmFund",
+        "pageTitle": "Register with FarmBridge",
         "walletConnect": {
             "title": "Connect Your Wallet",
             "description": "Connect your Ethereum wallet to register as a donor or farmer."
@@ -308,7 +308,7 @@
         },
         "donor": {
             "cardTitle": "Register as Donor",
-            "cardDescription": "Fill in your details to register as a donor on FarmFund.",
+            "cardDescription": "Fill in your details to register as a donor on FarmBridge.",
             "form": {
                 "organizationNameLabel": "Organization Name",
                 "organizationNamePlaceholder": "Enter your organization name",
@@ -320,7 +320,7 @@
         },
         "farmer": {
             "cardTitle": "Register as Farmer",
-            "cardDescription": "Fill in your details to register as a farmer on FarmFund.",
+            "cardDescription": "Fill in your details to register as a farmer on FarmBridge.",
             "form": {
                 "fullNameLabel": "Full Name",
                 "fullNamePlaceholder": "Enter your full name",
@@ -334,8 +334,8 @@
         },
         "success": {
             "registrationCompleteTitle": "Registration Complete",
-            "donorRegisteredDescription": "You are registered as a donor in FarmFund.",
-            "farmerRegisteredDescription": "You are registered as a farmer in FarmFund."
+            "donorRegisteredDescription": "You are registered as a donor in FarmBridge.",
+            "farmerRegisteredDescription": "You are registered as a farmer in FarmBridge."
         },
         "messages": {
             "alreadyRegisteredDonor": "You are already registered as a donor.",

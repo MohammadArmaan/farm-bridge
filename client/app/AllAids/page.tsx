@@ -10,7 +10,6 @@ import {
 } from "@/lib/blockchain";
 import { useLocale } from "@/components/locale-provider";
 
-
 export default function AllAidRequestsPage({ contract }: { contract: any }) {
     const { t } = useLocale();
 
@@ -35,7 +34,9 @@ export default function AllAidRequestsPage({ contract }: { contract: any }) {
                 applyFilter(requests, filter);
 
                 const uniqueFarmers = Array.from(
-                    new Set(requests.map((req: { farmer: string }) => req.farmer))
+                    new Set(
+                        requests.map((req: { farmer: string }) => req.farmer)
+                    )
                 );
                 const farmersInfo: { [key: string]: any } = {};
 
@@ -114,7 +115,7 @@ export default function AllAidRequestsPage({ contract }: { contract: any }) {
     return (
         <div className="min-h-screen bg-white dark:bg-black/20">
             <Head>
-                <title>FarmFund - {t("allAids.allRequestsHeading")}</title>
+                <title>FarmBridge - {t("allAids.allRequestsHeading")}</title>
                 <meta
                     name="description"
                     content={t("allAids.allRequestsHeading")}
@@ -212,7 +213,10 @@ export default function AllAidRequestsPage({ contract }: { contract: any }) {
                                     </thead>
                                     <tbody className="bg-white dark:bg-black/70 divide-y divide-gray-200 dark:divide-gray-800">
                                         {filteredRequests.map((request) => (
-                                            <tr key={request.id} className="hover:bg-gray-50 dark:hover:bg-gray-950">
+                                            <tr
+                                                key={request.id}
+                                                className="hover:bg-gray-50 dark:hover:bg-gray-950"
+                                            >
                                                 <td className="px-6 py-4 whitespace-nowrap">
                                                     <div className="text-sm font-medium text-foreground">
                                                         {request.name}
@@ -223,41 +227,65 @@ export default function AllAidRequestsPage({ contract }: { contract: any }) {
                                                 </td>
                                                 <td className="px-6 py-4 whitespace-nowrap">
                                                     <div className="text-sm text-foreground">
-                                                        {farmerInfo[request.farmer]?.name || truncateAddress(request.farmer)}
+                                                        {farmerInfo[
+                                                            request.farmer
+                                                        ]?.name ||
+                                                            truncateAddress(
+                                                                request.farmer
+                                                            )}
                                                     </div>
                                                     <div className="text-xs text-muted-foreground">
-                                                        {farmerInfo[request.farmer]?.location || ""}
+                                                        {farmerInfo[
+                                                            request.farmer
+                                                        ]?.location || ""}
                                                     </div>
                                                 </td>
                                                 <td className="px-6 py-4 whitespace-nowrap">
                                                     <div className="text-sm text-foreground">
-                                                        {request.amountRequested} ETH
+                                                        {
+                                                            request.amountRequested
+                                                        }{" "}
+                                                        ETH
                                                     </div>
                                                     <div className="text-xs text-muted-foreground">
-                                                        {t("allAids.funded")}: {request.amountFunded} ETH
+                                                        {t("allAids.funded")}:{" "}
+                                                        {request.amountFunded}{" "}
+                                                        ETH
                                                     </div>
                                                 </td>
                                                 <td className="px-6 py-4 whitespace-nowrap text-sm text-muted-foreground">
-                                                    {formatDate(request.timestamp)}
+                                                    {formatDate(
+                                                        request.timestamp
+                                                    )}
                                                 </td>
                                                 <td className="px-6 py-4 whitespace-nowrap">
                                                     {request.fulfilled ? (
                                                         <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800 dark:text-green-500">
-                                                            {t("allAids.status.fulfilled")}
+                                                            {t(
+                                                                "allAids.status.fulfilled"
+                                                            )}
                                                         </span>
                                                     ) : (
                                                         <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
-                                                            {t("allAids.status.active")}
+                                                            {t(
+                                                                "allAids.status.active"
+                                                            )}
                                                         </span>
                                                     )}
                                                 </td>
                                                 <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                                     {!request.fulfilled && (
                                                         <button
-                                                            onClick={() => setSelectedRequest(request)}
+                                                            onClick={() =>
+                                                                setSelectedRequest(
+                                                                    request
+                                                                )
+                                                            }
                                                             className="text-green-600 hover:text-green-700"
                                                         >
-                                                            {t("allAids.fundButton")}
+                                                            {t(
+                                                                "allAids.fundButton"
+                                                            )}
                                                         </button>
                                                     )}
                                                 </td>
@@ -273,70 +301,116 @@ export default function AllAidRequestsPage({ contract }: { contract: any }) {
                     {selectedRequest && (
                         <div className="fixed inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center z-10">
                             <div className="bg-white rounded-lg p-6 max-w-md w-full">
-                                <h2 className="text-xl font-bold mb-4">{t("allAids.fundingModalTitle")}</h2>
+                                <h2 className="text-xl font-bold mb-4">
+                                    {t("allAids.fundingModalTitle")}
+                                </h2>
 
                                 <div className="mb-4">
-                                    <p className="text-sm font-medium text-gray-700">{t("allAids.request")}</p>
-                                    <p className="font-semibold">{selectedRequest.name}</p>
+                                    <p className="text-sm font-medium text-gray-700">
+                                        {t("allAids.request")}
+                                    </p>
+                                    <p className="font-semibold">
+                                        {selectedRequest.name}
+                                    </p>
                                 </div>
 
                                 <div className="mb-4">
-                                    <p className="text-sm font-medium text-gray-700">{t("allAids.farmer")}</p>
-                                    <p>{farmerInfo[selectedRequest.farmer]?.name || truncateAddress(selectedRequest.farmer)}</p>
+                                    <p className="text-sm font-medium text-gray-700">
+                                        {t("allAids.farmer")}
+                                    </p>
+                                    <p>
+                                        {farmerInfo[selectedRequest.farmer]
+                                            ?.name ||
+                                            truncateAddress(
+                                                selectedRequest.farmer
+                                            )}
+                                    </p>
                                 </div>
 
                                 <div className="mb-4">
-                                    <p className="text-sm font-medium text-gray-700">{t("allAids.amountRequestedLabel")}</p>
+                                    <p className="text-sm font-medium text-gray-700">
+                                        {t("allAids.amountRequestedLabel")}
+                                    </p>
                                     <p>{selectedRequest.amountRequested} ETH</p>
                                 </div>
 
                                 <div className="mb-4">
-                                    <p className="text-sm font-medium text-gray-700">{t("allAids.alreadyFunded")}</p>
+                                    <p className="text-sm font-medium text-gray-700">
+                                        {t("allAids.alreadyFunded")}
+                                    </p>
                                     <p>{selectedRequest.amountFunded} ETH</p>
                                 </div>
 
                                 <div className="mb-4">
-                                    <p className="text-sm font-medium text-gray-700">{t("allAids.remainingAmount")}</p>
+                                    <p className="text-sm font-medium text-gray-700">
+                                        {t("allAids.remainingAmount")}
+                                    </p>
                                     <p>
-                                        {parseFloat(selectedRequest.amountRequested) - parseFloat(selectedRequest.amountFunded)} ETH
+                                        {parseFloat(
+                                            selectedRequest.amountRequested
+                                        ) -
+                                            parseFloat(
+                                                selectedRequest.amountFunded
+                                            )}{" "}
+                                        ETH
                                     </p>
                                 </div>
 
                                 {fundingError && (
                                     <div className="bg-red-50 border-l-4 border-red-500 p-3 mb-4">
-                                        <p className="text-sm text-red-700">{fundingError}</p>
+                                        <p className="text-sm text-red-700">
+                                            {fundingError}
+                                        </p>
                                     </div>
                                 )}
 
                                 {fundingSuccess && (
                                     <div className="bg-green-50 border-l-4 border-green-500 p-3 mb-4">
-                                        <p className="text-sm text-green-700">{fundingSuccess}</p>
+                                        <p className="text-sm text-green-700">
+                                            {fundingSuccess}
+                                        </p>
                                     </div>
                                 )}
 
                                 <form onSubmit={handleFundRequest}>
                                     <div className="mb-4">
-                                        <label htmlFor="fundAmount" className="block text-sm font-medium text-gray-700 mb-1">
+                                        <label
+                                            htmlFor="fundAmount"
+                                            className="block text-sm font-medium text-gray-700 mb-1"
+                                        >
                                             {t("allAids.fundAmountLabel")}
                                         </label>
                                         <input
                                             type="number"
                                             id="fundAmount"
                                             value={fundAmount}
-                                            onChange={(e) => setFundAmount(e.target.value)}
+                                            onChange={(e) =>
+                                                setFundAmount(e.target.value)
+                                            }
                                             step="0.01"
-                                            max={parseFloat(selectedRequest.amountRequested) - parseFloat(selectedRequest.amountFunded)}
+                                            max={
+                                                parseFloat(
+                                                    selectedRequest.amountRequested
+                                                ) -
+                                                parseFloat(
+                                                    selectedRequest.amountFunded
+                                                )
+                                            }
                                             placeholder="0.00"
                                             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
                                             required
                                         />
-                                        <p className="text-xs text-gray-500 mt-1">{t("allAids.fundAmountHint")}</p>
+                                        <p className="text-xs text-gray-500 mt-1">
+                                            {t("allAids.fundAmountHint")}
+                                        </p>
                                     </div>
 
                                     <div className="flex justify-end space-x-3">
                                         <button
                                             type="button"
-                                            onClick={() => setSelectedRequest(null)}
+                                            onClick={() =>
+                                                setSelectedRequest(null)
+                                            }
                                             className="px-4 py-2 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300"
                                         >
                                             {t("allAids.cancelButton")}
@@ -346,7 +420,9 @@ export default function AllAidRequestsPage({ contract }: { contract: any }) {
                                             disabled={fundingLoading}
                                             className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 disabled:opacity-50"
                                         >
-                                            {fundingLoading ? t("allAids.processing") : t("allAids.fundButton")}
+                                            {fundingLoading
+                                                ? t("allAids.processing")
+                                                : t("allAids.fundButton")}
                                         </button>
                                     </div>
                                 </form>

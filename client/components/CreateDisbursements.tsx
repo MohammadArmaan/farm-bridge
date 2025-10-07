@@ -306,7 +306,9 @@ export default function CreateDisbursementModal({
         if (numeric > maxAllowed + 1e-12) {
             toast({
                 title: "Amount too large",
-                description: `You can fund a maximum of ${maxAllowed.toFixed(4)} ETH for this request.`,
+                description: `You can fund a maximum of ${maxAllowed.toFixed(
+                    4
+                )} ETH for this request.`,
                 variant: "destructive",
             });
             return;
@@ -325,7 +327,7 @@ export default function CreateDisbursementModal({
 
             // Call success callback to refresh parent data
             onSuccess?.();
-            
+
             // Close modal and reset form
             onOpenChange(false);
             setSelectedRequestId("");
@@ -352,172 +354,204 @@ export default function CreateDisbursementModal({
 
     return (
         <Dialog open={open} onOpenChange={onOpenChange}>
-  <DialogContent className="w-full sm:max-w-lg md:max-w-2xl max-h-[80vh] overflow-y-auto rounded-2xl p-6">
-    <DialogHeader>
-      <DialogTitle className="text-xl sm:text-2xl text-green-700">
-        Create Disbursement
-      </DialogTitle>
-      <DialogDescription className="text-sm sm:text-base">
-        Allocate funds to an aid request. Funds will be sent directly from your wallet.
-      </DialogDescription>
-    </DialogHeader>
+            <DialogContent className="w-full sm:max-w-lg md:max-w-2xl max-h-[80vh] overflow-y-auto rounded-2xl p-6">
+                <DialogHeader>
+                    <DialogTitle className="text-xl sm:text-2xl text-green-700">
+                        Create Disbursement
+                    </DialogTitle>
+                    <DialogDescription className="text-sm sm:text-base">
+                        Allocate funds to an aid request. Funds will be sent
+                        directly from your wallet.
+                    </DialogDescription>
+                </DialogHeader>
 
-    {loadingData ? (
-      <div className="flex justify-center py-8">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-green-700" />
-      </div>
-    ) : (
-      <form onSubmit={handleSubmit} className="space-y-6">
-        {/* Select Aid Request */}
-        <div className="space-y-2">
-          <Label>Choose Aid Request</Label>
-          <Select
-            value={selectedRequestId}
-            onValueChange={(v) => setSelectedRequestId(String(v))}
-            disabled={loading}
-          >
-            <SelectTrigger className="w-full h-auto">
-              <SelectValue placeholder="Select aid request to fund" />
-            </SelectTrigger>
-            <SelectContent>
-              {sortedRequests.length === 0 && (
-                <SelectItem value="none" disabled>
-                  No requests available
-                </SelectItem>
-              )}
-              {sortedRequests.map((req) => (
-                <SelectItem
-                  key={req.id}
-                  value={String(req.id)}
-                  disabled={req.fulfilled}
-                >
-                  <div className="flex flex-col justify-start items-start sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-3">
-                    <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
-                      <span className="font-medium truncate max-w-[200px] sm:max-w-[300px]">
-                        {req.farmerName}
-                      </span>
-                      <span className="text-muted-foreground truncate max-w-[200px] sm:max-w-[300px]">
-                        | {req.name}
-                      </span>
+                {loadingData ? (
+                    <div className="flex justify-center py-8">
+                        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-green-700" />
                     </div>
-                    <Badge
-                      variant={req.fulfilled ? "secondary" : "default"}
-                      className="whitespace-nowrap text-xs"
-                    >
-                      {req.remainingEth.toFixed(4)} ETH remaining
-                    </Badge>
-                  </div>
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-        </div>
+                ) : (
+                    <form onSubmit={handleSubmit} className="space-y-6">
+                        {/* Select Aid Request */}
+                        <div className="space-y-2">
+                            <Label>Choose Aid Request</Label>
+                            <Select
+                                value={selectedRequestId}
+                                onValueChange={(v) =>
+                                    setSelectedRequestId(String(v))
+                                }
+                                disabled={loading}
+                            >
+                                <SelectTrigger className="w-full h-auto">
+                                    <SelectValue placeholder="Select aid request to fund" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    {sortedRequests.length === 0 && (
+                                        <SelectItem value="none" disabled>
+                                            No requests available
+                                        </SelectItem>
+                                    )}
+                                    {sortedRequests.map((req) => (
+                                        <SelectItem
+                                            key={req.id}
+                                            value={String(req.id)}
+                                            disabled={req.fulfilled}
+                                        >
+                                            <div className="flex flex-col justify-start items-start sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-3">
+                                                <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
+                                                    <span className="font-medium truncate max-w-[200px] sm:max-w-[300px]">
+                                                        {req.farmerName}
+                                                    </span>
+                                                    <span className="text-muted-foreground truncate max-w-[200px] sm:max-w-[300px]">
+                                                        | {req.name}
+                                                    </span>
+                                                </div>
+                                                <Badge
+                                                    variant={
+                                                        req.fulfilled
+                                                            ? "secondary"
+                                                            : "default"
+                                                    }
+                                                    className="whitespace-nowrap text-xs"
+                                                >
+                                                    {req.remainingEth.toFixed(
+                                                        4
+                                                    )}{" "}
+                                                    ETH remaining
+                                                </Badge>
+                                            </div>
+                                        </SelectItem>
+                                    ))}
+                                </SelectContent>
+                            </Select>
+                        </div>
 
-        {/* Selected request details */}
-        {selectedRequest && (
-          <div className="p-4 bg-gray-50 dark:bg-gray-700 rounded-lg space-y-2 text-sm">
-            <strong className="block mb-1">Selected Request Details:</strong>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-              <div>
-                <span className="text-muted-foreground">Farmer:</span>{" "}
-                {selectedRequest.farmerName}
-              </div>
-              <div>
-                <span className="text-muted-foreground">Purpose:</span>{" "}
-                {selectedRequest.purpose || "—"}
-              </div>
-              <div>
-                <span className="text-muted-foreground">Requested:</span>{" "}
-                {selectedRequest.amountRequestedEth} ETH
-              </div>
-              <div>
-                <span className="text-muted-foreground">Already Funded:</span>{" "}
-                {selectedRequest.amountFundedEth} ETH
-              </div>
-              <div className="sm:col-span-2">
-                <span className="text-muted-foreground">Remaining:</span>{" "}
-                <strong>{selectedRequest.remainingEth.toFixed(4)} ETH</strong>
-              </div>
-            </div>
-          </div>
-        )}
+                        {/* Selected request details */}
+                        {selectedRequest && (
+                            <div className="p-4 bg-gray-50 dark:bg-gray-700 rounded-lg space-y-2 text-sm">
+                                <strong className="block mb-1">
+                                    Selected Request Details:
+                                </strong>
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                                    <div>
+                                        <span className="text-muted-foreground">
+                                            Farmer:
+                                        </span>{" "}
+                                        {selectedRequest.farmerName}
+                                    </div>
+                                    <div>
+                                        <span className="text-muted-foreground">
+                                            Purpose:
+                                        </span>{" "}
+                                        {selectedRequest.purpose || "—"}
+                                    </div>
+                                    <div>
+                                        <span className="text-muted-foreground">
+                                            Requested:
+                                        </span>{" "}
+                                        {selectedRequest.amountRequestedEth} ETH
+                                    </div>
+                                    <div>
+                                        <span className="text-muted-foreground">
+                                            Already Funded:
+                                        </span>{" "}
+                                        {selectedRequest.amountFundedEth} ETH
+                                    </div>
+                                    <div className="sm:col-span-2">
+                                        <span className="text-muted-foreground">
+                                            Remaining:
+                                        </span>{" "}
+                                        <strong>
+                                            {selectedRequest.remainingEth.toFixed(
+                                                4
+                                            )}{" "}
+                                            ETH
+                                        </strong>
+                                    </div>
+                                </div>
+                            </div>
+                        )}
 
-        {/* Input */}
-        <div className="space-y-2">
-          <Label htmlFor="amount">Amount to fund (ETH)</Label>
-          <div className="flex flex-col sm:flex-row gap-2">
-            <Input
-              id="amount"
-              type="number"
-              step="0.0001"
-              min="0.0001"
-              max={maxAllowed || undefined}
-              value={fundAmount}
-              onChange={(e) => setFundAmount(e.target.value)}
-              placeholder={
-                selectedRequest
-                  ? `Max ${maxAllowed.toFixed(4)} ETH`
-                  : "0.0000"
-              }
-              disabled={loading || !selectedRequest}
-              required
-            />
-            {selectedRequest && (
-              <Button
-                type="button"
-                variant="outline"
-                onClick={handleSetMaxAmount}
-                disabled={loading}
-                className="sm:w-auto"
-              >
-                Max
-              </Button>
-            )}
-          </div>
-          {selectedRequest && (
-            <p className="text-xs text-muted-foreground">
-              Maximum allowed: <strong>{maxAllowed.toFixed(8)} ETH</strong>
-            </p>
-          )}
-        </div>
+                        {/* Input */}
+                        <div className="space-y-2">
+                            <Label htmlFor="amount">Amount to fund (ETH)</Label>
+                            <div className="flex flex-col sm:flex-row gap-2">
+                                <Input
+                                    id="amount"
+                                    type="number"
+                                    step="0.0001"
+                                    min="0.0001"
+                                    max={maxAllowed || undefined}
+                                    value={fundAmount}
+                                    onChange={(e) =>
+                                        setFundAmount(e.target.value)
+                                    }
+                                    placeholder={
+                                        selectedRequest
+                                            ? `Max ${maxAllowed.toFixed(4)} ETH`
+                                            : "0.0000"
+                                    }
+                                    disabled={loading || !selectedRequest}
+                                    required
+                                />
+                                {selectedRequest && (
+                                    <Button
+                                        type="button"
+                                        variant="outline"
+                                        onClick={handleSetMaxAmount}
+                                        disabled={loading}
+                                        className="sm:w-auto"
+                                    >
+                                        Max
+                                    </Button>
+                                )}
+                            </div>
+                            {selectedRequest && (
+                                <p className="text-xs text-muted-foreground">
+                                    Maximum allowed:{" "}
+                                    <strong>{maxAllowed.toFixed(8)} ETH</strong>
+                                </p>
+                            )}
+                        </div>
 
-        <Separator />
+                        <Separator />
 
-        {/* Footer */}
-        <DialogFooter className="flex flex-col-reverse sm:flex-row sm:justify-between gap-2">
-          <Button
-            type="button"
-            variant="outline"
-            onClick={() => onOpenChange(false)}
-            disabled={loading}
-            className="w-full sm:w-auto"
-          >
-            Cancel
-          </Button>
-          <Button
-            type="submit"
-            className="bg-green-600 hover:bg-green-700 w-full sm:w-auto"
-            disabled={loading || !selectedRequest || !fundAmount}
-          >
-            {loading ? (
-              <div className="flex items-center gap-2">
-                <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white" />
-                Processing...
-              </div>
-            ) : (
-              "Fund Request"
-            )}
-          </Button>
-        </DialogFooter>
+                        {/* Footer */}
+                        <DialogFooter className="flex flex-col-reverse sm:flex-row sm:justify-between gap-2">
+                            <Button
+                                type="button"
+                                variant="outline"
+                                onClick={() => onOpenChange(false)}
+                                disabled={loading}
+                                className="w-full sm:w-auto"
+                            >
+                                Cancel
+                            </Button>
+                            <Button
+                                type="submit"
+                                className="bg-green-600 hover:bg-green-700 w-full sm:w-auto"
+                                disabled={
+                                    loading || !selectedRequest || !fundAmount
+                                }
+                            >
+                                {loading ? (
+                                    <div className="flex items-center gap-2">
+                                        <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white" />
+                                        Processing...
+                                    </div>
+                                ) : (
+                                    "Fund Request"
+                                )}
+                            </Button>
+                        </DialogFooter>
 
-        <div className="text-xs text-muted-foreground border-t pt-4">
-          <strong>Note:</strong> Funds are sent via the FarmFund smart contract.
-          Ensure your wallet has sufficient ETH balance.
-        </div>
-      </form>
-    )}
-  </DialogContent>
-</Dialog>
-
+                        <div className="text-xs text-muted-foreground border-t pt-4">
+                            <strong>Note:</strong> Funds are sent via the
+                            FarmBridge smart contract. Ensure your wallet has
+                            sufficient ETH balance.
+                        </div>
+                    </form>
+                )}
+            </DialogContent>
+        </Dialog>
     );
 }

@@ -1,6 +1,6 @@
-# 🌾 FarmFund
+# 🌾 FarmBridge
 
-FarmFund is a transparent **blockchain-based aid distribution system** designed specifically for **small farmers**.  
+FarmBridge is a transparent **blockchain-based aid distribution system** designed specifically for **small farmers**.  
 It implements a **farmer-initiated model** that allows farmers to request aid directly, enabling donors to contribute to specific farming projects in a **transparent and accountable** way.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)  
@@ -10,53 +10,56 @@ It implements a **farmer-initiated model** that allows farmers to request aid di
 
 ## 📖 Overview
 
-FarmFund bridges the gap between **donors** and **small-scale farmers**, creating a decentralized platform that:
+FarmBridge bridges the gap between **donors** and **small-scale farmers**, creating a decentralized platform that:
 
-- Enables farmers to directly request financial assistance for specific agricultural needs  
-- Allows donors to contribute directly to verified farmers' projects  
-- Provides transparency in the flow of funds from donors to beneficiaries  
-- Builds reputation and trust through a verification system  
-- Tracks donation history and successful disbursements  
-- Provides multi language support(English, Hindi and Kannada) making it easier to follow
+-   Enables farmers to directly request financial assistance for specific agricultural needs
+-   Allows donors to contribute directly to verified farmers' projects
+-   Provides transparency in the flow of funds from donors to beneficiaries
+-   Builds reputation and trust through a verification system
+-   Tracks donation history and successful disbursements
+-   Provides multi language support(English, Hindi and Kannada) making it easier to follow
 
 ---
 
 ## ✨ Features
 
 ### 👩‍🌾 For Farmers
-- **Self-registration**: Farmers can register with details including location and farm type  
-- **Aid requests**: Create specific funding requests with detailed purposes and amounts  
-- **Verification**: Verified by the platform to build trust with donors  
-- **Direct fund receipt**: Receive funds directly to their wallet once approved  
+
+-   **Self-registration**: Farmers can register with details including location and farm type
+-   **Aid requests**: Create specific funding requests with detailed purposes and amounts
+-   **Verification**: Verified by the platform to build trust with donors
+-   **Direct fund receipt**: Receive funds directly to their wallet once approved
 
 ### 💰 For Donors
-- **Registration**: Create a profile with name and description  
-- **Transparent giving**: View all aid requests and choose which projects to fund  
-- **Reputation system**: Build reputation through consistent, successful disbursements  
-- **Verification**: Get verified to enhance trust with farmers and other stakeholders  
+
+-   **Registration**: Create a profile with name and description
+-   **Transparent giving**: View all aid requests and choose which projects to fund
+-   **Reputation system**: Build reputation through consistent, successful disbursements
+-   **Verification**: Get verified to enhance trust with farmers and other stakeholders
 
 ### 🛡️ For Platform Administrators
-- **Verification management**: Verify both farmers and donors to ensure authenticity  
-- **Statistics tracking**: Access comprehensive statistics on platform usage  
-- **Transparency**: All transactions and activities are recorded on the blockchain  
+
+-   **Verification management**: Verify both farmers and donors to ensure authenticity
+-   **Statistics tracking**: Access comprehensive statistics on platform usage
+-   **Transparency**: All transactions and activities are recorded on the blockchain
 
 ---
 
 ## 🤖 Chatbot Integration
 
-FarmFund now comes with an **AI-powered multi-language chatbot** that helps both farmers and donors:
+FarmBridge now comes with an **AI-powered multi-language chatbot** that helps both farmers and donors:
 
-- Answer questions about **FarmFund**, **Blockchain**, **Ethereum**, and **Smart Contracts**  
-- Provide quick navigation with internal links (without page reloads)  
-- Support **multi-language responses** (English, Hindi, Kannada, etc.)  
-- Support **Text to Speech and Speech to Text** for different languages
-- Accessible through a floating chatbot icon on all pages
+-   Answer questions about **FarmBridge**, **Blockchain**, **Ethereum**, and **Smart Contracts**
+-   Provide quick navigation with internal links (without page reloads)
+-   Support **multi-language responses** (English, Hindi, Kannada, etc.)
+-   Support **Text to Speech and Speech to Text** for different languages
+-   Accessible through a floating chatbot icon on all pages
 
 ---
 
 ## Technical Details
 
-FarmFund is built on Ethereum using Solidity version 0.8.17. It implements the following main components:
+FarmBridge is built on Ethereum using Solidity version 0.8.17. It implements the following main components:
 
 -   Structs for Donors, Farmers, and AidRequests
 -   Comprehensive mapping and tracking systems for all participants
@@ -77,8 +80,8 @@ FarmFund is built on Ethereum using Solidity version 0.8.17. It implements the f
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/Rahulhanje/FarmFund.git
-    cd FarmFund
+    git clone https://github.com/Rahulhanje/FarmBridge.git
+    cd FarmBridge
     ```
 
 2. Install dependencies:
@@ -114,7 +117,7 @@ FarmFund is built on Ethereum using Solidity version 0.8.17. It implements the f
 #### Register as a Farmer
 
 ```javascript
-await FarmFund.registerFarmer(
+await FarmBridge.registerFarmer(
     "John Doe", // Name
     "Nairobi, Kenya", // Location
     "Organic Vegetables" // Farm type
@@ -124,7 +127,7 @@ await FarmFund.registerFarmer(
 #### Request Aid
 
 ```javascript
-await FarmFund.requestAid(
+await FarmBridge.requestAid(
     "Irrigation System", // Request name
     "Installing drip irrigation", // Purpose
     ethers.utils.parseEther("0.5") // Amount (in ETH)
@@ -136,7 +139,7 @@ await FarmFund.requestAid(
 #### Register as a Donor
 
 ```javascript
-await FarmFund.registerDonor(
+await FarmBridge.registerDonor(
     "ABC Foundation", // Name
     "Supporting sustainable farming" // Description
 );
@@ -145,7 +148,7 @@ await FarmFund.registerDonor(
 #### Fund an Aid Request
 
 ```javascript
-await FarmFund.fundAidRequest(
+await FarmBridge.fundAidRequest(
     1, // Request ID
     { value: ethers.utils.parseEther("0.5") } // Amount to fund
 );
@@ -156,19 +159,19 @@ await FarmFund.fundAidRequest(
 #### Verify a Farmer
 
 ```javascript
-await FarmFund.verifyFarmer("0x123..."); // Farmer's address
+await FarmBridge.verifyFarmer("0x123..."); // Farmer's address
 ```
 
 #### Verify a Donor
 
 ```javascript
-await FarmFund.verifyDonor("0x456..."); // Donor's address
+await FarmBridge.verifyDonor("0x456..."); // Donor's address
 ```
 
 #### Get Contract Statistics
 
 ```javascript
-const stats = await FarmFund.getContractStats();
+const stats = await FarmBridge.getContractStats();
 console.log(`Total Donors: ${stats._totalDonors}`);
 console.log(`Total Beneficiaries: ${stats._totalBeneficiaries}`);
 console.log(`Total Funds Distributed: ${stats._totalFundsDistributed}`);
@@ -179,21 +182,21 @@ console.log(`Total Funds Distributed: ${stats._totalFundsDistributed}`);
 ### Get All Aid Requests
 
 ```javascript
-const requests = await FarmFund.getAllAidRequests();
+const requests = await FarmBridge.getAllAidRequests();
 // Returns arrays of request details including IDs, farmer addresses, etc.
 ```
 
 ### Get All Farmers
 
 ```javascript
-const farmers = await FarmFund.getAllFarmers();
+const farmers = await FarmBridge.getAllFarmers();
 // Returns arrays of farmer details including addresses, names, locations, etc.
 ```
 
 ### Get All Donors
 
 ```javascript
-const donors = await FarmFund.getAllDonors();
+const donors = await FarmBridge.getAllDonors();
 // Returns arrays of donor details including addresses, names, descriptions, etc.
 ```
 
@@ -240,7 +243,9 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 5. Open a Pull Request
 
 ## Developers
-FarmFund was built in 2025 by final year students of Don Bosco Institute of Technology
+
+FarmBridge was built in 2025 by final year students of Don Bosco Institute of Technology
+
 -   [Mohammad Armaan](https://mohammadarmaan.co.in)
 -   Mohammed Moinuddin
 -   Muhammed Shaheer

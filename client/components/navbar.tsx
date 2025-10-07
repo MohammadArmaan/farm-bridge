@@ -54,20 +54,20 @@ export default function Navbar() {
         { name: t("navbar.farmers"), path: "/farmers" },
         { name: t("navbar.donors"), path: "/donors" },
         ...(isFarmer
-          ? [{ name: t("navbar.requestAid"), path: "/aid" }]
-          : isDonor
-          ? []
-          : [{ name: t("navbar.requestAid"), path: "/aid" }]), // default if not registered
+            ? [{ name: t("navbar.requestAid"), path: "/aid" }]
+            : isDonor
+            ? []
+            : [{ name: t("navbar.requestAid"), path: "/aid" }]), // default if not registered
         { name: t("navbar.allRequests"), path: "/AllAids" },
         { name: t("navbar.howItWorks"), path: "/how-it-works" },
         { name: t("navbar.about"), path: "/about" },
         ...(isOwner
-          ? [
-              { name: t("navbar.admin"), path: "/verification" },
-              { name: t("navbar.dashboard"), path: "/dashboard" },
-            ]
-          : []),
-      ];
+            ? [
+                  { name: t("navbar.admin"), path: "/verification" },
+                  { name: t("navbar.dashboard"), path: "/dashboard" },
+              ]
+            : []),
+    ];
 
     const isActive = (path: string) => pathname === path;
 
@@ -157,7 +157,7 @@ export default function Navbar() {
                     {/* Logo */}
                     <Link href="/" className="flex items-center space-x-2">
                         <span className="font-bold text-xl bg-gradient-to-r text-green-500 bg-clip-text">
-                            FarmFund
+                            FarmBridge
                         </span>
                         <span className="text-xs font-semibold text-white bg-green-600 px-2 py-0.5 rounded-full shadow-sm">
                             Beta
