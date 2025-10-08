@@ -4,7 +4,7 @@ FarmBridge is a transparent **blockchain-based aid distribution system** designe
 It implements a **farmer-initiated model** that allows farmers to request aid directly, enabling donors to contribute to specific farming projects in a **transparent and accountable** way.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)  
-🚀 **Live Project:** [farm-fund-project.vercel.app](https://farm-fund-project.vercel.app)
+🚀 **Live Project:** [farm-fund-project.vercel.app](https://farm-bridge-project.vercel.app)
 
 ---
 
