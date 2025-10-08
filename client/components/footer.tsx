@@ -1,9 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { Facebook, Github, Instagram, Linkedin, Twitter } from "lucide-react";
+import { Coins, Facebook, Github, Instagram, Linkedin, Mail, Twitter } from "lucide-react";
+import { FaEthereum } from "react-icons/fa";
+import { GiFox } from "react-icons/gi";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { useLocale } from "./locale-provider";
+import Logo from "./Logo";
 
 export default function Footer() {
     const { t } = useLocale();
@@ -14,7 +17,8 @@ export default function Footer() {
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
                     {/* Brand + Socials */}
                     <div className="md:col-span-1">
-                        <Link href="/" className="inline-block mb-4">
+                        <Link href="/" className="flex items-center gap-2 mb-4">
+                            <Logo height={50} width={50} />
                             <span className="font-bold text-2xl">
                                 FarmBridge
                             </span>
@@ -23,41 +27,46 @@ export default function Footer() {
                             {t("footer.tagline")}
                         </p>
                         <div className="flex space-x-4">
-                            <Link
-                                href="#"
+                            <a
+                                href="https://sepolia.etherscan.io/address/0x6b3a87C68f677E5880E0899646367511f04B7608"
                                 className="text-green-300 hover:text-white"
+                                target="_blank"
                             >
-                                <Twitter className="h-5 w-5" />
-                                <span className="sr-only">Twitter</span>
-                            </Link>
-                            <Link
-                                href="#"
+                                <FaEthereum className="h-5 w-5" />
+                                <span className="sr-only">Etherscan</span>
+                            </a>
+                            <a
+                                href="https://metamask.io/en-GB/download"
                                 className="text-green-300 hover:text-white"
+                                target="_blank"
                             >
-                                <Facebook className="h-5 w-5" />
-                                <span className="sr-only">Facebook</span>
-                            </Link>
-                            <Link
-                                href="#"
+                                <GiFox className="h-5 w-5" />
+                                <span className="sr-only">Metamask</span>
+                            </a>
+                            <a
+                                href="https://github.com/MohammadArmaan/farm-bridge"
                                 className="text-green-300 hover:text-white"
-                            >
-                                <Instagram className="h-5 w-5" />
-                                <span className="sr-only">Instagram</span>
-                            </Link>
-                            <Link
-                                href="#"
-                                className="text-green-300 hover:text-white"
+                                target="_blank"
                             >
                                 <Github className="h-5 w-5" />
-                                <span className="sr-only">GitHub</span>
-                            </Link>
-                            <Link
-                                href="#"
+                                <span className="sr-only">GitHub Repo</span>
+                            </a>
+                            <a
+                                href="https://www.linkedin.com/in/mohammad-armaan-8b61b127a/"
                                 className="text-green-300 hover:text-white"
+                                target="_blank"
                             >
                                 <Linkedin className="h-5 w-5" />
                                 <span className="sr-only">LinkedIn</span>
-                            </Link>
+                            </a>
+                            <a
+                                href="https://mail.google.com/mail/?view=cm&fs=1&to=farmbridge.chain@gmail.com&su=FarmBridge%20Inquiry&body=Hello%2C%20I%20would%20like%20to%20know%20more..."
+                                className="text-green-300 hover:text-white"
+                                target="_blank"
+                            >
+                                <Mail className="h-5 w-5" />
+                                <span className="sr-only">Mail To</span>
+                            </a>
                         </div>
                     </div>
 
@@ -119,7 +128,7 @@ export default function Footer() {
                             <li>
                                 <LanguageSwitcher />
                             </li>
-                            <li>
+                            {/* <li>
                                 <Link
                                     href="/faq"
                                     className="text-green-300 hover:text-white"
@@ -150,7 +159,7 @@ export default function Footer() {
                                 >
                                     {t("footer.privacy")}
                                 </Link>
-                            </li>
+                            </li> */}
                         </ul>
                     </div>
                 </div>

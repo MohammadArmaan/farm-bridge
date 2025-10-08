@@ -18,6 +18,7 @@ import Image from "next/image";
 import { ThemeToggle } from "./theme-toggle";
 import { MobileThemeToggler } from "./MobileThemeToggler";
 import { useLocale } from "./locale-provider";
+import Logo from "./Logo";
 
 export default function Navbar() {
     const { t } = useLocale();
@@ -91,12 +92,12 @@ export default function Navbar() {
                             className="w-[300px] sm:w-[400px] p-0" // remove padding so scroll feels natural
                         >
                             <div className="h-full overflow-y-auto px-6 py-8 flex flex-col items-center gap-4">
-                                <Image
-                                    src="/logo.png"
-                                    alt="Logo"
-                                    height={100}
-                                    width={100}
-                                />
+                                <Link href="/" className="flex flex-col items-center space-x-2">
+                        <Logo height={100} width={100} />
+                        <span className="font-bold text-3xl bg-gradient-to-r text-green-500 bg-clip-text">
+                            FarmBridge
+                        </span>
+                    </Link>
 
                                 {routes.map((route) => (
                                     <Link
@@ -156,11 +157,9 @@ export default function Navbar() {
 
                     {/* Logo */}
                     <Link href="/" className="flex items-center space-x-2">
+                        <Logo height={35} width={35} />
                         <span className="font-bold text-xl bg-gradient-to-r text-green-500 bg-clip-text">
                             FarmBridge
-                        </span>
-                        <span className="text-xs font-semibold text-white bg-green-600 px-2 py-0.5 rounded-full shadow-sm">
-                            Beta
                         </span>
                     </Link>
                 </div>
