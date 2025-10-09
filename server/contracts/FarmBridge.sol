@@ -2,10 +2,10 @@
 pragma solidity ^0.8.17;
 
 /**
- * @title FairFund
+ * @title FarmBridge
  * @dev A transparent aid distribution system for small farmers (Farmer-initiated model)
  */
-contract FairFund {
+contract FarmBridge {
     address public owner;
     uint256 public totalFundsDistributed;
     uint256 public totalBeneficiaries;
@@ -17,6 +17,10 @@ contract FairFund {
         uint256 totalDonated;
         uint256 successfulDisbursements;
         bool isVerified;
+        bool isOtpVerified;
+        string phoneNo;
+        string email;
+        string ipfs;
         uint256 reputationScore;
     }
 
@@ -24,7 +28,11 @@ contract FairFund {
         string name;
         string location;
         string farmType;
+        string phoneNo;
+        string email;
         bool isVerified;
+        bool isOtpVerified;
+        string ipfs;
         uint256 totalReceived;
         uint256 lastDisbursementDate;
     }
@@ -50,8 +58,8 @@ contract FairFund {
 
     AidRequest[] public aidRequests;
 
-    event DonorRegistered(address indexed donorAddress, string name);
-    event FarmerRegistered(address indexed farmerAddress, string name, string location);
+    event DonorRegistered(address indexed donorAddress, string name, string email, string ipfs, string phoneNo);
+    event FarmerRegistered(address indexed farmerAddress, string name, string location, string email, string ipfs, string phoneNo);
     event AidRequested(uint256 indexed requestId, address indexed farmer, string name, string purpose, uint256 amount);
     event AidFunded(uint256 indexed requestId, address indexed donor, address indexed farmer, uint256 amount);
     event DonorVerified(address indexed donorAddress);
@@ -77,12 +85,16 @@ contract FairFund {
         owner = msg.sender;
     }
 
-    function registerDonor(string memory _name, string memory _description) external {
+    function registerDonor(string memory _name, string memory _description, string memory _ipfs, string memory _phoneNo, string memory _email) external {
         require(!registeredDonors[msg.sender], "Donor already registered");
 
         donors[msg.sender] = Donor({
             name: _name,
             description: _description,
+            ipfs: _ipfs,
+            phoneNo: _phoneNo,
+            email: _email,
+            isOtpVerified: bytes(_email).length > 0 && bytes(_phoneNo).length > 0 ? true : false,
             totalDonated: 0,
             successfulDisbursements: 0,
             isVerified: false,
@@ -93,16 +105,20 @@ contract FairFund {
         donorAddresses.push(msg.sender);
         totalDonors++;
 
-        emit DonorRegistered(msg.sender, _name);
+        emit DonorRegistered(msg.sender, _name, _email, _ipfs, _phoneNo);
     }
 
-    function registerFarmer(string memory _name, string memory _location, string memory _farmType) external {
+    function registerFarmer(string memory _name, string memory _location, string memory _farmType, string memory _ipfs, string memory _phoneNo, string memory _email) external {
         require(!registeredFarmers[msg.sender], "Farmer already registered");
 
         farmers[msg.sender] = Farmer({
             name: _name,
             location: _location,
             farmType: _farmType,
+            ipfs: _ipfs,
+            phoneNo: _phoneNo,
+            email: _email,
+            isOtpVerified: false,
             isVerified: false,
             totalReceived: 0,
             lastDisbursementDate: 0
@@ -112,7 +128,7 @@ contract FairFund {
         farmerAddresses.push(msg.sender);
         totalBeneficiaries++;
 
-        emit FarmerRegistered(msg.sender, _name, _location);
+        emit FarmerRegistered(msg.sender, _name, _location, _email, _ipfs, _phoneNo);
     }
 
     function verifyDonor(address _donorAddress) external onlyOwner {
@@ -226,6 +242,9 @@ contract FairFund {
         string[] memory names,
         string[] memory locations,
         string[] memory farmTypes,
+        string[] memory email,
+        string[] memory phoneNo,
+        string[] memory ipfs,
         bool[] memory isVerified,
         uint256[] memory totalReceived
     ) {
@@ -237,6 +256,9 @@ contract FairFund {
         farmTypes = new string[](length);
         isVerified = new bool[](length);
         totalReceived = new uint256[](length);
+        ipfs = new string[](length);
+        email = new string[](length);
+        phoneNo = new string[](length);
 
         for (uint256 i = 0; i < length; i++) {
             address farmerAddr = farmerAddresses[i];
@@ -248,6 +270,9 @@ contract FairFund {
             farmTypes[i] = f.farmType;
             isVerified[i] = f.isVerified;
             totalReceived[i] = f.totalReceived;
+            email[i] = f.email;
+            ipfs[i] = f.ipfs;
+            phoneNo[i] = f.phoneNo;
         }
     }
 
@@ -256,6 +281,9 @@ contract FairFund {
         string[] memory names,
         string[] memory descriptions,
         bool[] memory isVerified,
+        string[] memory email,
+        string[] memory phoneNo,
+        string[] memory ipfs,
         uint256[] memory totalDonated,
         uint256[] memory successfulDisbursements,
         uint256[] memory reputationScores
@@ -269,6 +297,9 @@ contract FairFund {
         totalDonated = new uint256[](length);
         successfulDisbursements = new uint256[](length);
         reputationScores = new uint256[](length);
+        ipfs = new string[](length);
+        email = new string[](length);
+        phoneNo = new string[](length);
 
         for (uint256 i = 0; i < length; i++) {
             address donorAddr = donorAddresses[i];
@@ -281,6 +312,9 @@ contract FairFund {
             totalDonated[i] = d.totalDonated;
             successfulDisbursements[i] = d.successfulDisbursements;
             reputationScores[i] = d.reputationScore;
+            email[i] = d.email;
+            ipfs[i] = d.ipfs;
+            phoneNo[i] = d.phoneNo;
         }
     }
 
@@ -290,7 +324,10 @@ contract FairFund {
         uint256 totalDonated,
         uint256 successfulDisbursements,
         bool isVerified,
-        uint256 reputationScore
+        uint256 reputationScore,
+        string memory email,
+        string memory phoneNo,
+        string memory ipfs
     ) {
         Donor storage d = donors[_donorAddress];
         return (
@@ -299,7 +336,10 @@ contract FairFund {
             d.totalDonated,
             d.successfulDisbursements,
             d.isVerified,
-            d.reputationScore
+            d.reputationScore,
+            d.email,
+            d.phoneNo,
+            d.ipfs
         );
     }
 
@@ -309,7 +349,10 @@ contract FairFund {
         string memory farmType,
         bool isVerified,
         uint256 totalReceived,
-        uint256 lastDisbursementDate
+        uint256 lastDisbursementDate,
+        string memory email,
+        string memory phoneNo,
+        string memory ipfs
     ) {
         Farmer storage f = farmers[_farmerAddress];
         return (
@@ -318,7 +361,10 @@ contract FairFund {
             f.farmType,
             f.isVerified,
             f.totalReceived,
-            f.lastDisbursementDate
+            f.lastDisbursementDate,
+            f.email,
+            f.phoneNo,
+            f.ipfs
         );
     }
 

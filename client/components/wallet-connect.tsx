@@ -68,7 +68,7 @@ export default function WalletConnect({
                         setAddress(account);
                         setIsOwner(isAccountOwner());
                         setContactAddress(
-                            "0x6b3a87C68f677E5880E0899646367511f04B7608"
+                            "0x0FE27a83959FD45bb9E173DeD862596fB0755165"
                         );
                         await fetchBalance(account);
                         localStorage.setItem("connectedAccount", account);

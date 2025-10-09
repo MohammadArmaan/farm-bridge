@@ -29,6 +29,7 @@ import {
     getFarmerDetails,
     fundAidRequest,
 } from "@/lib/blockchain";
+import { sendFundsReceivedEmail } from "@/lib/sendFundsReceivedEmail";
 
 type RawRequest = any;
 
@@ -122,7 +123,7 @@ export default function CreateDisbursementModal({
     const [rawRequests, setRawRequests] = useState<RawRequest[]>([]);
     const [normalized, setNormalized] = useState<NormalizedRequest[]>([]);
     const [farmersMap, setFarmersMap] = useState<
-        Record<string, { name?: string; location?: string }>
+        Record<string, { name?: string; location?: string; email?: string }>
     >({});
     const [selectedRequestId, setSelectedRequestId] = useState<string>("");
     const [fundAmount, setFundAmount] = useState<string>("");
@@ -158,7 +159,7 @@ export default function CreateDisbursementModal({
                     new Set(reqs.map((r: any) => r.farmer))
                 );
 
-                const fm: Record<string, { name?: string; location?: string }> =
+                const fm: Record<string, { name?: string; location?: string; email?: string }> =
                     {};
                 await Promise.all(
                     uniqueFarmers.map(async (addr: string) => {
@@ -167,9 +168,10 @@ export default function CreateDisbursementModal({
                             fm[addr] = {
                                 name: details?.name ?? undefined,
                                 location: details?.location ?? undefined,
+                                email: details?.email ?? undefined,
                             };
                         } catch (err) {
-                            fm[addr] = { name: undefined, location: undefined };
+                            fm[addr] = { name: undefined, location: undefined, email: undefined };
                         }
                     })
                 );
@@ -316,14 +318,61 @@ export default function CreateDisbursementModal({
 
         setLoading(true);
         try {
-            // fundAidRequest expects (requestId: number, amount: string)
+            // Fund the request first
             const requestId = Number(selectedRequestId);
             await fundAidRequest(requestId, fundAmount);
 
-            toast({
-                title: "Success",
-                description: `Successfully funded ${fundAmount} ETH to ${selectedRequest?.name}.`,
-            });
+            // Get farmer details from farmersMap
+            const farmer = farmersMap[selectedRequest!.farmer];
+            
+            // Log for debugging
+            console.log("Farmer info object:", farmer);
+            console.log("Farmer email:", farmer?.email);
+            console.log("Farmer name:", farmer?.name);
+
+            // Calculate funding details
+            const totalFunded = parseFloat(selectedRequest!.amountFundedEth) + parseFloat(fundAmount);
+            const isFulfilled = totalFunded >= parseFloat(selectedRequest!.amountRequestedEth);
+
+            // Validate farmer email exists before sending
+            if (!farmer || !farmer.email) {
+                console.error("Farmer email not found. Farmer info:", farmer);
+                toast({
+                    title: "Success",
+                    description: `Successfully funded ${fundAmount} ETH to ${selectedRequest?.name}. (Email notification could not be sent - no email found)`,
+                });
+            } else {
+                console.log("Sending email to:", farmer.email);
+                console.log("Email payload:", {
+                    farmerEmail: farmer.email,
+                    farmerName: farmer.name || selectedRequest!.farmerName,
+                    requestedEth: selectedRequest!.amountRequestedEth,
+                    fundedEth: totalFunded.toFixed(4),
+                    isFulfilled: isFulfilled
+                });
+
+                // Send email notification
+                try {
+                    await sendFundsReceivedEmail({
+                        farmerEmail: farmer.email,
+                        farmerName: farmer.name || selectedRequest!.farmerName,
+                        requestedEth: selectedRequest!.amountRequestedEth,
+                        fundedEth: totalFunded.toFixed(4),
+                        isFulfilled: isFulfilled,
+                    });
+
+                    toast({
+                        title: "Success",
+                        description: `Successfully funded ${fundAmount} ETH to ${selectedRequest?.name}. Email notification sent to farmer.`,
+                    });
+                } catch (emailError) {
+                    console.error("Email sending failed:", emailError);
+                    toast({
+                        title: "Success",
+                        description: `Successfully funded ${fundAmount} ETH to ${selectedRequest?.name}. (Email notification failed to send)`,
+                    });
+                }
+            }
 
             // Call success callback to refresh parent data
             onSuccess?.();

@@ -28,7 +28,7 @@ export default function Footer() {
                         </p>
                         <div className="flex space-x-4">
                             <a
-                                href="https://sepolia.etherscan.io/address/0x6b3a87C68f677E5880E0899646367511f04B7608"
+                                href="https://sepolia.etherscan.io/address/0x0FE27a83959FD45bb9E173DeD862596fB0755165"
                                 className="text-green-300 hover:text-white"
                                 target="_blank"
                             >

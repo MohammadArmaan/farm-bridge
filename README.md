@@ -1,23 +1,24 @@
 # 🌾 FarmBridge
 
 FarmBridge is a transparent **blockchain-based aid distribution system** designed specifically for **small farmers**.  
-It implements a **farmer-initiated model** that allows farmers to request aid directly, enabling donors to contribute to specific farming projects in a **transparent and accountable** way.
+It implements a **farmer-initiated model** that allows farmers to request aid directly, enabling donors to contribute to specific farming projects in a **secure, transparent, and accountable** way.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)  
-🚀 **Live Project:** [farm-fund-project.vercel.app](https://farm-bridge-project.vercel.app)
+🚀 **Live Project:** [farm-bridge-project.vercel.app](https://farm-bridge-project.vercel.app)
 
 ---
 
 ## 📖 Overview
 
-FarmBridge bridges the gap between **donors** and **small-scale farmers**, creating a decentralized platform that:
+FarmBridge bridges the gap between **donors** and **small-scale farmers**, creating a decentralized platform that ensures **trust**, **security**, and **traceability** in agricultural aid distribution.
 
--   Enables farmers to directly request financial assistance for specific agricultural needs
--   Allows donors to contribute directly to verified farmers' projects
--   Provides transparency in the flow of funds from donors to beneficiaries
--   Builds reputation and trust through a verification system
--   Tracks donation history and successful disbursements
--   Provides multi language support(English, Hindi and Kannada) making it easier to follow
+### Key Highlights
+
+- ✅ **Secured registration** with OTP verification via **Fast2SMS**
+- 📁 **IPFS integration (Pinata)** for storing address and disaster proof documents
+- 📬 **Automated email notifications** for all major platform events
+- 🔗 **Blockchain transparency** for every transaction
+- 🌍 **Multi-language support** (English, Hindi, Kannada)
 
 ---
 
@@ -25,47 +26,133 @@ FarmBridge bridges the gap between **donors** and **small-scale farmers**, creat
 
 ### 👩‍🌾 For Farmers
 
--   **Self-registration**: Farmers can register with details including location and farm type
--   **Aid requests**: Create specific funding requests with detailed purposes and amounts
--   **Verification**: Verified by the platform to build trust with donors
--   **Direct fund receipt**: Receive funds directly to their wallet once approved
+- **Secure registration** with phone OTP verification  
+- **Address proof upload** via IPFS (Pinata)  
+- **Aid requests:** Submit purpose, amount, and project details directly on-chain  
+- **Verification system:** Admins verify authenticity and validate farmers  
+- **Direct fund receipt:** Receive aid directly to their Ethereum wallet  
+- **Email notifications:** Receive emails on registration, verification, and fund disbursement  
+
+---
 
 ### 💰 For Donors
 
--   **Registration**: Create a profile with name and description
--   **Transparent giving**: View all aid requests and choose which projects to fund
--   **Reputation system**: Build reputation through consistent, successful disbursements
--   **Verification**: Get verified to enhance trust with farmers and other stakeholders
+- **OTP-verified registration** to ensure authenticity  
+- **Profile creation:** Include description, contact, and proof documents uploaded to IPFS  
+- **Transparent giving:** View verified farmer requests and donate directly  
+- **Reputation system:** Reputation increases with successful disbursements  
+- **Automated updates:** Get notified via email for all donation activities  
+
+---
 
 ### 🛡️ For Platform Administrators
 
--   **Verification management**: Verify both farmers and donors to ensure authenticity
--   **Statistics tracking**: Access comprehensive statistics on platform usage
--   **Transparency**: All transactions and activities are recorded on the blockchain
+- **Verification management:** Verify farmers and donors after checking IPFS proofs  
+- **Disbursement control:** Issue and monitor aid disbursements securely  
+- **Analytics dashboard:** Track total funds, disbursements, and activity stats  
+- **Transparency & accountability:** Every action is recorded on-chain  
 
 ---
 
-## 🤖 Chatbot Integration
+## 🤖 AI Chatbot Integration
 
-FarmBridge now comes with an **AI-powered multi-language chatbot** that helps both farmers and donors:
+FarmBridge integrates an **AI-powered multi-language chatbot** that acts as an assistant for farmers, donors, and admins.
 
--   Answer questions about **FarmBridge**, **Blockchain**, **Ethereum**, and **Smart Contracts**
--   Provide quick navigation with internal links (without page reloads)
--   Support **multi-language responses** (English, Hindi, Kannada, etc.)
--   Support **Text to Speech and Speech to Text** for different languages
--   Accessible through a floating chatbot icon on all pages
+### Key Capabilities
+
+- 💬 Answers questions about **FarmBridge**, **Blockchain**, **Ethereum**, and **Smart Contracts**
+- 🔗 Provides **internal navigation** with seamless Next.js routing (no page reloads)
+- 🌐 Supports **multi-language interaction** (English, Hindi, Kannada) using `next-intl`
+- 🗣️ Uses **Gemini 2.0 API** for understanding queries  
+- 🔉 Supports **Text-to-Speech (TTS)** and **Speech-to-Text (STT)** using native browser APIs
+- 💡 Context-aware responses with personalized assistance  
+
+Accessible via a **floating chatbot icon** across all pages.
 
 ---
 
-## Technical Details
+## 🧠 Email Automation (via Nodemailer)
 
-FarmBridge is built on Ethereum using Solidity version 0.8.17. It implements the following main components:
+FarmBridge uses **Nodemailer** for secure, event-driven email delivery.
 
--   Structs for Donors, Farmers, and AidRequests
--   Comprehensive mapping and tracking systems for all participants
--   Event emissions for key actions to enable front-end notifications
--   Role-based permission system with owner, donor, and farmer modifiers
--   View functions to access aggregated statistics and individual profiles
+| Event | Email Trigger |
+|--------|----------------|
+| ✅ Registration | Welcome mail confirming successful signup |
+| 🔍 Verification | Admin verification confirmation mail |
+| 📤 Aid Request | Farmer notified when aid request is submitted |
+| 💰 Fund Donation | Donor receives confirmation and farmer receives notification |
+| 🪙 Fund Disbursement | Email confirmation when funds are received |
+
+---
+
+## 🔐 Secure Registration (via Fast2SMS)
+
+- OTP sent to registered mobile number during signup  
+- Prevents fake accounts and ensures genuine participation  
+- OTP verification logic integrated seamlessly with both **donor** and **farmer** flows  
+
+---
+
+## 🧾 Document Verification (via Pinata IPFS)
+
+All **proof documents** (address proof for donors, disaster proof for farmers) are uploaded securely to **IPFS** using **Pinata**.  
+Admins can view these directly from the dashboard for verification before approval.
+
+---
+
+## ⚙️ Technical Details
+
+FarmBridge combines **modern Web3 + Web2 technologies** for seamless decentralized interaction.
+
+| Stack Layer | Technologies Used |
+|--------------|-------------------|
+| **Frontend** | Next.js, Tailwind CSS, ShadCN UI |
+| **Blockchain** | Solidity (v0.8.17), Hardhat |
+| **Interaction** | Ethers.js |
+| **Storage** | IPFS (via Pinata) |
+| **Email System** | Nodemailer |
+| **OTP System** | Fast2SMS API |
+| **AI Chatbot** | Gemini 2.0 API |
+| **Localization** | next-intl (English, Hindi, Kannada) |
+| **Speech Processing** | Native Browser APIs for TTS/STT |
+
+---
+
+## 🧩 Smart Contract Details
+
+The **FarmBridge Smart Contract** manages:
+
+- `struct Farmer` and `struct Donor` for on-chain identity tracking  
+- `struct AidRequest` for aid lifecycle management  
+- **Mappings** for all participants and their activity logs  
+- **Events** for each critical transaction (registration, verification, donation, disbursement)  
+- **Modifiers** enforcing role-based access and function permissions  
+- **View functions** exposing detailed statistics for UI integration  
+
+---
+
+## 📊 Transparency and Reputation System
+
+- All transactions are **fully traceable** on the blockchain  
+- Donors gain **reputation points** for verified disbursements  
+- Farmers maintain **trust scores** after admin verification  
+- Admins ensure **system integrity** and prevent abuse  
+
+---
+
+## 🧠 Future Enhancements
+
+- Integration with **Polygon or Base** for lower gas fees  
+- Advanced **AI fraud detection** for fake proof submissions  
+- **Mobile-first UI** for rural accessibility  
+- **On-chain multilingual metadata** for aid requests  
+
+---
+
+## 📜 License
+
+This project is licensed under the **MIT License**.  
+See the [LICENSE](LICENSE) file for more information.
 
 ## Getting Started
 

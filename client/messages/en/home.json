@@ -314,8 +314,21 @@
                 "organizationNamePlaceholder": "Enter your organization name",
                 "descriptionLabel": "Description",
                 "descriptionPlaceholder": "Describe your organization and mission",
+                "phoneNoLabel": "Phone Number",
+                "phoneNoPlaceholder": "Enter your phone number",
+                "emailLabel": "Email",
+                "emailPlaceholder": "Enter your email address",
+                "ipfsLabel": "Upload your Donation Address Proof in (jpg, jpeg, or png)",
                 "registerButton": "Register as Donor",
                 "registeringButton": "Registering..."
+            },
+            "otp": {
+                "otpLabel": "OTP Verification",
+                "otpExpiresIn": "OTP expires in",
+                "otpSent": "OTP Sent Successfully",
+                "otpInvalid": "OTP is Invalid",
+                "otpVerified": "OTP Verified Successfully!",
+                "otpError": "Some Error occured"
             }
         },
         "farmer": {
@@ -326,10 +339,23 @@
                 "fullNamePlaceholder": "Enter your full name",
                 "locationLabel": "Location",
                 "locationPlaceholder": "Enter your farm location",
+                "phoneNoLabel": "Phone Number",
+                "phoneNoPlaceholder": "Enter your phone number",
+                "emailLabel": "Email",
+                "emailPlaceholder": "Enter your email address",
+                "ipfsLabel": "Upload your Farm Address Proof in (jpg, jpeg, or png)",
                 "farmTypeLabel": "Farm Type",
                 "farmTypePlaceholder": "E.g., Organic, Traditional, etc.",
                 "registerButton": "Register as Farmer",
                 "registeringButton": "Registering..."
+            },
+            "otp": {
+                "otpLabel": "OTP Verification",
+                "otpExpiresIn": "OTP expires in",
+                "otpSent": "OTP Sent Successfully",
+                "otpInvalid": "OTP is Invalid",
+                "otpVerified": "OTP Verified Successfully!",
+                "otpError": "Some Error occured"
             }
         },
         "success": {

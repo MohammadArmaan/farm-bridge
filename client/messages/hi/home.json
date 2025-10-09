@@ -313,9 +313,22 @@
                 "organizationNameLabel": "संगठन का नाम",
                 "organizationNamePlaceholder": "अपनी संस्था का नाम दर्ज करें",
                 "descriptionLabel": "विवरण",
-                "descriptionPlaceholder": "अपने संगठन और मिशन का वर्णन करें",
+                "descriptionPlaceholder": "अपनी संस्था और उसके उद्देश्य का वर्णन करें",
+                "phoneNoLabel": "फ़ोन नंबर",
+                "phoneNoPlaceholder": "अपना फ़ोन नंबर दर्ज करें",
+                "emailLabel": "ईमेल",
+                "emailPlaceholder": "अपना ईमेल पता दर्ज करें",
+                "ipfsLabel": "अपना दान पते का प्रमाण (jpg, jpeg, या png) में अपलोड करें",
                 "registerButton": "दाता के रूप में पंजीकरण करें",
                 "registeringButton": "पंजीकरण हो रहा है..."
+            },
+            "otp": {
+                "otpLabel": "ओटीपी सत्यापन",
+                "otpExpiresIn": "ओटीपी समाप्त होगा",
+                "otpSent": "ओटीपी सफलतापूर्वक भेजा गया",
+                "otpInvalid": "ओटीपी अमान्य है",
+                "otpVerified": "ओटीपी सफलतापूर्वक सत्यापित हुआ!",
+                "otpError": "कुछ त्रुटि हुई"
             }
         },
         "farmer": {
@@ -326,10 +339,23 @@
                 "fullNamePlaceholder": "अपना पूरा नाम दर्ज करें",
                 "locationLabel": "स्थान",
                 "locationPlaceholder": "अपने खेत का स्थान दर्ज करें",
+                "phoneNoLabel": "फ़ोन नंबर",
+                "phoneNoPlaceholder": "अपना फ़ोन नंबर दर्ज करें",
+                "emailLabel": "ईमेल",
+                "emailPlaceholder": "अपना ईमेल पता दर्ज करें",
+                "ipfsLabel": "अपने खेत के पते का प्रमाण (jpg, jpeg, या png) में अपलोड करें",
                 "farmTypeLabel": "खेती का प्रकार",
-                "farmTypePlaceholder": "जैसे, ऑर्गेनिक, परंपरागत, आदि",
+                "farmTypePlaceholder": "जैसे, जैविक, पारंपरिक आदि",
                 "registerButton": "किसान के रूप में पंजीकरण करें",
                 "registeringButton": "पंजीकरण हो रहा है..."
+            },
+            "otp": {
+                "otpLabel": "ओटीपी सत्यापन",
+                "otpExpiresIn": "ओटीपी समाप्त होगा",
+                "otpSent": "ओटीपी सफलतापूर्वक भेजा गया",
+                "otpInvalid": "ओटीपी अमान्य है",
+                "otpVerified": "ओटीपी सफलतापूर्वक सत्यापित हुआ!",
+                "otpError": "कुछ त्रुटि हुई"
             }
         },
         "success": {

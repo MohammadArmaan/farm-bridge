@@ -34,6 +34,8 @@ import {
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { toast } from "@/hooks/use-toast";
+import AdminSidebar from "@/components/AdminSidebar";
+import { sendVerificationEmail } from "@/lib/sendVerificationEmail";
 
 // Define types based on smart contract structure
 type UserStatus = "pending" | "approved" | "rejected";
@@ -46,6 +48,9 @@ interface Donor {
     totalDonated: number;
     successfulDisbursements: number;
     isVerified: boolean;
+    email: string;
+    phoneNo: string;
+    ipfs: string;
     reputationScore: number;
     registrationDate: string;
 }
@@ -55,6 +60,9 @@ interface Farmer {
     name: string;
     location: string;
     farmType: string;
+    email: string;
+    phoneNo: string;
+    ipfs: string;
     isVerified: boolean;
     totalReceived: number;
     lastDisbursementDate: number;
@@ -165,6 +173,28 @@ export default function AdminApprovalDashboard() {
                     selectedUser.address === address
                 ) {
                     setSelectedUser({ ...selectedUser, isVerified: true });
+                }
+            }
+
+            // Send verification email
+            if (selectedUser) {
+                const emailSent = await sendVerificationEmail(
+                    selectedUser.email,
+                    selectedUser.name,
+                    userType
+                );
+
+                if (emailSent) {
+                    toast({
+                        title: "Verification Successful",
+                        description: `${userType === "donor" ? "Donor" : "Farmer"} verified and email notification sent.`,
+                    });
+                } else {
+                    toast({
+                        title: "Verification Successful",
+                        description: `${userType === "donor" ? "Donor" : "Farmer"} verified, but email notification failed.`,
+                        variant: "destructive",
+                    });
                 }
             }
         } catch (error) {
@@ -1000,255 +1030,14 @@ export default function AdminApprovalDashboard() {
                 </div>
 
                 {/* Right Panel - Details (Mobile: Overlay, Desktop: Sidebar) */}
-                <div
-                    className={`
-                    ${
-                        sidebarOpen
-                            ? "fixed inset-0 z-50 lg:relative lg:inset-auto"
-                            : "hidden lg:block"
-                    }
-                    lg:w-1/4 bg-white dark:bg-black/80 overflow-y-auto
-                    ${sidebarOpen ? "lg:block" : ""}
-                `}
-                >
-                    {/* Mobile overlay background */}
-                    {sidebarOpen && (
-                        <div
-                            className="absolute inset-0 bg-black bg-opacity-50 lg:hidden"
-                            onClick={() => setSidebarOpen(false)}
-                        />
-                    )}
-
-                    {/* Sidebar content */}
-                    <div
-                        className={`
-                        ${
-                            sidebarOpen
-                                ? "absolute right-0 top-0 h-full w-80 max-w-full lg:relative lg:w-full"
-                                : "w-full"
-                        }
-                        bg-white dark:bg-black/80 p-4 sm:p-6 overflow-y-auto shadow-lg lg:shadow-none
-                    `}
-                    >
-                        {/* Mobile close button */}
-                        {sidebarOpen && (
-                            <button
-                                className="lg:hidden absolute top-4 right-4 p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800"
-                                onClick={() => setSidebarOpen(false)}
-                            >
-                                <X size={20} />
-                            </button>
-                        )}
-
-                        {selectedUser ? (
-                            <div>
-                                <div className="flex justify-between items-start mb-6">
-                                    <h2 className="text-lg sm:text-xl font-bold text-foreground pr-8">
-                                        {selectedUser.name}
-                                    </h2>
-                                    <div className="flex-shrink-0">
-                                        {renderVerificationStatus(
-                                            selectedUser.isVerified
-                                        )}
-                                    </div>
-                                </div>
-
-                                <div className="space-y-6">
-                                    <div>
-                                        <p className="text-sm text-muted-foreground mb-1">
-                                            Address
-                                        </p>
-                                        <p className="text-xs sm:text-sm font-mono bg-gray-100 dark:bg-gray-900 p-2 rounded break-all">
-                                            {selectedUser.address}
-                                        </p>
-                                    </div>
-
-                                    {"description" in selectedUser ? (
-                                        // Donor-specific details
-                                        <>
-                                            <div>
-                                                <p className="text-sm text-muted-foreground mb-1">
-                                                    Description
-                                                </p>
-                                                <p className="text-sm">
-                                                    {selectedUser.description}
-                                                </p>
-                                            </div>
-                                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                                <div>
-                                                    <p className="text-sm text-muted-foreground mb-1">
-                                                        Total Donated
-                                                    </p>
-                                                    <p className="text-lg font-semibold">
-                                                        {
-                                                            selectedUser.totalDonated
-                                                        }{" "}
-                                                        ETH
-                                                    </p>
-                                                </div>
-                                                <div>
-                                                    <p className="text-sm text-muted-foreground mb-1">
-                                                        Disbursements
-                                                    </p>
-                                                    <p className="text-lg font-semibold">
-                                                        {
-                                                            selectedUser.successfulDisbursements
-                                                        }
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <p className="text-sm text-muted-foreground mb-1">
-                                                    Reputation Score
-                                                </p>
-                                                <div className="w-full bg-gray-200 rounded-full h-2.5">
-                                                    <div
-                                                        className="bg-green-500 h-2.5 rounded-full"
-                                                        style={{
-                                                            width: `${selectedUser.reputationScore}%`,
-                                                        }}
-                                                    ></div>
-                                                </div>
-                                                <p className="text-right text-sm mt-1">
-                                                    {
-                                                        selectedUser.reputationScore
-                                                    }
-                                                    /100
-                                                </p>
-                                            </div>
-                                        </>
-                                    ) : (
-                                        // Farmer-specific details
-                                        <>
-                                            <div>
-                                                <p className="text-sm text-muted-foreground mb-1">
-                                                    Location
-                                                </p>
-                                                <p className="text-sm">
-                                                    {
-                                                        (selectedUser as Farmer)
-                                                            .location
-                                                    }
-                                                </p>
-                                            </div>
-                                            <div>
-                                                <p className="text-sm text-muted-foreground mb-1">
-                                                    Farm Type
-                                                </p>
-                                                <p className="text-sm">
-                                                    {
-                                                        (selectedUser as Farmer)
-                                                            .farmType
-                                                    }
-                                                </p>
-                                            </div>
-                                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                                <div>
-                                                    <p className="text-sm text-muted-foreground mb-1">
-                                                        Total Received
-                                                    </p>
-                                                    <p className="text-lg font-semibold">
-                                                        {
-                                                            (
-                                                                selectedUser as Farmer
-                                                            ).totalReceived
-                                                        }{" "}
-                                                        ETH
-                                                    </p>
-                                                </div>
-                                                <div>
-                                                    <p className="text-sm text-muted-foreground mb-1">
-                                                        Last Disbursement
-                                                    </p>
-                                                    <p className="text-sm">
-                                                        {(
-                                                            selectedUser as Farmer
-                                                        ).lastDisbursementDate
-                                                            ? new Date(
-                                                                  (
-                                                                      selectedUser as Farmer
-                                                                  )
-                                                                      .lastDisbursementDate *
-                                                                      1000
-                                                              ).toLocaleDateString()
-                                                            : "None"}
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </>
-                                    )}
-
-                                    <div className="pt-4 border-t border-gray-200 dark:border-gray-800">
-                                        <p className="text-sm text-muted-foreground mb-4">
-                                            Registration Date:{" "}
-                                            {selectedUser.registrationDate}
-                                        </p>
-
-                                        {!selectedUser.isVerified ? (
-                                            <button
-                                                onClick={() =>
-                                                    handleVerify(
-                                                        selectedUser.address,
-                                                        "description" in
-                                                            selectedUser
-                                                            ? "donor"
-                                                            : "farmer"
-                                                    )
-                                                }
-                                                className="w-full py-2 px-4 bg-green-600 hover:bg-green-700 text-white font-medium rounded-md flex items-center justify-center text-sm"
-                                                disabled={
-                                                    verifying ===
-                                                    selectedUser.address
-                                                }
-                                            >
-                                                {verifying ===
-                                                selectedUser.address ? (
-                                                    <>
-                                                        <RefreshCw
-                                                            size={18}
-                                                            className="animate-spin mr-2"
-                                                        />
-                                                        Verifying...
-                                                    </>
-                                                ) : (
-                                                    <>
-                                                        <CheckCircle
-                                                            size={18}
-                                                            className="mr-2"
-                                                        />
-                                                        Verify{" "}
-                                                        {"description" in
-                                                        selectedUser
-                                                            ? "Donor"
-                                                            : "Farmer"}
-                                                    </>
-                                                )}
-                                            </button>
-                                        ) : (
-                                            <button
-                                                className="w-full py-2 px-4 bg-green-600 text-white font-medium rounded-md cursor-not-allowed opacity-50 text-sm"
-                                                disabled
-                                            >
-                                                <CheckCircle
-                                                    size={18}
-                                                    className="inline mr-2"
-                                                />
-                                                Verified
-                                            </button>
-                                        )}
-                                    </div>
-                                </div>
-                            </div>
-                        ) : (
-                            <div className="flex flex-col items-center justify-center h-full text-muted-foreground min-h-64">
-                                <Eye size={48} className="mb-4" />
-                                <p className="text-center">
-                                    Select a {activeTab} to view details
-                                </p>
-                            </div>
-                        )}
-                    </div>
-                </div>
+                
+                <AdminSidebar
+                    selectedUser={selectedUser}
+                    activeTab={activeTab}
+                    sidebarOpen={sidebarOpen}
+                    setSidebarOpen={setSidebarOpen}
+                    onVerify={handleVerify}
+                />
             </div>
         </div>
     );

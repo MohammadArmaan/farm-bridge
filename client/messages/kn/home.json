@@ -313,9 +313,22 @@
                 "organizationNameLabel": "ಸಂಸ್ಥೆಯ ಹೆಸರು",
                 "organizationNamePlaceholder": "ನಿಮ್ಮ ಸಂಸ್ಥೆಯ ಹೆಸರನ್ನು ನಮೂದಿಸಿ",
                 "descriptionLabel": "ವಿವರಣೆ",
-                "descriptionPlaceholder": "ನಿಮ್ಮ ಸಂಸ್ಥೆ ಮತ್ತು ಗುರಿಯನ್ನು ವಿವರಿಸಿ",
-                "registerButton": "ದಾನಿಯಾಗಿ ನೋಂದಣಿ ಮಾಡಿ",
-                "registeringButton": "ನೋಂದಣಿ ಆಗುತ್ತಿದೆ..."
+                "descriptionPlaceholder": "ನಿಮ್ಮ ಸಂಸ್ಥೆ ಮತ್ತು ಅದರ ಉದ್ದೇಶವನ್ನು ವಿವರಿಸಿ",
+                "phoneNoLabel": "ದೂರವಾಣಿ ಸಂಖ್ಯೆ",
+                "phoneNoPlaceholder": "ನಿಮ್ಮ ದೂರವಾಣಿ ಸಂಖ್ಯೆಯನ್ನು ನಮೂದಿಸಿ",
+                "emailLabel": "ಇಮೇಲ್",
+                "emailPlaceholder": "ನಿಮ್ಮ ಇಮೇಲ್ ವಿಳಾಸವನ್ನು ನಮೂದಿಸಿ",
+                "ipfsLabel": "ನಿಮ್ಮ ದೇಣಿಗೆಯ ವಿಳಾಸದ ಸಾಕ್ಷ್ಯವನ್ನು (jpg, jpeg ಅಥವಾ png) ನಲ್ಲಿ ಅಪ್‌ಲೋಡ್ ಮಾಡಿ",
+                "registerButton": "ದಾತನಾಗಿ ನೋಂದಣಿ ಮಾಡಿ",
+                "registeringButton": "ನೋಂದಣಿ ನಡೆಯುತ್ತಿದೆ..."
+            },
+            "otp": {
+                "otpLabel": "OTP ಪರಿಶೀಲನೆ",
+                "otpExpiresIn": "OTP ಅವಧಿ ಮುಗಿಯುತ್ತದೆ",
+                "otpSent": "OTP ಯಶಸ್ವಿಯಾಗಿ ಕಳುಹಿಸಲಾಗಿದೆ",
+                "otpInvalid": "OTP ಅಮಾನ್ಯವಾಗಿದೆ",
+                "otpVerified": "OTP ಯಶಸ್ವಿಯಾಗಿ ಪರಿಶೀಲಿಸಲಾಗಿದೆ!",
+                "otpError": "ಏದೋ ದೋಷ ಸಂಭವಿಸಿದೆ"
             }
         },
         "farmer": {
@@ -326,10 +339,23 @@
                 "fullNamePlaceholder": "ನಿಮ್ಮ ಪೂರ್ಣ ಹೆಸರನ್ನು ನಮೂದಿಸಿ",
                 "locationLabel": "ಸ್ಥಳ",
                 "locationPlaceholder": "ನಿಮ್ಮ ಕೃಷಿ ಸ್ಥಳವನ್ನು ನಮೂದಿಸಿ",
+                "phoneNoLabel": "ದೂರವಾಣಿ ಸಂಖ್ಯೆ",
+                "phoneNoPlaceholder": "ನಿಮ್ಮ ದೂರವಾಣಿ ಸಂಖ್ಯೆಯನ್ನು ನಮೂದಿಸಿ",
+                "emailLabel": "ಇಮೇಲ್",
+                "emailPlaceholder": "ನಿಮ್ಮ ಇಮೇಲ್ ವಿಳಾಸವನ್ನು ನಮೂದಿಸಿ",
+                "ipfsLabel": "ನಿಮ್ಮ ಕೃಷಿ ವಿಳಾಸದ ಸಾಕ್ಷ್ಯವನ್ನು (jpg, jpeg ಅಥವಾ png) ನಲ್ಲಿ ಅಪ್‌ಲೋಡ್ ಮಾಡಿ",
                 "farmTypeLabel": "ಕೃಷಿಯ ಪ್ರಕಾರ",
-                "farmTypePlaceholder": "ಉದಾ., ಆರ್ಗಾನಿಕ್, ಪಾರಂಪರಿಕ, ಇತ್ಯಾದಿ",
-                "registerButton": "ರೈತರಾಗಿ ನೋಂದಣಿ ಮಾಡಿ",
-                "registeringButton": "ನೋಂದಣಿ ಆಗುತ್ತಿದೆ..."
+                "farmTypePlaceholder": "ಉದಾ: ಸಸ್ಯಹಾರಿ, ಪರಂಪರাগত ಇತ್ಯಾದಿ",
+                "registerButton": "ರೈತನಾಗಿ ನೋಂದಣಿ ಮಾಡಿ",
+                "registeringButton": "ನೋಂದಣಿ ನಡೆಯುತ್ತಿದೆ..."
+            },
+            "otp": {
+                "otpLabel": "OTP ಪರಿಶೀಲನೆ",
+                "otpExpiresIn": "OTP ಅವಧಿ ಮುಗಿಯುತ್ತದೆ",
+                "otpSent": "OTP ಯಶಸ್ವಿಯಾಗಿ ಕಳುಹಿಸಲಾಗಿದೆ",
+                "otpInvalid": "OTP ಅಮಾನ್ಯವಾಗಿದೆ",
+                "otpVerified": "OTP ಯಶಸ್ವಿಯಾಗಿ ಪರಿಶೀಲಿಸಲಾಗಿದೆ!",
+                "otpError": "ಏದೋ ದೋಷ ಸಂಭವಿಸಿದೆ"
             }
         },
         "success": {

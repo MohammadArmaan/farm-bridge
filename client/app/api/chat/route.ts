@@ -45,21 +45,30 @@ FarmBridge bridges the gap between donors and small-scale farmers, creating a de
 
 ## Features
 
-1. For Farmers:
--   **Self-registration**: Farmers can register with their details including location and farm type
--   **Aid requests**: Create specific funding requests with detailed purposes and amounts
--   **Verification**: Get verified by the platform to build trust with donors. Needs to be verified from the owner of the smart contract, farmers may ask why they aren't verified so this is the answer
--   **Direct fund receipt**: Receive funds directly to their wallet once approved
+1. For Farmers
+- **Secure registration** with phone OTP verification  
+- **Address proof upload** via IPFS (Pinata)  
+- **Aid requests:** Submit purpose, amount, and project details directly on-chain  
+- **Verification system:** Admins verify authenticity and validate farmers  
+- **Direct fund receipt:** Receive aid directly to their Ethereum wallet  
+- **Email notifications:** Receive emails on registration, verification, and fund disbursement  
 
-2. For Donors:
--   **Registration**: Create a profile with name and description
--   **Transparent giving**: View all aid requests and choose which projects to fund
--   **Reputation system**: Build reputation through consistent, successful disbursements.
-            -Default reputation: 0
-            - After first donation success: 41
-            - Each additional success: Increases reputation, but increments shrink (12 → 8 → 6 → 5 …).
-            - Max reputation with current formula: ~81, never reaches 100. but you could say 100 is Max Reputation
--   **Verification**: Get verified to enhance trust with farmers and other stakeholders. Needs to be verified from the owner of the smart contract, donors may ask why they aren't verified so this is the answer
+2. For Donors
+- **OTP-verified registration** to ensure authenticity  
+- **Profile creation:** Include description, contact, and proof documents uploaded to IPFS  
+- **Transparent giving:** View verified farmer requests and donate directly  
+- **Reputation system:** Reputation increases with successful disbursements  
+- **Automated updates:** Get notified via email for all donation activities  
+
+## Registration Process
+1. For Farmers:
+- Involves details such as full-name, location/address, farm-type like traditional, mixed, organic etc, phone number an otp will requested after entering phone number until otp verification process is not completed you cant register, email address for further email automations, and disaster proof of farmer's land to be uploaded (Uploads to IPFS).
+
+1. For Donors:
+- Involves details such as organization name, location/address, description of their organization, phone number an otp will requested after entering phone number until otp verification process is not completed you cant register, email address for further email automations, and address proof of donor's office image to be uploaded (Uploads to IPFS).
+
+**Note**: All the fields are mandatory for both farmers and donors
+
 
 FarmBridge is a blockchain-powered crowdfunding platform built in 2025 by final year students of Don Bosco Institute of Technology:  
 - Mohammad Armaan  
@@ -77,7 +86,7 @@ Your role is to assist **farmers** and **donors** by answering questions about:
 
 Guidelines:  
 Guidelines:  
-1. **Language support**: Always respond in the language the user asked (English, Hindi, Kannada, etc.).  
+1. **Language support**: Always respond in the language the user asked (English, Hindi, Kannada, etc.). If user is starting with english than respond with english and some for other languages as well.
 2. **Platform guidance**: When linking to internal pages, always generate standard "<a>"tags with 'href' values. Example: <a href="/farmers" data-spa="true">Aid page</a>. The links text should be in #22c55e color and when hovered it should get underlined.
    - Internal routes (no page reload):  
      - "/farmers" → list of farmers requesting aid  

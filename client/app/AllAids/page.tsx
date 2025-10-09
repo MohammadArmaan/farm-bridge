@@ -9,6 +9,7 @@ import {
     truncateAddress,
 } from "@/lib/blockchain";
 import { useLocale } from "@/components/locale-provider";
+import { sendFundsReceivedEmail } from "@/lib/sendFundsReceivedEmail";
 
 export default function AllAidRequestsPage({ contract }: { contract: any }) {
     const { t } = useLocale();
@@ -85,19 +86,84 @@ export default function AllAidRequestsPage({ contract }: { contract: any }) {
         setFundingSuccess("");
 
         try {
+            // Fund the request first
             await fundAidRequest(selectedRequest.id, fundAmount);
 
-            setFundingSuccess(
-                t("allAids.fundingSuccess").replace("{{amount}}", fundAmount)
-            );
+            // Get farmer details
+            const farmer = farmerInfo[selectedRequest.farmer];
+
+            // ✅ FIXED: Add detailed logging and validation
+            console.log("Farmer info object:", farmer);
+            console.log("Farmer email:", farmer?.email);
+            console.log("Farmer name:", farmer?.name);
+
+            // ✅ Validate farmer email exists before sending
+            if (!farmer || !farmer.email) {
+                console.error("Farmer email not found. Farmer info:", farmer);
+                setFundingSuccess(
+                    t("allAids.fundingSuccess").replace(
+                        "{{amount}}",
+                        fundAmount
+                    ) +
+                        " (Email notification could not be sent - no email found)"
+                );
+            } else {
+                // Calculate funding details
+                const totalFunded =
+                    parseFloat(selectedRequest.amountFunded) +
+                    parseFloat(fundAmount);
+                const isFulfilled =
+                    totalFunded >= parseFloat(selectedRequest.amountRequested);
+
+                console.log("Sending email to:", farmer.email);
+                console.log("Email payload:", {
+                    farmerEmail: farmer.email,
+                    farmerName: farmer.name,
+                    requestedEth: selectedRequest.amountRequested,
+                    fundedEth: totalFunded.toFixed(4),
+                    isFulfilled: isFulfilled,
+                });
+
+                // Send email notification
+                try {
+                    await sendFundsReceivedEmail({
+                        farmerEmail: farmer.email,
+                        farmerName: farmer.name,
+                        requestedEth: selectedRequest.amountRequested,
+                        fundedEth: totalFunded.toFixed(4),
+                        isFulfilled: isFulfilled,
+                    });
+
+                    setFundingSuccess(
+                        t("allAids.fundingSuccess").replace(
+                            "{{amount}}",
+                            fundAmount
+                        ) + " Email notification sent to farmer."
+                    );
+                } catch (emailError) {
+                    console.error("Email sending failed:", emailError);
+                    setFundingSuccess(
+                        t("allAids.fundingSuccess").replace(
+                            "{{amount}}",
+                            fundAmount
+                        ) + " (Email notification failed to send)"
+                    );
+                }
+            }
+
+            // Reset form and refresh data
             setFundAmount("");
 
             const requests = await getAllAidRequests();
             setAidRequests(requests);
             applyFilter(requests, filter);
 
-            setSelectedRequest(null);
+            // Close modal after a delay
+            setTimeout(() => {
+                setSelectedRequest(null);
+            }, 3000);
         } catch (err: any) {
+            console.error("Funding error:", err);
             setFundingError(err.message || t("allAids.fundingError"));
         } finally {
             setFundingLoading(false);

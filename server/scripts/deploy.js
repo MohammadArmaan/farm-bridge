@@ -2,16 +2,16 @@ const hre = require("hardhat");
 
 async function main() {
     // Get the contract factory
-    const FairFund = await hre.ethers.getContractFactory("FairFund");
+    const FarmBridge = await hre.ethers.getContractFactory("FarmBridge");
 
     // Deploy the contract
-    const fairFund = await FairFund.deploy();
+    const farmBridge = await FarmBridge.deploy();
 
     // Wait for deployment to complete
-    await fairFund.waitForDeployment();
+    await farmBridge.waitForDeployment();
 
     // Log the deployed contract address
-    console.log(`FairFund contract deployed at: ${fairFund.target}`);
+    console.log(`FarmBridge contract deployed at: ${fairFund.target}`);
 }
 
 // Run the script and handle errors
