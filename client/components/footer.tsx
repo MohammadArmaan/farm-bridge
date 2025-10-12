@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { Coins, Facebook, Github, Instagram, Linkedin, Mail, Twitter } from "lucide-react";
-import { FaEthereum } from "react-icons/fa";
+import { Coins, Facebook, Github, Instagram, Linkedin, Mail, Twitter, Youtube } from "lucide-react";
+import { FaEthereum, FaYoutube } from "react-icons/fa";
 import { GiFox } from "react-icons/gi";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { useLocale } from "./locale-provider";
@@ -58,6 +58,14 @@ export default function Footer() {
                             >
                                 <Linkedin className="h-5 w-5" />
                                 <span className="sr-only">LinkedIn</span>
+                            </a>
+                            <a
+                                href="https://youtu.be/FF2OaSQs5zo"
+                                className="text-green-300 hover:text-white"
+                                target="_blank"
+                            >
+                                <FaYoutube className="h-5 w-5" />
+                                <span className="sr-only">YouTube</span>
                             </a>
                             <a
                                 href="https://mail.google.com/mail/?view=cm&fs=1&to=farmbridge.chain@gmail.com&su=FarmBridge%20Inquiry&body=Hello%2C%20I%20would%20like%20to%20know%20more..."

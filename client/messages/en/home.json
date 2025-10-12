@@ -155,6 +155,10 @@
         "fundingError": "Failed to fund aid request. Please make sure you have enough ETH and the request is still active."
     },
     "how-it-works": {
+        "demoVideo": {
+            "heading": "Watch How FarmBridge Works",
+            "subheading": "Here’s a complete walkthrough of FarmBridge — from registration to transparent fund distribution."
+        },
         "heading": "How FarmBridge Works",
         "subheading": "Our blockchain-powered platform ensures every donation reaches the right farmer with complete transparency and accountability.",
         "processOverview": {

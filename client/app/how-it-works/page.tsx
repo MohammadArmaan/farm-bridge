@@ -6,6 +6,7 @@ import { CheckCircle, Clock, Leaf, Shield, Users, Wallet } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { useLocale } from "@/components/locale-provider";
+import { FaYoutube } from "react-icons/fa";
 
 export default function HowItWorksPage() {
     const { t } = useLocale();
@@ -34,7 +35,9 @@ export default function HowItWorksPage() {
                     </CardHeader>
                     <CardContent>
                         <p className="text-muted-foreground mb-4">
-                            {t("how-it-works.processOverview.step1.description")}
+                            {t(
+                                "how-it-works.processOverview.step1.description"
+                            )}
                         </p>
                         <div className="flex items-center text-green-600 font-medium">
                             <Shield className="h-4 w-4 mr-2" />
@@ -54,7 +57,9 @@ export default function HowItWorksPage() {
                     </CardHeader>
                     <CardContent>
                         <p className="text-muted-foreground mb-4">
-                            {t("how-it-works.processOverview.step2.description")}
+                            {t(
+                                "how-it-works.processOverview.step2.description"
+                            )}
                         </p>
                         <div className="flex items-center text-pink-600 font-medium">
                             <Wallet className="h-4 w-4 mr-2" />
@@ -74,7 +79,9 @@ export default function HowItWorksPage() {
                     </CardHeader>
                     <CardContent>
                         <p className="text-muted-foreground mb-4">
-                            {t("how-it-works.processOverview.step3.description")}
+                            {t(
+                                "how-it-works.processOverview.step3.description"
+                            )}
                         </p>
                         <div className="flex items-center text-yellow-600 font-medium">
                             <Leaf className="h-4 w-4 mr-2" />
@@ -82,6 +89,33 @@ export default function HowItWorksPage() {
                         </div>
                     </CardContent>
                 </Card>
+            </div>
+
+            {/* Demo Video Section */}
+            <div className="mb-20">
+                <div className="text-center mb-12">
+                    <h2 className="text-3xl font-bold text-green-700 dark:text-green-500 mb-4">
+                        {t("how-it-works.demoVideo.heading")}
+                    </h2>
+                    <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                        {t("how-it-works.demoVideo.subheading")}
+                    </p>
+                </div>
+
+                <div className="flex justify-center">
+                    <div className="w-full md:w-3/4 lg:w-2/3 aspect-video rounded-2xl overflow-hidden shadow-xl border border-green-200 dark:border-green-800">
+                        <iframe
+                            width="100%"
+                            height="100%"
+                            src="https://www.youtube.com/embed/FF2OaSQs5zo"
+                            title="FarmBridge - A Blockchain and AI-Driven Platform for Transparent Agricultural Relief Distribution"
+                            frameBorder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowFullScreen
+                            className="rounded-2xl"
+                        ></iframe>
+                    </div>
+                </div>
             </div>
 
             {/* Detailed Explanation */}
@@ -100,34 +134,48 @@ export default function HowItWorksPage() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                         <div className="order-2 md:order-1">
                             <h3 className="text-2xl font-bold text-green-700 dark:text-green-500 mb-4">
-                                {t("how-it-works.detailedExplanation.step1.title")}
+                                {t(
+                                    "how-it-works.detailedExplanation.step1.title"
+                                )}
                             </h3>
                             <div className="space-y-4">
                                 <div className="flex items-start">
                                     <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" />
                                     <p className="text-muted-foreground">
                                         <span className="font-medium text-foreground">
-                                            {t("how-it-works.detailedExplanation.step1.donorRegistrationLabel")}
+                                            {t(
+                                                "how-it-works.detailedExplanation.step1.donorRegistrationLabel"
+                                            )}
                                         </span>{" "}
-                                        {t("how-it-works.detailedExplanation.step1.donorRegistrationDescription")}
+                                        {t(
+                                            "how-it-works.detailedExplanation.step1.donorRegistrationDescription"
+                                        )}
                                     </p>
                                 </div>
                                 <div className="flex items-start">
                                     <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" />
                                     <p className="text-muted-foreground">
                                         <span className="font-medium text-foreground">
-                                            {t("how-it-works.detailedExplanation.step1.farmerRegistrationLabel")}
+                                            {t(
+                                                "how-it-works.detailedExplanation.step1.farmerRegistrationLabel"
+                                            )}
                                         </span>{" "}
-                                        {t("how-it-works.detailedExplanation.step1.farmerRegistrationDescription")}
+                                        {t(
+                                            "how-it-works.detailedExplanation.step1.farmerRegistrationDescription"
+                                        )}
                                     </p>
                                 </div>
                                 <div className="flex items-start">
                                     <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" />
                                     <p className="text-muted-foreground">
                                         <span className="font-medium text-foreground">
-                                            {t("how-it-works.detailedExplanation.step1.verificationProcessLabel")}
+                                            {t(
+                                                "how-it-works.detailedExplanation.step1.verificationProcessLabel"
+                                            )}
                                         </span>{" "}
-                                        {t("how-it-works.detailedExplanation.step1.verificationProcessDescription")}
+                                        {t(
+                                            "how-it-works.detailedExplanation.step1.verificationProcessDescription"
+                                        )}
                                     </p>
                                 </div>
                             </div>
@@ -135,7 +183,9 @@ export default function HowItWorksPage() {
                         <div className="order-1 md:order-2">
                             <Image
                                 src="/registerandverify.jpg"
-                                alt={t("how-it-works.images.registrationProcess")}
+                                alt={t(
+                                    "how-it-works.images.registrationProcess"
+                                )}
                                 width={400}
                                 height={200}
                                 className="rounded-lg shadow-lg"
@@ -147,34 +197,48 @@ export default function HowItWorksPage() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                         <div className="order-2">
                             <h3 className="text-2xl font-bold text-green-700 dark:text-green-500 mb-4">
-                                {t("how-it-works.detailedExplanation.step2.title")}
+                                {t(
+                                    "how-it-works.detailedExplanation.step2.title"
+                                )}
                             </h3>
                             <div className="space-y-4">
                                 <div className="flex items-start">
                                     <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" />
                                     <p className="text-muted-foreground">
                                         <span className="font-medium text-foreground">
-                                            {t("how-it-works.detailedExplanation.step2.farmerRequestLabel")}
+                                            {t(
+                                                "how-it-works.detailedExplanation.step2.farmerRequestLabel"
+                                            )}
                                         </span>{" "}
-                                        {t("how-it-works.detailedExplanation.step2.farmerRequestDescription")}
+                                        {t(
+                                            "how-it-works.detailedExplanation.step2.farmerRequestDescription"
+                                        )}
                                     </p>
                                 </div>
                                 <div className="flex items-start">
                                     <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" />
                                     <p className="text-muted-foreground">
                                         <span className="font-medium text-foreground">
-                                            {t("how-it-works.detailedExplanation.step2.donorsChooseLabel")}
+                                            {t(
+                                                "how-it-works.detailedExplanation.step2.donorsChooseLabel"
+                                            )}
                                         </span>{" "}
-                                        {t("how-it-works.detailedExplanation.step2.donorsChooseDescription")}
+                                        {t(
+                                            "how-it-works.detailedExplanation.step2.donorsChooseDescription"
+                                        )}
                                     </p>
                                 </div>
                                 <div className="flex items-start">
                                     <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" />
                                     <p className="text-muted-foreground">
                                         <span className="font-medium text-foreground">
-                                            {t("how-it-works.detailedExplanation.step2.secureFundingLabel")}
+                                            {t(
+                                                "how-it-works.detailedExplanation.step2.secureFundingLabel"
+                                            )}
                                         </span>{" "}
-                                        {t("how-it-works.detailedExplanation.step2.secureFundingDescription")}
+                                        {t(
+                                            "how-it-works.detailedExplanation.step2.secureFundingDescription"
+                                        )}
                                     </p>
                                 </div>
                             </div>
@@ -183,7 +247,9 @@ export default function HowItWorksPage() {
                         <div className="order-1">
                             <Image
                                 src="/disbursementcreation.jpg"
-                                alt={t("how-it-works.images.disbursementProcess")}
+                                alt={t(
+                                    "how-it-works.images.disbursementProcess"
+                                )}
                                 width={400}
                                 height={200}
                                 className="rounded-lg shadow-lg"
@@ -195,34 +261,48 @@ export default function HowItWorksPage() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                         <div className="order-2 md:order-1">
                             <h3 className="text-2xl font-bold text-green-700 dark:text-green-500 mb-4">
-                                {t("how-it-works.detailedExplanation.step3.title")}
+                                {t(
+                                    "how-it-works.detailedExplanation.step3.title"
+                                )}
                             </h3>
                             <div className="space-y-4">
                                 <div className="flex items-start">
                                     <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" />
                                     <p className="text-muted-foreground">
                                         <span className="font-medium text-foreground">
-                                            {t("how-it-works.detailedExplanation.step3.farmersReceiveLabel")}
+                                            {t(
+                                                "how-it-works.detailedExplanation.step3.farmersReceiveLabel"
+                                            )}
                                         </span>{" "}
-                                        {t("how-it-works.detailedExplanation.step3.farmersReceiveDescription")}
+                                        {t(
+                                            "how-it-works.detailedExplanation.step3.farmersReceiveDescription"
+                                        )}
                                     </p>
                                 </div>
                                 <div className="flex items-start">
                                     <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" />
                                     <p className="text-muted-foreground">
                                         <span className="font-medium text-foreground">
-                                            {t("how-it-works.detailedExplanation.step3.trustReputationLabel")}
+                                            {t(
+                                                "how-it-works.detailedExplanation.step3.trustReputationLabel"
+                                            )}
                                         </span>{" "}
-                                        {t("how-it-works.detailedExplanation.step3.trustReputationDescription")}
+                                        {t(
+                                            "how-it-works.detailedExplanation.step3.trustReputationDescription"
+                                        )}
                                     </p>
                                 </div>
                                 <div className="flex items-start">
                                     <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" />
                                     <p className="text-muted-foreground">
                                         <span className="font-medium text-foreground">
-                                            {t("how-it-works.detailedExplanation.step3.noWastedFundsLabel")}
+                                            {t(
+                                                "how-it-works.detailedExplanation.step3.noWastedFundsLabel"
+                                            )}
                                         </span>{" "}
-                                        {t("how-it-works.detailedExplanation.step3.noWastedFundsDescription")}
+                                        {t(
+                                            "how-it-works.detailedExplanation.step3.noWastedFundsDescription"
+                                        )}
                                     </p>
                                 </div>
                             </div>
@@ -261,7 +341,9 @@ export default function HowItWorksPage() {
                                 {t("how-it-works.benefits.transparencyTitle")}
                             </h3>
                             <p className="text-muted-foreground">
-                                {t("how-it-works.benefits.transparencyDescription")}
+                                {t(
+                                    "how-it-works.benefits.transparencyDescription"
+                                )}
                             </p>
                         </CardContent>
                     </Card>
@@ -272,10 +354,14 @@ export default function HowItWorksPage() {
                                 <Users className="h-6 w-6 text-pink-600" />
                             </div>
                             <h3 className="font-bold text-lg mb-2 text-pink-600 dark:text-pink-500">
-                                {t("how-it-works.benefits.directConnectionTitle")}
+                                {t(
+                                    "how-it-works.benefits.directConnectionTitle"
+                                )}
                             </h3>
                             <p className="text-muted-foreground">
-                                {t("how-it-works.benefits.directConnectionDescription")}
+                                {t(
+                                    "how-it-works.benefits.directConnectionDescription"
+                                )}
                             </p>
                         </CardContent>
                     </Card>
@@ -289,7 +375,9 @@ export default function HowItWorksPage() {
                                 {t("how-it-works.benefits.efficiencyTitle")}
                             </h3>
                             <p className="text-muted-foreground">
-                                {t("how-it-works.benefits.efficiencyDescription")}
+                                {t(
+                                    "how-it-works.benefits.efficiencyDescription"
+                                )}
                             </p>
                         </CardContent>
                     </Card>
@@ -303,7 +391,9 @@ export default function HowItWorksPage() {
                                 {t("how-it-works.benefits.sustainabilityTitle")}
                             </h3>
                             <p className="text-muted-foreground">
-                                {t("how-it-works.benefits.sustainabilityDescription")}
+                                {t(
+                                    "how-it-works.benefits.sustainabilityDescription"
+                                )}
                             </p>
                         </CardContent>
                     </Card>
