@@ -5,9 +5,9 @@ It implements a **farmer-initiated model** that allows farmers to request aid di
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)  
 
-🚀 **Live Project:** [https://farm-bridge-project.vercel.app](https://farm-bridge-project.vercel.app)
-📑 **Smart Contract:** [View on Etherscan](https://sepolia.etherscan.io/address/0x0FE27a83959FD45bb9E173DeD862596fB0755165)
-🎥 **Youtube Video:** [Watch the Demo Video](https://youtu.be/FF2OaSQs5zo)
+- 🚀 **Live Project:** [https://farm-bridge-project.vercel.app](https://farm-bridge-project.vercel.app)
+- 📑 **Smart Contract:** [View on Etherscan](https://sepolia.etherscan.io/address/0x0FE27a83959FD45bb9E173DeD862596fB0755165)
+- 🎥 **Youtube Video:** [Watch the Demo Video](https://youtu.be/FF2OaSQs5zo)
 
 ---
 
