@@ -4,7 +4,10 @@ FarmBridge is a transparent **blockchain-based aid distribution system** designe
 It implements a **farmer-initiated model** that allows farmers to request aid directly, enabling donors to contribute to specific farming projects in a **secure, transparent, and accountable** way.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)  
-🚀 **Live Project:** [farm-bridge-project.vercel.app](https://farm-bridge-project.vercel.app)
+
+🚀 **Live Project:** [https://farm-bridge-project.vercel.app](https://farm-bridge-project.vercel.app)
+📑 **Smart Contract:** [View on Etherscan](https://sepolia.etherscan.io/address/0x0FE27a83959FD45bb9E173DeD862596fB0755165)
+🎥 **Youtube Video:** [Watch the Demo Video](https://youtu.be/FF2OaSQs5zo)
 
 ---
 
@@ -167,7 +170,7 @@ See the [LICENSE](LICENSE) file for more information.
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/Rahulhanje/FarmBridge.git
+    git clone https://github.com/MohammadArmaan/farm-bridge.git
     cd FarmBridge
     ```
 
@@ -207,7 +210,10 @@ See the [LICENSE](LICENSE) file for more information.
 await FarmBridge.registerFarmer(
     "John Doe", // Name
     "Nairobi, Kenya", // Location
-    "Organic Vegetables" // Farm type
+    "Organic Vegetables", // Farm type
+    "https://crimson-abundant-herring-795.mypinata.cloud/ipfs/0x123...", // IPFS URL
+    "9999999999", // Phone Number
+    "example@example.com" //Email Address
 );
 ```
 
@@ -229,6 +235,9 @@ await FarmBridge.requestAid(
 await FarmBridge.registerDonor(
     "ABC Foundation", // Name
     "Supporting sustainable farming" // Description
+    "https://crimson-abundant-herring-795.mypinata.cloud/ipfs/0x123...", // IPFS URL
+    "9999999999", // Phone Number
+    "example@example.com" //Email Address
 );
 ```
 
