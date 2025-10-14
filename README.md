@@ -211,7 +211,7 @@ await FarmBridge.registerFarmer(
     "John Doe", // Name
     "Nairobi, Kenya", // Location
     "Organic Vegetables", // Farm type
-    "https://crimson-abundant-herring-795.mypinata.cloud/ipfs/0x123...", // IPFS URL
+    "https://your-ipfs-url", // IPFS URL
     "9999999999", // Phone Number
     "example@example.com" //Email Address
 );
